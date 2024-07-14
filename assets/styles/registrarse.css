@@ -1,0 +1,65 @@
+html{
+    background-color: #fff;
+}
+main{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 65vh;
+    background-color: #fff;
+}
+main input{
+    height: 55px;
+    width: 420px;
+    padding: 0 0 0 1%;
+}
+
+main input:nth-last-child(1){
+    background-color: #ff3c3c;
+    color: #fff;
+    border: none;
+}
+main input:nth-last-child(2){
+    background-color: #4067b4;
+    color: #fff;
+    border: none;
+}
+a:hover{
+    border: none !important;
+}
+.registrate{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 6%;
+    height: 40%;
+}
+.registrate h1, .registrate p{
+    text-align: center;
+}
+.registrate button{
+    width: 100%;
+}
+.formulario{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+main div form{
+    display: flex;
+    flex-direction: column;
+    gap: 3%;
+    height: 100%;
+}
+main div form div input:nth-last-of-type(1){
+    height: 20px;
+    width: 30px;
+}
+form div {
+    display: flex;
+    align-items: center;
+}
+
