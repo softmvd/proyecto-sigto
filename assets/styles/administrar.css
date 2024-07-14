@@ -1,0 +1,45 @@
+body{
+    color: aliceblue;
+}
+.menu-primero{
+    justify-content: space-between !important;
+}
+.menu-lateral{
+    width: 30%;
+    height: 90vh;
+    background-color: #2f467c;
+}
+.menu-lateral ul{
+    height: 100%;
+}
+.menu-lateral ul li{
+    display: flex;
+    align-items: center;
+    padding: 2%;
+    border-bottom: 1px solid wheat;
+    border-top: 1px solid wheat;
+    height: 5%;
+}
+.menu-lateral ul li a{
+    text-decoration: none;
+    color: inherit;
+}
+.control{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 2%;
+    color: black;
+    width: 70%;
+    padding: 2%;
+}
+.control ul li{
+   margin-bottom: 1%;
+}
+.control ul{
+    padding-left: 3%;
+}
+main{
+    display: flex;
+    justify-content: space-between;
+}
