@@ -1,0 +1,43 @@
+.control{
+    color: black;
+}
+.contenedor-control{
+    display: flex;
+    flex-direction: column;
+    gap: 2%;
+    margin: 4%;
+    padding: 4%;
+    height: 100%;
+    border: 1px solid black;
+}
+.titulo{
+    display: flex;
+    justify-content: center;
+}
+.buscar input:first-child{
+    height: 13px;
+    border: none;
+    padding: 2%;
+    border-radius: 5px;
+}
+.buscar{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    gap: 2%;
+    padding: 2%;
+    border-bottom: 1px solid black;
+}
+.buscar :nth-child(2){
+    display: flex;
+    flex-direction: row;
+    gap: 2%;
+    border: none;
+}
+.buscador input:last-of-type{
+    color: white;
+    border-radius: 5px;
+    width: 65px;
+    padding: 1%;
+    background-color: rgb(237, 177, 94);
+}
