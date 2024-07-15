@@ -1,5 +1,6 @@
 html{
     background-color: #fff;
+    font-family:muli-regular, arial, sans-serif;
 }
 main{
     display: flex;
@@ -14,9 +15,12 @@ main input{
     width: 420px;
     padding: 0 0 0 1%;
 }
+main h1{
+    font-size: 25px;
+}
 
 main input:nth-last-child(1){
-    background-color: #ff3c3c;
+    background-color: black;
     color: #fff;
     border: none;
 }
@@ -33,7 +37,7 @@ a:hover{
     flex-direction: column;
     justify-content: center;
     gap: 6%;
-    height: 40%;
+    height: 30%;
 }
 .registrate h1, .registrate p{
     text-align: center;

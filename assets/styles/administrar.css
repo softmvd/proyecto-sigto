@@ -1,5 +1,6 @@
 body{
     color: aliceblue;
+    font-family:muli-regular, arial, sans-serif;
 }
 .menu-primero{
     justify-content: space-between !important;

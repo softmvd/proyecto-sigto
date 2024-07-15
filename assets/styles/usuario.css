@@ -1,3 +1,4 @@
+
 .control{
     color: black;
 }
@@ -15,7 +16,7 @@
     justify-content: center;
 }
 .buscar input:first-child{
-    height: 13px;
+    height: 24px;
     border: none;
     padding: 2%;
     border-radius: 5px;
@@ -28,10 +29,13 @@
     padding: 2%;
     border-bottom: 1px solid black;
 }
+.buscar p{
+    margin: 0;
+}
 .buscar :nth-child(2){
     display: flex;
     flex-direction: row;
-    gap: 2%;
+    gap: 4%;
     border: none;
 }
 .buscador input:last-of-type{
@@ -40,4 +44,9 @@
     width: 65px;
     padding: 1%;
     background-color: rgb(237, 177, 94);
+}
+.barra-datos ul{
+    display: flex;
+    justify-content: space-around;
+    list-style: none;
 }
