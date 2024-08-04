@@ -2,6 +2,7 @@
     padding: 0;
     margin: 0;
 }
+
 body{
     font-family:muli-regular, arial, sans-serif;
     background-color: #eaeded;
@@ -17,29 +18,61 @@ header{
     position: sticky;
     top: 0px;
     z-index: 1000;
+    border-bottom: 2px solid wheat;    
+}
+header #logo-sigto{
+    display: flex;
+    justify-content: center;
+    
 }
 header input{
     border-radius: 10px;
     border: none;
     height: 24px;
-    background-image: url("/assets/img/magnifying-glass_118667.png");
+    background-image: url("/proyecto-sigto/assets/img/magnifying-glass_118667.png");
     background-repeat: no-repeat;
     background-position: 90%;
 }
-header  div:first-of-type{
+header  .menu-primero{
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-around;
     color: white;
+    padding-bottom: 2%;
+    margin: 2% 0 1% 0;
+   
+}
+#menu{
+    cursor: pointer;
+}
+header .menu-segundo{
+    display: none;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
 }
 
-header div ul{
+header .menu-segundo ul{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
     justify-content: space-around;
-    margin-top: -2px;
+    margin: 3% 0 3% 0;
+    width: 100%;
+}
+header .menu-segundo ul li{
+    display: flex;
+    justify-content: center;
+    width: 60%;
+    padding: 1%;
+}
+header .menu-segundo ul li a{
+    color: white;
+    text-decoration: none;
+}
+header .menu-segundo ul li:hover{
+    border-bottom: 1px solid wheat;
 }
 header ul li{
     list-style: none;
@@ -49,103 +82,58 @@ header a{
     text-decoration: none;
     color: white;
 }
+
 #logo-sigto a:hover{
         border: none !important;
     
 }
-header a:hover{
+header .menu-primero a:hover{
     color: white;
     text-decoration: none;
     border-bottom: 1px solid rgb(237, 177, 94);
 }
-.desplegable{
-    display: none;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    top: 7%;
-    right: 17%;
-    width: 30%;
-    height: 25%;
-    padding: 2%;
-    box-shadow: 1px 2px  8px black;
-    border-radius: 5px;
-    z-index: 1000;
-    background-color: #fff;
-}
-.desplegable input{
-    width: 100%;
-    height: 35px;
-    font-size: 1.2em;
-}
-.desplegable :first-child{
-    background-color: #ff3c3c;
-    color: #fff;
-    border: none;
-}
-.desplegable :last-child{
-    
-    background-color: #4067b4;
-    color: #fff;
-    border: none;
-}
 #logo{
     height: 60px;
 }
-.menu-segundo img{
-    width: 20px;
-}
 .principal-carrusel img{
-    height: 200px;
+    height: 220px;
     width: 100%;
 }
 
 .info-art{
+    display: flex;
+    justify-content: center;
     height: 100%;
+    width: 100%;
     padding: 2%;
     margin-top: 3%;
 }
 .info-ventas{
     height: 100%;
+    width: 100%;
     background-color: #fff;
     border-radius: 10px 10px;
     box-shadow: 1px 2px 10px rgb(133, 132, 132);
 }
-.info-ventas ul {
+.info-ventas div {
     display: flex;
+    flex-direction: row;
     justify-content: center;
+    align-items: center;
     list-style: none;
+  
     
 }
-.info-ventas ul li{
+.info-ventas div div{
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 20%;
+    width: 60%;
     padding: 3%;  
-}
-.info-ventas ul li a{
-    text-decoration: none       ;
-}
-.info-ventas ul li p{
-    padding:0 2% 0 4%;
-    border-left: 1px solid grey;
-    height: 110px;
-}
-.info-ventas ul li img{
-    width: 40px;    
-    padding: 2%;
+
 }
 
-.noticias{
-    height: 100%;
-    padding: 2%;
-}
 
-.noticia-h{
-    height: 100%;
-    background-color: #fff;
-    border-radius: 10px 10px;
-    box-shadow: 1px 2px 10px rgb(133, 132, 132);
+@media only screen and (min-width: 768px) {
+
 }

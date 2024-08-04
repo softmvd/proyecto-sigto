@@ -2,6 +2,10 @@ html{
     background-color: #fff;
     font-family:muli-regular, arial, sans-serif;
 }
+header div{
+    display: flex;
+    justify-content: center;
+}
 main{
     display: flex;
     flex-direction: column;

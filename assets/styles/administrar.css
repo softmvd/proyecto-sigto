@@ -1,3 +1,6 @@
+header{
+    border-bottom: 1px solid wheat;
+}
 body{
     color: aliceblue;
     font-family:muli-regular, arial, sans-serif;
@@ -18,8 +21,8 @@ body{
     align-items: center;
     padding: 2%;
     border-bottom: 1px solid wheat;
-    border-top: 1px solid wheat;
-    height: 5%;
+    
+    height: 7%;
 }
 .menu-lateral ul li a{
     text-decoration: none;
@@ -32,13 +35,7 @@ body{
     gap: 2%;
     color: black;
     width: 70%;
-    padding: 2%;
-}
-.control ul li{
-   margin-bottom: 1%;
-}
-.control ul{
-    padding-left: 3%;
+    padding: 1%;
 }
 main{
     display: flex;
