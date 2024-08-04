@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>S.I.G.T.O | PROYECTO</title>
+    <link rel="icon" type="image/x-icon" href="/proyecto-sigto/assets/img/favicon-sigto.png">
     <link rel="stylesheet" href="/proyecto-sigto/assets/styles/index.css">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,600,600italic,700,700italic,800,800italic&amp;subset=latin,cyrillic" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -14,10 +15,14 @@
 </head>
 <body>
     <header>
+        <div id="logo-sigto">
+            <a href="/proyecto-sigto/assets/pages/index.html"><img id="logo" src="/proyecto-sigto/assets/img/logo-sigto.png" alt="logo-Sigto"></a>
+         </div>
         <div class="menu-primero">
-            <div id="logo-sigto">
-               <a href="/proyecto-sigto/assets/pages/index.html"><img id="logo" src="/proyecto-sigto/assets/img/logo-sigto.png" alt="logo-tiendaMia"></a>
+            <div id="menu"> 
+                <img src="/proyecto-sigto/assets/img/menu (1).png" alt="menu-burguer">
             </div>
+          
             <div>
                 <input type="text" name="buscador"> <!-- Poner img lupa dentro del input -->
             </div>
@@ -33,22 +38,15 @@
         </div>
         <div class="menu-segundo">
             <ul>
-                <li><img src="/proyecto-sigto/assets/img/menu (1).png" alt="menu-burguer"></li>
                 <li><a href="#">Todas las categorias</a></li>
-                <li><a href="#">Ofertas de la semana</a></li>
+                <li><a href="/proyecto-sigto/assets/pages/ofertasSemanales.html">Ofertas de la semana</a></li>
                 <li><a href="#">Como comprar</a></li>
                 <li><a href="#">Costos y tarifas</a></li>
-                <li><a href="#">Invita y gana</a></li>
                 <li><a href="#">Garantia de entrega</a></li>
                 <li><a href="/proyecto-sigto/assets/pages/administrar.html">Administrar</a></li>
             </ul>
         </div>
     </header>
-    <div class="desplegable">
-        <input type="button" value="Entrar">
-        <p>o</p>
-        <input type="button" value="Entrar con Facebook">
-    </div>
     <main>
         <section class="principal-carrusel">
             <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
@@ -73,31 +71,35 @@
         </section>
         <article class="info-art">
             <section class="info-ventas">
-                <ul>
-                    <li>
-
+                <div>
+                    <div>
                         <img src="/proyecto-sigto/assets/img/caja.png" alt="caja">
-                        <p>Qué es Tiendamia. Fácil, rápido y seguro. <a href="#">Como comprar</a></p> 
-                    </li>
-                    <li>
+                        <p>Qué es Sigto. Fácil, rápido y seguro. <a href="#">Como comprar</a></p> 
+                    </div>
+                    <div>
                         <img src="/proyecto-sigto/assets/img/airplane_282292.png" alt="avion">
                         <p>Información de Aduanas. Hacemos todo por ti. <a href="#">Saber mas</a></p>
-                    </li>
-                    <li>
+                    </div>
+                </div>
+                <div>
+                    <div>
                         <img src="/proyecto-sigto/assets/img/tarjetas.png" alt="tarjetas">
                         <p>
                             Paga con crédito o débito. <a href="#">Ver promociones</a>
                             </p>
-                    </li>
-                    <li>
+                    </div>
+                    <div>
                         <img src="/proyecto-sigto/assets/img/audifonos.png" alt="atencion-personalizada">
                         <p>Ayuda y seguimiento en tu idioma. <a href="#">Centro de ayuda en linea</a></p>
-                    </li>
-                    <li>
+                    </div>
+                </div>
+                <div>
+                    <div>
                         <img src="/proyecto-sigto/assets/img/flag_114815.png" alt="bandera">
-                        <p>Sé un Ciudadano de Tiendamia. <a href="#">Unete hoy!</a></p>
-                    </li>
-                </ul>
+                        <p>Sé un Ciudadano de Sigto. <a href="#">Unete hoy!</a></p>
+                    </div>
+                </div>
             </section>
         </article>
-     
+        <script src="/proyecto-sigto/assets/js/index.js"></script>
+    </body> 
