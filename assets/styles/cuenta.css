@@ -21,10 +21,10 @@ main{
     gap: 5%;
     align-items: center;
     border: 1px solid gray;
-    border-radius: 10px;
+    border-radius: 0px;
     padding:4%;
     width: 60%;
-    height: 40%;
+    height: 60%;
 }
 .formulario{
     width: 100%;
@@ -35,7 +35,8 @@ form{
 }
 form input{
     width: 100%;
-    margin-bottom: 2%;
+    height: 25px;
+    margin-bottom: 3%;
 }
 form input:last-child{
     background-color: #2f467c;

@@ -1,0 +1,44 @@
+main{
+    padding: 1%;
+}
+.info-art{
+    padding: 0 ;
+}
+.container-info{
+    padding: 1%;
+}
+.info{
+    display: flex;
+    flex-direction: column;
+    padding: 3%;
+    box-shadow: 1px 2px 10px rgb(133, 132, 132);
+    background-color: white;
+    border-radius: 4px;
+}
+.container-contenido{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    gap: 3%;
+    padding-bottom: 5%;
+}
+.container-contenido div{
+    padding: 1%;
+}
+.container-contenido img{
+    width: 30px;
+}
+.container-contenido p{
+    width: 250px;
+}
+.container-contenido div:last-of-type img{
+    width: 16px;
+}
+.container-contenido div:nth-child(2) p{
+    padding-top: 2%;
+}
+.img-perfil img{
+    width: 100%;
+    border-radius: 500px;
+}

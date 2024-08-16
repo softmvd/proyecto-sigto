@@ -11,8 +11,12 @@ h2{
 main{
     flex-direction: column;
 }
+ 
 .menu-primero{
     justify-content: space-between !important;
+}
+.menu-primero div a:hover{
+    border: none;
 }
 .menu-lateral{
     width: 100%;

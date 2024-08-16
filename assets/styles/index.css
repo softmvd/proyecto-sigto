@@ -20,6 +20,9 @@ header{
     z-index: 1000;
     border-bottom: 2px solid wheat;    
 }
+#logo-sigto-dos{
+    display: none;
+}
 header #logo-sigto{
     display: flex;
     justify-content: center;
@@ -133,7 +136,38 @@ header .menu-primero a:hover{
 
 }
 
-
 @media only screen and (min-width: 768px) {
+    header #logo-sigto{
+        display: none;
+    }
+    #logo-sigto-dos{
+        display: inline;
+        border: none !important;
+    }
+    #logo-sigto-dos :hover{
+        border: none !important;
+    }
+    .menu-primero{
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+    .menu-primero  div input{
+        width: 300px;
+    }
+    .principal-carrusel img{
+        height: 100%;
+        width: 100%;
+    }
+    .info-ventas {
+        display: flex;
+        padding: 4%;
+    }
+}
 
+@media only screen and (min-width: 992px){
+    .principal-carrusel img{
+        height: 300px;
+        width: 50%;
+    }
+   
 }
