@@ -5,24 +5,30 @@ body{
     color: aliceblue;
     font-family:muli-regular, arial, sans-serif;
 }
+h2{
+    font-size: 2em;
+}
+main{
+    flex-direction: column;
+}
 .menu-primero{
     justify-content: space-between !important;
 }
 .menu-lateral{
-    width: 30%;
-    height: 90vh;
+    width: 100%;
+    padding: 2% 0 2% 0;
     background-color: #2f467c;
 }
 .menu-lateral ul{
-    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    margin: 0;
 }
 .menu-lateral ul li{
     display: flex;
     align-items: center;
-    padding: 2%;
-    border-bottom: 1px solid wheat;
-    
-    height: 7%;
 }
 .menu-lateral ul li a{
     text-decoration: none;
@@ -31,13 +37,15 @@ body{
 .control{
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
     gap: 2%;
     color: black;
-    width: 70%;
+    width: 100%;
     padding: 1%;
 }
 main{
     display: flex;
     justify-content: space-between;
+}
+.control ul{
+    list-style: none;
 }

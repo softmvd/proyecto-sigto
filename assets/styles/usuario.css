@@ -1,6 +1,11 @@
 
 .control{
     color: black;
+    padding: 2%;
+}
+h2{
+    font-size: 18px;
+    margin: 5%;
 }
 .contenedor-control{
     display: flex;
@@ -40,6 +45,9 @@
     padding: 1%;
     background-color: rgb(237, 177, 94);
 }
+.barra-datos{
+    padding: 2% 0 2% 0;
+}
 .barra-datos ul:first-of-type{
     display: flex;
     justify-content: space-around;
@@ -47,15 +55,19 @@
     border-bottom: 1px solid black;
     align-items: center;
 }
+.barra-datos li{
+    display: flex;
+    justify-content: center;
+  
+}
 .usuarios ul{
     display: flex;
     list-style: none;
     justify-content: space-around;
     border-bottom: 1px solid grey;
-    padding-bottom: 2px;
+    margin-bottom: 3%;
+    
 }
 .usuarios li{
-    display: flex;
-    justify-content: center;
-    width: 25%;
+    display:inline-block;
 }

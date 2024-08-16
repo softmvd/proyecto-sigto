@@ -25,9 +25,9 @@
     width: 36%;
     padding: 4%;
     background-color: white;
-    border: 1px solid gray;
+    
     border-radius: 10px;
-    box-shadow: 1px 1px 6px rgb(133, 132, 132);
+    box-shadow: 2px 3px 6px #2f467c;
 }
 
 .articulo img{

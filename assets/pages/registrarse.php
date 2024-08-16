@@ -26,11 +26,11 @@
                 <p>O registrarse con tu email</p>
             </div>
             <div class="formulario"> 
-                <form action="#" method="post">
+                <form action="/proyecto-sigto/assets/pages/administrar.php" method="post">
                     <input type="text" placeholder="Nombre" name="camponombre" required minlength="2" maxlength="25">
                     <input type="text" placeholder="Apellido" name="campoapellido" required  minlength="2" maxlength="25">
-                    <input type="text" placeholder="Tu direccion de E-mail" name="campoemail" required>
-                    <input type="password" placeholder="Contraseña para tiendamia" name="campoclave" min="8" max="12" required>
+                    <input type="email" placeholder="Tu direccion de E-mail" name="campoemail" required>
+                    <input type="password" placeholder="Contraseña" name="campoclave" min="8" max="12" required>
                     <p>La contraseña debe tener al menos 6 caracteres.</p>
                     <div>
                         <input type="checkbox"><p>Recibir Ofertas!</p>

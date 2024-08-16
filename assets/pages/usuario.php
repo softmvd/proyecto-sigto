@@ -1,12 +1,12 @@
 <?php
-
+session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Administracion| Usuarios</title>
+    <title>Administración | Usuarios</title>
     <link rel="icon" type="image/x-icon" href="/proyecto-sigto/assets/img/favicon-sigto.png">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,600,600italic,700,700italic,800,800italic&amp;subset=latin,cyrillic" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -18,7 +18,9 @@
     <header>
         <div class="menu-primero">
             <div>
-                <a href="/proyecto-sigto/assets/pages/index.html"><img id="logo" src="/proyecto-sigto/assets/img/logo-sigto.png" alt="logo-tiendaMia"></a>
+                <a href="/proyecto-sigto/assets/pages/index.html">
+                    <img id="logo" src="/proyecto-sigto/assets/img/logo-sigto.png" alt="logo-tiendaMia">
+                </a>
             </div>
             <div>
                 <p>Bienvenido, Fulanito de Tal.</p>
@@ -57,20 +59,20 @@
                     </ul>
                 </div>
                 <div class="usuarios">
-                    <ul>
-                        <li>Santiago</li>
-                        <li>Torrens</li>
-                        <li>stc.enprend@gmail.com</li>
-                        <li>cosito221</li>
-                        <li><img src="/proyecto-sigto/assets/img/menu (4).png" alt="icono-desplegable"></li>
-                    </ul>
-                    <ul>
-                        <li>Esteban</li>
-                        <li>Quito</li>
-                        <li>quito.esteban@gmail.com</li>
-                        <li>estebanquito</li>
-                        <li><img src="/proyecto-sigto/assets/img/menu (4).png" alt="icono-desplegable"></li>
-                    </ul>
+                    <?php          
+                    if (isset($_SESSION['usuarios']) && !empty($_SESSION['usuarios'])) {
+                        foreach ($_SESSION['usuarios'] as $key => $usuario) {
+                            echo "<div>";
+                            echo "    <ul>";
+                            foreach ($usuario as $campo => $valor) {
+                                echo "        <li>$valor</li>";
+                            }
+                             echo   '<li><img src="/proyecto-sigto/assets/img/menu (4).png" alt="menu"></li>'; 
+                            echo "    </ul>";
+                            echo "</div>";
+                        }
+                    }
+                    ?>
                 </div>
             </div>
         </div>

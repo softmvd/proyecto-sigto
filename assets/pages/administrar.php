@@ -1,3 +1,30 @@
+<?php
+session_start();
+
+// Inicializar el array de usuarios si no existe
+if (!isset($_SESSION['usuarios'])) {
+    $_SESSION['usuarios'] = [];
+}
+
+// Obtener los datos del nuevo usuario
+$nombre = $_REQUEST['camponombre'];
+$apellido = $_REQUEST['campoapellido'];
+$email = $_REQUEST['campoemail'];
+$clave = $_REQUEST['campoclave'];
+
+// Crear un identificador único para el usuario (por ejemplo, usando nombre y apellido)
+$idUsuario = $nombre.$apellido;
+
+// Agregar el nuevo usuario al array en la sesión
+$_SESSION['usuarios'][$idUsuario] = [
+    'nombre' => $nombre,
+    'apellido' => $apellido,
+    'email' => $email,
+    'clave' => $clave
+];
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,14 +51,14 @@
     <main>
         <div class="menu-lateral">
             <ul>
-                <li><a href="/proyecto-sigto/assets/pages/usuario.html">Usuarios</a></li>
+                <li><a href="/proyecto-sigto/assets/pages/usuario.php">Usuarios</a></li>
                 <li><a href="#">Productos</a></li>
                 <li><a href="#">Ventas</a></li>
                 <li><a href="#">Descuentos</a></li>
             </ul>
         </div>
         <div class="control">
-            <h2>Bienvenido al panel de controlo del Sistema de tiendas online</h2>
+            <h2>Bienvenido al panel de control del Sistema de tiendas online</h2>
             <p>Aqui podras:</p>
             <ul>
                 <li><p>Agregar o eliminar usuarios</p></li>
