@@ -123,9 +123,14 @@ header .menu-primero a:hover{
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    list-style: none;
-  
-    
+    list-style: none;   
+}
+.info-ventas img{
+    width: 20%;
+    padding-right: 2%;
+}
+.info-ventas  p{
+    margin: 0;
 }
 .info-ventas div div{
     display: flex;
@@ -135,6 +140,25 @@ header .menu-primero a:hover{
     padding: 3%;  
 
 }
+footer{
+    background-color: #4B4B4B;
+    color:#707070;
+}
+footer h3{
+    font-size: 1.2em;
+    color: white;
+}
+footer .pie{
+    background-color: #1C1C1C;
+    padding: 1%;
+}
+.contenedor-footer{
+    padding: 2% 2% 0 2%;
+}
+footer ul{
+    list-style: none;
+}
+
 
 @media only screen and (min-width: 768px) {
     header #logo-sigto{
