@@ -50,8 +50,8 @@
                 <div class="container-contenido">
                     <div class="img-perfil"><img src="https://img.freepik.com/foto-gratis/retro-hombre-moderno_23-2147960990.jpg?t=st=1723849586~exp=1723853186~hmac=3060b3659549a75a227d3307a72485800d3e4a5c1d1453d8f976467d97e6d2bd&w=740" alt="foto-de-perfil"></div>
                     <div>    
-                        <h2>Santiago Torrens</h2>
-                        <p>stc@hotmail.com</p>
+                        <h2>Fulano De Tal</h2>
+                        <p>Fulano@hotmail.com</p>
                     </div>
                 </div>
             </section>

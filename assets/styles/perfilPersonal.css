@@ -10,10 +10,12 @@ main{
 .info{
     display: flex;
     flex-direction: column;
-    padding: 3%;
+    gap: 15px;
+    padding: 4%;
     box-shadow: 1px 2px 10px rgb(133, 132, 132);
     background-color: white;
     border-radius: 4px;
+    height: 100%;
 }
 .container-contenido{
     display: flex;
@@ -21,7 +23,6 @@ main{
     justify-content: space-around;
     align-items: center;
     gap: 3%;
-    padding-bottom: 5%;
 }
 .container-contenido div{
     padding: 1%;
@@ -39,6 +40,21 @@ main{
     padding-top: 2%;
 }
 .img-perfil img{
-    width: 100%;
+    width: 100px;
     border-radius: 500px;
+}
+@media only screen and (min-width:768px){
+    .container-contenido div:nth-child(2){
+        width: 100%;
+    }
+    main{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .container-info{
+        min-width: 60%;
+        
+    }
 }
