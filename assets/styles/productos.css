@@ -1,0 +1,77 @@
+.menu-primero div p{
+    margin: 0;
+}
+h1{
+    font-size: 1.5em;
+}
+article{
+    color: black;
+}
+p{
+    margin: 0;
+}
+
+.buscador-productos{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding: 2% 2% 0 2%;
+}
+.buscador-productos input, .buscador-productos select{
+    border: 1px solid #D3D3D3;
+    height: 35px;
+    padding: 1% 2% 1% 2%;
+    border-radius: 10px;
+}
+.buscador-productos div input{
+    border: none;
+    background-color: #D3D3D3;
+    height: 30px;
+    width: 80px;
+    color: #333333;
+    border-radius: 5px;
+    padding: 1%;
+}
+.productos{
+    padding: 2%;
+}
+.producto-item{
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    border: 1px solid #D3D3D3;
+    border-radius: 5px;
+}
+.producto-item-1{
+    display: flex;
+    padding: 2%;
+    border-radius: 10px;
+}
+.fecha{
+    border: none;
+    border-bottom: 1px solid #D3D3D3;
+    padding: 1%;
+    font-weight: bold;
+}
+.imagen-item{
+    width: 20%;
+}
+.imagen-item img{
+    width: 100%;
+    padding: 6% 2% 6% 2%;
+    border: 1px solid #D3D3D3;
+}
+.descripcion{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    width: 80%;
+    padding: 0% 0 2% 2%;
+}
+.descripcion div:last-of-type input{
+    border: none;
+    background-color: #3A578F;
+    color: white;
+    border-radius: 5px;
+    padding: 1% 3% 1% 3%;
+}

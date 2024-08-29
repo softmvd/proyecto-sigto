@@ -1,0 +1,113 @@
+body, main{
+    background-color: #F5F5F5;
+    height: 100%;
+}
+html{
+    height: 100%;
+}
+body{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 100%;
+}
+.productos{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+.andes-input-stepper {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 6px 10px 6px 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: fit-content;
+}
+
+.andes-input-stepper__value {
+    font-size: 18px;
+    width: 30px;
+    text-align: center;
+}
+
+button {
+    background-color: #333333;
+    color: #FFFFFF;
+    border: none;
+    padding: 0 7px 0 7px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+
+.descripcion .botones-op input{
+    border: none;
+    background-color: #3A578F;
+    color: white;
+    border-radius: 5px;
+    padding: 1% 3% 1% 3%;
+    margin: 1% 0 1% 0;
+}
+.precio{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding-bottom: 2%;
+}
+.precio p{
+    font-size: 1.5em;
+}
+.envio{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top:1px solid #D3D3D3;
+    padding: 1% 1% 1% 2%;
+}
+.fecha{
+    padding: 1% 1% 1% 2%;
+}
+
+.total{
+    width: 100%;
+    background-color: white;
+    height: 60%;
+    box-shadow: 0px -4px 8px rgba(0, 0, 0, 0.25);
+}
+.total-container{
+    height: 100%;
+}
+.total-container h3{
+    border-bottom: 1px solid #D3D3D3;
+    padding-bottom: 1%;
+}
+.total-container div ul{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    list-style: none;
+    width: 100%;
+}
+.total-container div{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 3% 5% 3% 5%;
+}
+.total-container div ul li{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+.total-container div input{
+    width: 100%;
+    height: 40px;
+    background-color: #333333;
+    color:  #FFFFFF;
+    border: none;
+    border-radius: 25px;
+}

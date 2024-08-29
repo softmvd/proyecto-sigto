@@ -1,30 +1,3 @@
-<?php
-session_start();
-
-// Inicializar el array de usuarios si no existe
-if (!isset($_SESSION['usuarios'])) {
-    $_SESSION['usuarios'] = [];
-}
-
-// Obtener los datos del nuevo usuario
-$nombre = $_REQUEST['camponombre'];
-$apellido = $_REQUEST['campoapellido'];
-$email = $_REQUEST['campoemail'];
-$clave = $_REQUEST['campoclave'];
-
-// Crear un identificador único para el usuario (por ejemplo, usando nombre y apellido)
-$idUsuario = $nombre.$apellido;
-
-// Agregar el nuevo usuario al array en la sesión
-$_SESSION['usuarios'][$idUsuario] = [
-    'nombre' => $nombre,
-    'apellido' => $apellido,
-    'email' => $email,
-    'clave' => $clave
-];
-
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -41,7 +14,7 @@ $_SESSION['usuarios'][$idUsuario] = [
     <header>
         <div class="menu-primero">
             <div>
-                <a href="/proyecto-sigto/assets/pages/index.html"><img id="logo" src="/proyecto-sigto/assets/img/logo-sigto.png" alt="logo-tiendaMia"></a>
+                <a href="/proyecto-sigto/assets/pages/index.php"><img id="logo" src="/proyecto-sigto/assets/img/logo-sigto.png" alt="logo-tiendaMia"></a>
             </div>
             <div>
                 <p>Bienvenido, Fulanito de Tal.</p>
@@ -52,7 +25,7 @@ $_SESSION['usuarios'][$idUsuario] = [
         <div class="menu-lateral">
             <ul>
                 <li><a href="/proyecto-sigto/assets/pages/usuario.php">Usuarios</a></li>
-                <li><a href="#">Productos</a></li>
+                <li><a href="productos.php">Productos</a></li>
                 <li><a href="#">Ventas</a></li>
                 <li><a href="#">Descuentos</a></li>
             </ul>

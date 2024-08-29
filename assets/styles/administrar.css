@@ -14,6 +14,8 @@ main{
  
 .menu-primero{
     justify-content: space-between !important;
+    padding: 2%;
+    margin: 0 !important;
 }
 .menu-primero div a:hover{
     border: none;

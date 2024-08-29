@@ -10,7 +10,7 @@
 <body>
 <header>
         <div id="logo-sigto">
-            <a href="/proyecto-sigto/assets/pages/index.html"><img id="logo" src="/proyecto-sigto/assets/img/logo-sigto.png" alt="logo-Sigto"></a>
+            <a href="/proyecto-sigto/assets/pages/index.php"><img id="logo" src="/proyecto-sigto/assets/img/logo-sigto.png" alt="logo-Sigto"></a>
          </div>
         <div class="menu-primero">
             
@@ -24,13 +24,13 @@
                 <input type="text" name="buscador"> <!-- Poner img lupa dentro del input -->
             </div>
             <div>
-                <a href="#">Mis Compras</a>
+                <a href="misCompras.php">Mis Compras</a>
             </div>
             <div>
                 <a href="/proyecto-sigto/assets/pages/cuenta.html">Mi Cuenta</a>
             </div>
             <div>
-                <a href="#"><img src="/proyecto-sigto/assets/img/shopping-cart (2).png" alt="carrito"></a>
+                <a href="carrito.php"><img src="/proyecto-sigto/assets/img/shopping-cart (2).png" alt="carrito"></a>
             </div>
         </div>
         <div class="menu-segundo">

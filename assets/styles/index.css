@@ -5,8 +5,10 @@
 
 body{
     font-family:muli-regular, arial, sans-serif;
-    background-color: #eaeded;
     font-size: 12px !important;
+}
+main{
+    background-color: #F2F2F2;
 }
 header{
     display: flex;
@@ -20,6 +22,41 @@ header{
     z-index: 1000;
     border-bottom: 2px solid wheat;    
 }
+.op-registro{
+    display: none;
+    align-items: center;
+    justify-content: center;
+    gap: 2%;
+    position: absolute;
+    right: 18%;
+    top: 100%;
+    background-color: #3A578F;
+    color: white;
+    width: 150px;
+    height: 50px;
+    padding: 1%;
+    border-radius: 5px;
+}
+.op-registro::after {
+    content: "";
+    position: absolute;
+    bottom: 100%;
+    left: 20px; /* Ajusta la posición horizontal de la punta */
+    width: 0;
+    height: 0;
+    border-width: 10px;
+    border-style: solid;
+    border-color: transparent transparent #3A578F transparent; /* Color de la burbuja */
+}
+.op-registro input{
+    border: none;
+    background-color: #333333;
+    height: 30px;
+    width: 60px;
+    color: white;
+    border-radius: 5px;
+    padding: 1% 2% 1% 2%;
+} 
 #logo-sigto-dos{
     display: none;
 }
@@ -28,7 +65,7 @@ header #logo-sigto{
     justify-content: center;
     
 }
-header input{
+header .menu-primero input{
     border-radius: 10px;
     border: none;
     height: 24px;
@@ -143,6 +180,7 @@ header .menu-primero a:hover{
 footer{
     background-color: #4B4B4B;
     color:#707070;
+    border-top: 3px solid black;
 }
 footer h3{
     font-size: 1.2em;

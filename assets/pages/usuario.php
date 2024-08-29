@@ -1,6 +1,17 @@
 <?php
-session_start();
+require_once "C:/xampp/htdocs/sigto/proyecto-sigto/core/UsuarioController.php";
+
+// Crear una instancia del controlador
+$controller = new UsuarioController();
+
+$response = $controller->create($_POST); // Se llama al método 'create' del controlador y se le pasan los datos enviados por POST.
+echo $response;
+
+// Obtener la lista de usuarios
+$usuarios = $controller->readAll(); // Asegúrate de tener este método en tu controlador
+
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,7 +29,7 @@ session_start();
     <header>
         <div class="menu-primero">
             <div>
-                <a href="/proyecto-sigto/assets/pages/index.html">
+                <a href="/proyecto-sigto/assets/pages/index.php">
                     <img id="logo" src="/proyecto-sigto/assets/img/logo-sigto.png" alt="logo-tiendaMia">
                 </a>
             </div>
@@ -30,8 +41,8 @@ session_start();
     <main>
         <div class="menu-lateral">
             <ul>
-                <li><a href="#">Usuarios</a></li>
-                <li><a href="#">Productos</a></li>
+                <li><a href="usuario.php">Usuarios</a></li>
+                <li><a href="productos.php">Productos</a></li>
                 <li><a href="#">Ventas</a></li>
                 <li><a href="#">Descuentos</a></li>
             </ul>
@@ -50,29 +61,37 @@ session_start();
                         <input type="button" value="Buscar">
                     </div>
                 </div>
-                <div class="barra-datos">
-                    <ul>
-                        <li>Nombre</li>
-                        <li>Apellido</li>
-                        <li>Email</li>
-                        <li>Clave</li>
-                    </ul>
-                </div>
                 <div class="usuarios">
-                    <?php          
-                    if (isset($_SESSION['usuarios']) && !empty($_SESSION['usuarios'])) {
-                        foreach ($_SESSION['usuarios'] as $key => $usuario) {
-                            echo "<div>";
-                            echo "    <ul>";
-                            foreach ($usuario as $campo => $valor) {
-                                echo "        <li>$valor</li>";
-                            }
-                             echo   '<li><img src="/proyecto-sigto/assets/img/menu (4).png" alt="menu"></li>'; 
-                            echo "    </ul>";
-                            echo "</div>";
-                        }
-                    }
-                    ?>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Email</th>
+                                <th>Nombre de Usuario</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php if ($usuarios && $usuarios->num_rows > 0) { ?>
+                                <?php while ($usuario = $usuarios->fetch_assoc()) { ?>
+                                    <tr>
+                                        <td><?php echo $usuario['id_usuario']; ?></td>
+                                        <td><?php echo $usuario['nombre']; ?></td>
+                                        <td><?php echo $usuario['email']; ?></td>
+                                        <td><?php echo $usuario['clave']; ?></td>
+                                        <td>
+                                            <a class="button edit" href="#">Editar</a>
+                                            <a class="button delete" href="#">Eliminar</a>
+                                        </td>
+                                    </tr>
+                                <?php } ?>
+                            <?php } else { ?>
+                                <tr>
+                                    <td colspan="5">No se encontraron usuarios.</td>
+                                </tr>
+                            <?php } ?>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>

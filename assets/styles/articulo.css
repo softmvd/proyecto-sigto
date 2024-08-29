@@ -1,0 +1,63 @@
+main{
+    padding: 4%;
+    height: 100%;
+}
+article{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 2%;
+    background-color: white;
+}
+section{
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    padding: 4%;
+}
+h3{
+    font-size: 1.8em;
+}
+.imagenes-articulo img{
+    width: 30%;
+}
+.imagenes-articulo div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+.descripcion-articulo .precio{
+    font-size: 1.8em;
+}
+.descripcion-articulo .cuotas, .cuotas{
+    color: green;
+    font-size: 1.2em;
+}
+.descripcion-articulo .opciones, .opciones{
+    color: #38859B;
+}
+.lo-que-tienes-que-saber p{
+    font-size: 1.1em;
+    padding-bottom: 2%;
+}
+.lo-que-tienes-que-saber ul{
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+.botones input{
+    border: none;
+    background-color: #007BFF;
+    height: 30px;
+   
+    max-width: 50%;
+    color: #FFFFFF;
+    border-radius: 5px;
+    padding: 1%;
+}
+.devolucion{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}               

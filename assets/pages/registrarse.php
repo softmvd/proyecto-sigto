@@ -15,28 +15,43 @@
 <body>
     <header>
         <div>
-            <a href="/proyecto-sigto/assets/pages/index.html"><img id="logo" src="/proyecto-sigto/assets/img/logo-sigto.png" alt="logo-tiendaMia"></a>
+            <a href="/proyecto-sigto/assets/pages/index.php"><img id="logo" src="/proyecto-sigto/assets/img/logo-sigto.png" alt="logo-tiendaMia"></a>
         </div>
     </header>
-    <main>
+    <main> 
         <div class="contenedor-registro">
-            <div class="registrate">
-                <h1>Registrate</h1>
-                <input type="button" value="Entrar con Facebook">
-                <p>O registrarse con tu email</p>
-            </div>
-            <div class="formulario"> 
-                <form action="/proyecto-sigto/assets/pages/administrar.php" method="post">
-                    <input type="text" placeholder="Nombre" name="camponombre" required minlength="2" maxlength="25">
-                    <input type="text" placeholder="Apellido" name="campoapellido" required  minlength="2" maxlength="25">
-                    <input type="email" placeholder="Tu direccion de E-mail" name="campoemail" required>
-                    <input type="password" placeholder="Contraseña" name="campoclave" min="8" max="12" required>
-                    <p>La contraseña debe tener al menos 6 caracteres.</p>
-                    <div>
+            <div class="registro">
+                <div class="registrate">
+                    <h1>Resgistrarse como Cliente</h1>
+                </div>
+                <form action="usuario.php" method="post">
+                    <div class="div-form-1">
+                        <div>
+                            <label for="nombre">Nombre</label>
+                            <input type="text" id="nombre" name="nombre" required minlength="2" maxlength="25">
+                        </div>
+                        <div>
+                            <label for="apellido">Apellido</label>
+                            <input type="text" id="apellido" name="apellido"  minlength="2" maxlength="25">
+                        </div>
+                    </div>
+                    <div class="div-form-2">
+                        <div>
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div>
+                            <label for="clave">Constraseña</label>
+                            <input type="password" id="clave" name="clave" min="8" max="12" required>
+                        </div>
+                    </div>
+                    <div class="div-form-4">
                         <input type="checkbox"><p>Recibir Ofertas!</p>
                     </div>
-                   
-                    <input type="submit" value="Registrate">
+                    <div class="div-form-3">
+                        <input type="submit" value="Registrate">
+                        <p>Already have an account? <a href="cuenta.html">Sign In</a></p>
+                    </div>
                 </form>
             </div>
         </div>

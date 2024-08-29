@@ -1,6 +1,5 @@
-html{
-    background-color: #fff;
-    font-family:muli-regular, arial, sans-serif;
+html,main{
+    background-color: white;
     height: 100%;
 }
 header div{
@@ -9,73 +8,83 @@ header div{
 }
 main{
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 77vh;
-    background-color: #fff;
+    justify-content: center !important;
+    align-items: center !important;
+
+}
+h1{
+    font-size: 2em;
 }
 .contenedor-registro{
     display: flex;
-    flex-direction: column;
     justify-content: center;
-    margin-top: 5%;
-    border: 1px solid gray;
-    padding: 10% 5% 10% 5%;
-}
-main input{
-    height: 100%;
+    padding-top: 10%;
     width: 100%;
 }
-h1{
-    font-size: 18px;
-}
-
-main input:nth-last-child(1){
-    background-color: black;
-    color: #fff;
-    border: none;
-}
-main input:nth-last-child(2){
-    background-color: #4067b4;
-    color: #fff;
-    border: none;
-}
-a:hover{
-    border: none !important;
-}
 .registrate{
+    padding-bottom: 3%;
+}
+.registro{
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
+    padding: 8%;
+    width: 100%;
 }
-.formulario{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-}
-form{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    height: 100%;
-}
-form input{
-    margin-bottom: 2%;
-    height: 25px;
-}
-main div form div input:nth-last-of-type(1){
-    height: 20px;
-    width: 30px;
-}
-form div {
-    display: flex;
-    align-items: center;
-}
-form div p{
+label{
+    font-weight: bold;
     margin: 0;
+}
+.div-form-1{
+    display: flex;
+    flex-direction: row;
+    gap: 6%;
+    height: 25%;
+}
+.div-form-1 input, .div-form-2 input{
+    height: 45px;
+    border-radius: 8px;
+    border: 1px solid gray;
+    padding: 4%;
+}
+.div-form-1 div, .div-form-2 div{
+    display: flex;
+    flex-direction: column;
+    gap: 4%;
+    width: 100%;
+    height: 100%;
+}
+.div-form-2{
+    display: flex;
+    flex-direction: column;
+    height: 50%;
+}
+.div-form-3{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+.div-form-3 input:last-of-type{
+    width: 100%;
+    height: 50px;
+    border: none;
+    background-color: #2B2B2B;
+    color: white;
+    border-radius: 25px;
+}
+.div-form-4{
+    display: flex;
+    gap: 2%;
+    padding: 3% 0 3% 0;
+}
+.div-form-4 p{
+    margin: 0;
+}
+.div-form-4 input{
+    width: 18px;
+}
+@media only screen and (min-width:768px){
+    .contenedor-registro{
+        max-width: 60%;
+    }
 }
