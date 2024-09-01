@@ -15,7 +15,6 @@ class UsuarioController {
         $usuario = new Usuario(); // Creamos una nueva instancia del modelo Usuario.
         $usuario->setEmail($data['email']); // Asignamos el email del usuario utilizando el dato proporcionado.
         $usuario->setNombre($data['nombre']); // Asignamos el nombre de usuario.
-        
         $usuario->setContraseña($data['clave']); // Asignamos la contraseña del usuario.
         if ($usuario->create()) { // Intentamos crear el usuario en la base de datos.
             return "Usuario creado exitosamente."; // Si la creación fue exitosa, devolvemos un mensaje de éxito.
@@ -61,6 +60,6 @@ class UsuarioController {
         } else {
             return "Error al eliminar usuario."; // Si hubo un error, devolvemos un mensaje de error.
         }
-    }
+    }   
 }
 ?>

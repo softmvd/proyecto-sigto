@@ -130,7 +130,7 @@
     // Método para eliminar un usuario por su ID.
     public function delete() {
         // Consulta SQL para eliminar un registro específico por ID.
-        $query = "DELETE FROM " . $this->table_name . " WHERE id = ?";
+        $query = "DELETE FROM " . $this->table_name . " WHERE id_usuario = ?";
         
         // Preparamos la consulta SQL.
         $stmt = $this->conn->prepare($query);
@@ -141,8 +141,6 @@
         // Ejecutamos la consulta y retornamos el resultado (true si fue exitoso, false si no lo fue).
         return $stmt->execute();
     }
-
-
-    }
+}
 
 ?>

@@ -86,5 +86,12 @@ label{
 @media only screen and (min-width:768px){
     .contenedor-registro{
         max-width: 60%;
+        padding-top: 4%;
+    }
+}
+
+@media only screen and (min-width:992px){
+    .contenedor-registro{
+        max-width: 40%;
     }
 }

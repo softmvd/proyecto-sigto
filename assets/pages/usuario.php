@@ -4,12 +4,25 @@ require_once "C:/xampp/htdocs/sigto/proyecto-sigto/core/UsuarioController.php";
 // Crear una instancia del controlador
 $controller = new UsuarioController();
 
-$response = $controller->create($_POST); // Se llama al método 'create' del controlador y se le pasan los datos enviados por POST.
-echo $response;
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $resultado = $controller->create($_POST);
 
-// Obtener la lista de usuarios
-$usuarios = $controller->readAll(); // Asegúrate de tener este método en tu controlador
+    // Verificar si la creación fue exitosa y redirigir.
+    if ($resultado === "Usuario creado exitosamente.") {
+        // Redirigir a la página principal.
+        header("Location: /proyecto-sigto/assets/pages/index.php");
+        exit; // Termina el script para evitar la ejecución adicional.
+    } else {
+        echo $resultado; // Muestra un mensaje de error si la operación falló.
+    }
+ }
 
+$id_usuario = isset($_GET["id"])? $_GET['id']: null;  // Si se pasa un parámetro 'id', se asigna su valor; de lo contrario, se asigna null.
+
+$usuarios = $controller->readAll();
+
+$resultado = $controller->delete($id_usuario);
+echo $resultado;
 ?>
 
 <!DOCTYPE html>
@@ -68,6 +81,7 @@ $usuarios = $controller->readAll(); // Asegúrate de tener este método en tu co
                                 <th>ID</th>
                                 <th>Email</th>
                                 <th>Nombre de Usuario</th>
+                                <th>Clave</th>
                                 <th>Acciones</th>
                             </tr>
                         </thead>
@@ -80,8 +94,9 @@ $usuarios = $controller->readAll(); // Asegúrate de tener este método en tu co
                                         <td><?php echo $usuario['email']; ?></td>
                                         <td><?php echo $usuario['clave']; ?></td>
                                         <td>
-                                            <a class="button edit" href="#">Editar</a>
-                                            <a class="button delete" href="#">Eliminar</a>
+                                         
+                                                <a  class="button edit" href="#">Editar</a>
+                                                <a  class="button delete" href="?id=<?php echo $usuario['id_usuario']; ?>">Eliminar</a>  <!-- Enlace para eliminar al usuario -->
                                         </td>
                                     </tr>
                                 <?php } ?>
