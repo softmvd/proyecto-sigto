@@ -63,7 +63,8 @@ echo $resultado;
         <div class="control">
             <div class="contenedor-control">
                 <div class="titulo">
-                    <h2>Registro de Usuarios</h2>
+                    <h2>Registro Clientes</h2>
+                    <h2>Registro Empresas</h2>
                 </div>
                 <div class="buscar">
                     <div>
@@ -108,8 +109,43 @@ echo $resultado;
                         </tbody>
                     </table>
                 </div>
+                <div class="usuarios">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Email</th>
+                                <th>Nombre de Usuario</th>
+                                <th>Clave</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php if ($usuarios && $usuarios->num_rows > 0) { ?>
+                                <?php while ($usuario = $usuarios->fetch_assoc()) { ?>
+                                    <tr>
+                                        <td><?php echo $usuario['id_usuario']; ?></td>
+                                        <td><?php echo $usuario['nombre']; ?></td>
+                                        <td><?php echo $usuario['email']; ?></td>
+                                        <td><?php echo $usuario['clave']; ?></td>
+                                        <td>
+                                         
+                                                <a  class="button edit" href="#">Editar</a>
+                                                <a  class="button delete" href="?id=<?php echo $usuario['id_usuario']; ?>">Eliminar</a>  <!-- Enlace para eliminar al usuario -->
+                                        </td>
+                                    </tr>
+                                <?php } ?>
+                            <?php } else { ?>
+                                <tr>
+                                    <td colspan="5">No se encontraron usuarios.</td>
+                                </tr>
+                            <?php } ?>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </main>
+    <script src="/proyecto-sigto/assets/js/adminUsuarios.js"></script>
 </body>
 </html>
