@@ -14,6 +14,10 @@ function mostrarUsuario1() {
     // Mostrar el primer usuario y ocultar el segundo
     usuarios[0].style.display = "flex";
     usuarios[1].style.display = "none";
+    
+    // Agregar "deco-btn" al primer h2 y quitarla del segundo
+    h2Collection[0].classList.add("deco-btn");
+    h2Collection[1].classList.remove("deco-btn");
 }
 
 function mostrarUsuario2() {
@@ -22,4 +26,8 @@ function mostrarUsuario2() {
     // Mostrar el segundo usuario y ocultar el primero
     usuarios[1].style.display = "flex";
     usuarios[0].style.display = "none";
+    
+    // Agregar "deco-btn" al segundo h2 y quitarla del primero
+    h2Collection[1].classList.add("deco-btn");
+    h2Collection[0].classList.remove("deco-btn");
 }

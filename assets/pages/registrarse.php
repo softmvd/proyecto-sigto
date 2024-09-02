@@ -20,10 +20,13 @@
     </header>
     <main> 
         <div class="contenedor-registro">
+        <div class="registrate">
+            <div>
+                <h2 class="deco-btn">Resgistrarse como Cliente</h2>
+                <h2>Registrarse como Empresa</h2>
+            </div>
+        </div>
             <div class="registro">
-                <div class="registrate">
-                    <h1>Resgistrarse como Cliente</h1>
-                </div>
                 <form action="usuario.php" method="post">
                     <div class="div-form-1">
                         <div>
@@ -53,9 +56,38 @@
                         <p>Already have an account? <a href="cuenta.html">Sign In</a></p>
                     </div>
                 </form>
+                
+            </div>
+            <div class="registro">
+                <form action="usuario.php" method="post">
+                    <div class="div-form-1">
+                        <div>
+                            <label for="nombre">Nombre Empresa</label>
+                            <input type="text" id="nombreEmpresa" name="nombre" required minlength="2" maxlength="25">
+                        </div>
+                    </div>
+                    <div class="div-form-2">
+                        <div>
+                            <label for="email">Email</label>
+                            <input type="email" id="emailEmpresa" name="email" required>
+                        </div>
+                        <div>
+                            <label for="clave">Constraseña </label>
+                            <input type="password" id="claveEmpresa" name="clave" min="8" max="12" required>
+                        </div>
+                    </div>
+                    <div class="div-form-4">
+                        <input type="checkbox"><p>Recibir Ofertas!</p>
+                    </div>
+                    <div class="div-form-3">
+                        <input type="submit" value="Registrate">
+                        <p>Already have an account? <a href="cuenta.html">Sign In</a></p>
+                    </div>
+                </form>
             </div>
         </div>
     </main>
+    <script src="/proyecto-sigto/assets/js/registrarse.js"></script>
 </body>
 
 </html>

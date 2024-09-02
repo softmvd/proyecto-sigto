@@ -33,13 +33,10 @@ h2{
     width: 100%;
     cursor: pointer;
 }
-.titulo h2:first-of-type{
-   
+.deco-btn{
     background-color: #ccc;
     color: #333;
     border-radius: 30px;
-    
-    
 }
 .buscar input:first-child{
     height: 24px;

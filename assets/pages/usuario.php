@@ -63,7 +63,7 @@ echo $resultado;
         <div class="control">
             <div class="contenedor-control">
                 <div class="titulo">
-                    <h2>Registro Clientes</h2>
+                    <h2 class="deco-btn">Registro Clientes</h2>
                     <h2>Registro Empresas</h2>
                 </div>
                 <div class="buscar">

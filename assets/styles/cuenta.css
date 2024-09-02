@@ -38,9 +38,6 @@ form input{
     height: 25px;
     margin-bottom: 3%;
 }
-form input:last-child{
-    background-color: #2f467c;
-    color: white;
-    border: none;
-    margin-top: 3%;
+.registro{
+    display: block !important;
 }

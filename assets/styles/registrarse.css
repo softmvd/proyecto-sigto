@@ -1,6 +1,6 @@
 html,main{
     background-color: white;
-    height: 100%;
+
 }
 header div{
     display: flex;
@@ -18,17 +18,47 @@ h1{
 .contenedor-registro{
     display: flex;
     justify-content: center;
+    flex-direction: column;
     padding-top: 10%;
     width: 100%;
 }
 .registrate{
-    padding-bottom: 3%;
+    display: flex;
+    justify-content: center;
 }
+.registrate div{
+    display: flex;
+    justify-content: center;
+    background-color: #333;
+    border-radius: 50px;
+    color: #ccc;
+    height: 50%;
+    width: 80%;
+}
+.registrate h2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.1em;
+    margin: 0;
+    padding: 2%;
+    width: 100%;
+    cursor: pointer;
+}
+.deco-btn{
+    background-color: #ccc;
+    color: #333;
+    border-radius: 30px;
+}
+
 .registro{
     display: flex;
     flex-direction: column;
     padding: 8%;
     width: 100%;
+}
+.registro:last-of-type{
+    display: none;
 }
 label{
     font-weight: bold;
