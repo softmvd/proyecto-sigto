@@ -1,28 +1,48 @@
 <?php
 require_once "C:/xampp/htdocs/sigto/proyecto-sigto/core/UsuarioController.php";
+require_once "C:/xampp/htdocs/sigto/proyecto-sigto/core/UsuarioEmpresaController.php";
 
-// Crear una instancia del controlador
+// Crear una instancia del controlador Usuario
 $controller = new UsuarioController();
+$controllerEmpresa = new UsuarioEmpresaController();
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $resultado = $controller->create($_POST);
+  
+        $resultado = $controller->create($_POST);
 
-    // Verificar si la creación fue exitosa y redirigir.
-    if ($resultado === "Usuario creado exitosamente.") {
-        // Redirigir a la página principal.
-        header("Location: /proyecto-sigto/assets/pages/index.php");
-        exit; // Termina el script para evitar la ejecución adicional.
-    } else {
-        echo $resultado; // Muestra un mensaje de error si la operación falló.
+        // Verificar si la creación fue exitosa y redirigir.
+        if ($resultado === "Usuario creado exitosamente.") {
+            // Redirigir a la página principal.
+            header("Location: /proyecto-sigto/assets/pages/index.php");
+            exit; // Termina el script para evitar la ejecución adicional.
+        } else {
+            echo $resultado; // Muestra un mensaje de error si la operación falló.
+        }
+
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $resultado = $controllerEmpresa->create($_POST);
+
+        // Verificar si la creación fue exitosa y redirigir.
+        if ($resultado === "UsuarioEmpresa creado exitosamente.") {
+            // Redirigir a la página principal.
+            header("Location: /proyecto-sigto/assets/pages/index.php");
+            exit; // Termina el script para evitar la ejecución adicional.
+        } else {
+            echo $resultado; // Muestra un mensaje de error si la operación falló.
+        }
     }
- }
+}
 
-$id_usuario = isset($_GET["id"])? $_GET['id']: null;  // Si se pasa un parámetro 'id', se asigna su valor; de lo contrario, se asigna null.
-
-$usuarios = $controller->readAll();
+$id_usuario = isset($_GET["id"]) ? $_GET['id'] : null;
+$id_empresa = isset($_GET["id_empresa"]) ? $_GET['id_empresa'] : null;
 
 $resultado = $controller->delete($id_usuario);
-echo $resultado;
+ 
+$resultadoE = $controllerEmpresa->delete($id_empresa);
+   
+
+$usuarios = $controller->readAll();
+$usuariosEmpresa = $controllerEmpresa->readAll();
 ?>
 
 <!DOCTYPE html>
@@ -80,8 +100,8 @@ echo $resultado;
                         <thead>
                             <tr>
                                 <th>ID</th>
-                                <th>Email</th>
                                 <th>Nombre de Usuario</th>
+                                <th>Email</th>
                                 <th>Clave</th>
                                 <th>Acciones</th>
                             </tr>
@@ -95,9 +115,8 @@ echo $resultado;
                                         <td><?php echo $usuario['email']; ?></td>
                                         <td><?php echo $usuario['clave']; ?></td>
                                         <td>
-                                         
-                                                <a  class="button edit" href="#">Editar</a>
-                                                <a  class="button delete" href="?id=<?php echo $usuario['id_usuario']; ?>">Eliminar</a>  <!-- Enlace para eliminar al usuario -->
+                                            <a class="button edit" href="/proyecto-sigto/vista/edicionUsuarioAdmin.php?id=<?php echo $usuario['id_usuario']; ?>">Editar</a>
+                                            <a class="button delete" href="?id=<?php echo $usuario['id_usuario']; ?>">Eliminar</a> <!-- Enlace para eliminar al usuario -->
                                         </td>
                                     </tr>
                                 <?php } ?>
@@ -114,30 +133,29 @@ echo $resultado;
                         <thead>
                             <tr>
                                 <th>ID</th>
+                                <th>Nombre de Empresa</th>
                                 <th>Email</th>
-                                <th>Nombre de Usuario</th>
                                 <th>Clave</th>
                                 <th>Acciones</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <?php if ($usuarios && $usuarios->num_rows > 0) { ?>
-                                <?php while ($usuario = $usuarios->fetch_assoc()) { ?>
+                            <?php if ($usuariosEmpresa && $usuariosEmpresa->num_rows > 0) { ?>
+                                <?php while ($usuarioEmpresa = $usuariosEmpresa->fetch_assoc()) { ?>
                                     <tr>
-                                        <td><?php echo $usuario['id_usuario']; ?></td>
-                                        <td><?php echo $usuario['nombre']; ?></td>
-                                        <td><?php echo $usuario['email']; ?></td>
-                                        <td><?php echo $usuario['clave']; ?></td>
+                                        <td><?php echo $usuarioEmpresa['id_empresa']; ?></td>
+                                        <td><?php echo $usuarioEmpresa['nombreEmpresa']; ?></td>
+                                        <td><?php echo $usuarioEmpresa['email']; ?></td>
+                                        <td><?php echo $usuarioEmpresa['clave']; ?></td>
                                         <td>
-                                         
-                                                <a  class="button edit" href="#">Editar</a>
-                                                <a  class="button delete" href="?id=<?php echo $usuario['id_usuario']; ?>">Eliminar</a>  <!-- Enlace para eliminar al usuario -->
+                                            <a class="button edit" href="/proyecto-sigto/vista/editarUsuarioEmpresa.php?id_empresa=<?php echo $usuarioEmpresa['id_empresa']; ?>">Editar</a>
+                                            <a class="button delete" href="?id_empresa=<?php echo $usuarioEmpresa['id_empresa']; ?>">Eliminar</a> <!-- Enlace para eliminar al usuario empresa -->
                                         </td>
                                     </tr>
                                 <?php } ?>
                             <?php } else { ?>
                                 <tr>
-                                    <td colspan="5">No se encontraron usuarios.</td>
+                                    <td colspan="5">No se encontraron usuarios empresa.</td>
                                 </tr>
                             <?php } ?>
                         </tbody>

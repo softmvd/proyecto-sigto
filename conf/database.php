@@ -17,7 +17,7 @@ class Database {
                 // Lanzar una excepción si hubo un error en la conexión.
                 throw new Exception("Error en la conexión: " . $this->conn->connect_error);
             } else {
-                echo "Conexión exitosa a la base de datos.";
+                echo "";
             }
         } catch (Exception $e) {
             // Mostrar el mensaje de error si la conexión falló.

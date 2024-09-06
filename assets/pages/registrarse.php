@@ -63,17 +63,17 @@
                     <div class="div-form-1">
                         <div>
                             <label for="nombre">Nombre Empresa</label>
-                            <input type="text" id="nombreEmpresa" name="nombre" required minlength="2" maxlength="25">
+                            <input type="text" id="nombreEmpresa" name="nombreEmpresa" required minlength="2" maxlength="25">
                         </div>
                     </div>
                     <div class="div-form-2">
                         <div>
                             <label for="email">Email</label>
-                            <input type="email" id="emailEmpresa" name="email" required>
+                            <input type="email" id="emailEmpresa" name="emailEmpresa" required>
                         </div>
                         <div>
                             <label for="clave">Constraseña </label>
-                            <input type="password" id="claveEmpresa" name="clave" min="8" max="12" required>
+                            <input type="password" id="claveEmpresa" name="claveEmpresa" min="8" max="12" required>
                         </div>
                     </div>
                     <div class="div-form-4">

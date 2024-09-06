@@ -52,14 +52,14 @@ session_start();
                     </optgroup>
                 </select>
                 <div>
-                    <input type="button" value="Agregar">
+                    <a href="/proyecto-sigto/vista/crearProducto.php"><input type="button" value="Agregar"></a>
                     <input type="button" value="Buscar">
                 </div>
             </section>
                 <section class="productos">
                 <p>1 Producto</p>
                     <div class="producto-item">
-                        <div class="fecha">14 de enero de 2021</div>
+                        <div class="fecha">-</div>
                         <div class="producto-item-1">
                             <div class="imagen-item"><img src="https://static-catalog.tiendamia.com/marketplace_manager_service/production/product_2aac9d64_mirakl_image_1_medium.jpg" alt="Notebook"></div>
                             <div class="descripcion">
