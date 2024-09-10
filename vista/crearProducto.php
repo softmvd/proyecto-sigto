@@ -7,7 +7,7 @@
 </head>
 <body>
     <h1>Crear Producto</h1>
-    <form action="?action=create" method="post">
+    <form action="../assets/pages/productos.php" method="post">
         <label for="nombre">Nombre:</label>
         <input type="text" name="nombre" required><br>
         <label for="descripcion">Descripcion:</label>
@@ -15,7 +15,7 @@
         <label for="precio">Precio:</label>
         <input type="text" name="precio" required><br>
         <label for="imagen">Imagen:</label>
-        <input type="text" name="imagen" required><br>
+        <input type="text" name="imagen"><br>
         <label for="email">Email vendedor:</label>
         <input type="email" name="email" >
         <label for="marca">Marca:</label>

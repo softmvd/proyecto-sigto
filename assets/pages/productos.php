@@ -1,5 +1,9 @@
 <?php
-session_start();
+require_once 'C:/xampp/htdocs/sigto/proyecto-sigto/core/ProductoControlador.php';
+$controlador = new ProductoControlador();
+$controlador -> crear($_POST);
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">

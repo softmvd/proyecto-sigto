@@ -78,16 +78,23 @@ class Producto{
     public function setEmailVendedor($email_vendedor) {
         $this->email_vendedor = $email_vendedor; // Asignamos el email del vendedor del producto.
     }
+
+    public function getImagen() {
+        return $this->imagen; // Retornamos el email del vendedor  del producto.
+    }
+    public function setImagen($imagen) {
+        $this->imagen = $imagen; // Asignamos el email del vendedor del producto.
+    }
      // Método para crear un nuevo producto.
-     public function create() {
+     public function crear() {
         // Creamos una consulta SQL para insertar un nuevo registro en la tabla de usuarios.
-        $query = "INSERT INTO " . $this->table_name . " SET nombre=?,cantidad=?,precio=?,descripcion=?, marca=?, estado=?, email_vendedor=?, imagen=?";
+        $query = "INSERT INTO " . $this->table_name . " SET nombre=?, cantidad=?, precio=?, descripcion=?, marca=?, estado=?, email_vendedor=?, imagen=?";
         
         // Preparamos la consulta SQL.
         $stmt = $this->conn->prepare($query);
         
         // Unimos los valores a los parámetros de la consulta SQL.
-        $stmt->bind_param("s", $this->nombre);
+        $stmt->bind_param("siisssss", $this->nombre, $this->cantidad, $this->precio, $this->descripcion, $this->marca, $this->estado, $this->email_vendedor, $this->imagen);
         
         // Ejecutamos la consulta y verificamos si se ejecutó correctamente.
         if ($stmt->execute()) {
