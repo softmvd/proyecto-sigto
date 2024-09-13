@@ -15,96 +15,155 @@ class Producto{
     private $email_vendedor;
     private $imagen;
     
-
     public function __construct()
     {
         $database = new Database();
-        $this-> conn = $database->getConnection();
+        $this->conn = $database->getConnection();
     }
 
-      // Getters y Setters para los atributos.
-      public function getId() {
-        return $this->id; // Retornamos el ID del producto.
+    // Getters y Setters para los atributos.
+    public function getId() {
+        return $this->id; 
     }
     public function setId($id) {
-        $this->id = $id; // Asignamos el ID del producto.
+        $this->id = $id;
     }
 
     public function getNombre() {
-        return $this->nombre; // Retornamos el nombre del producto.
+        return $this->nombre;
     }
     public function setNombre($nombre) {
-        $this->nombre = $nombre; // Asignamos el nombre del producto.
+        $this->nombre = $nombre;
     }
 
     public function getCantidad() {
-        return $this->cantidad; // Retornamos la cantidad del producto.
+        return $this->cantidad;
     }
     public function setCantidad($cantidad) {
-        $this->cantidad = $cantidad; // Asignamos la cantidad del producto.
+        $this->cantidad = $cantidad;
     }
 
     public function getPrecio() {
-        return $this->precio; // Retornamos el precio del producto.
+        return $this->precio;
     }
     public function setPrecio($precio) {
-        $this->precio = $precio; // Asignamos el precio del producto.
+        $this->precio = $precio;
     }
 
     public function getDescripcion() {
-        return $this->nombre; // Retornamos la decripcion del producto.
+        return $this->descripcion; // Corregido para retornar la descripción correcta.
     }
     public function setDescripcion($descripcion) {
-        $this->descripcion = $descripcion; // Asignamos la descripcion del producto.
+        $this->descripcion = $descripcion;
     }
 
     public function getMarca() {
-        return $this->nombre; // Retornamos la marca del producto.
+        return $this->marca; // Corregido para retornar la marca correcta.
     }
     public function setMarca($marca) {
-        $this->marca = $marca; // Asignamos la marca del producto.
+        $this->marca = $marca;
     }
 
     public function getEstado() {
-        return $this->estado; // Retornamos el estado del producto.
+        return $this->estado;
     }
     public function setEstado($estado) {
-        $this->estado = $estado; // Asignamos el estado del producto.
+        $this->estado = $estado;
     }
 
     public function getEmailVendedor() {
-        return $this->nombre; // Retornamos el email del vendedor  del producto.
+        return $this->email_vendedor; // Corregido para retornar el email del vendedor correcto.
     }
     public function setEmailVendedor($email_vendedor) {
-        $this->email_vendedor = $email_vendedor; // Asignamos el email del vendedor del producto.
+        $this->email_vendedor = $email_vendedor;
     }
 
     public function getImagen() {
-        return $this->imagen; // Retornamos el email del vendedor  del producto.
+        return $this->imagen;
     }
     public function setImagen($imagen) {
-        $this->imagen = $imagen; // Asignamos el email del vendedor del producto.
+        $this->imagen = $imagen;
     }
-     // Método para crear un nuevo producto.
-     public function crear() {
-        // Creamos una consulta SQL para insertar un nuevo registro en la tabla de usuarios.
+
+    // Método para crear un nuevo producto.
+    public function crear() {
         $query = "INSERT INTO " . $this->table_name . " SET nombre=?, cantidad=?, precio=?, descripcion=?, marca=?, estado=?, email_vendedor=?, imagen=?";
         
-        // Preparamos la consulta SQL.
         $stmt = $this->conn->prepare($query);
-        
-        // Unimos los valores a los parámetros de la consulta SQL.
         $stmt->bind_param("siisssss", $this->nombre, $this->cantidad, $this->precio, $this->descripcion, $this->marca, $this->estado, $this->email_vendedor, $this->imagen);
         
-        // Ejecutamos la consulta y verificamos si se ejecutó correctamente.
         if ($stmt->execute()) {
-            return true; // Retornamos true si el producto fue creado exitosamente.
+            return true;
         } else {
-            // Manejo de errores: mostramos el error y retornamos false.
             echo "Error: " . $stmt->error;
             return false;
         }
     }
-}
 
+    public function readAll(){
+        $query = "SELECT * FROM " . $this->table_name; // Añadido espacio después de "FROM".
+        $result = $this->conn->query($query);
+        
+        if($result === false){
+            echo "Error en la consulta: " . $this->conn->error;
+            return null;
+        } else {
+            return $result;
+        }
+    }
+
+    public function readOne() {
+        // Corregimos la consulta SQL agregando los espacios y ajustando la cláusula WHERE
+        $query = "SELECT * FROM " . $this->table_name . " WHERE id = ? LIMIT 0,1";
+    
+        // Preparamos la consulta
+        $stmt = $this->conn->prepare($query);
+    
+        // Verificamos si la consulta fue preparada correctamente
+        if (!$stmt) {
+            die("Error al preparar la consulta: " . $this->conn->error);
+        }
+    
+        // Unimos el ID al parámetro de la consulta
+        $stmt->bind_param("i", $this->id);
+    
+        // Ejecutamos la consulta
+        $stmt->execute();
+    
+        // Obtenemos el resultado y retornamos el registro como un arreglo asociativo
+        $result = $stmt->get_result();
+        return $result->fetch_assoc();
+    }
+
+        // Método para actualizar un producto existente.
+        public function update() {
+            // Consulta SQL para actualizar un registro en la tabla de productos, usando un identificador (ej. id).
+            $query = "UPDATE " . $this->table_name . " SET nombre=?, cantidad=?, precio=?, descripcion=?, marca=?, estado=?, email_vendedor=?, imagen=? WHERE id = ?";
+            
+            // Preparamos la consulta SQL.
+            $stmt = $this->conn->prepare($query);
+            
+            // Unimos los valores a los parámetros de la consulta SQL.
+            $stmt->bind_param("siisssssi", $this->nombre, $this->cantidad, $this->precio, $this->descripcion, $this->marca, $this->estado, $this->email_vendedor, $this->imagen, $this->id);
+            
+            // Ejecutamos la consulta y retornamos el resultado (true si fue exitoso, false si no lo fue).
+            return $stmt->execute();
+        }
+        
+
+        public function delete() {
+            // Consulta SQL para eliminar un registro específico por ID.
+            $query = "DELETE FROM " . $this->table_name . " WHERE id = ?";
+            
+            // Preparamos la consulta SQL.
+            $stmt = $this->conn->prepare($query);
+            
+            // Unimos el ID al parámetro de la consulta SQL.
+            $stmt->bind_param("i", $this->id);
+            
+            // Ejecutamos la consulta y retornamos el resultado (true si fue exitoso, false si no lo fue).
+            return $stmt->execute();
+        }
+    
+}
 ?>
