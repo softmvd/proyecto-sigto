@@ -8,6 +8,7 @@
     <link rel="icon" type="image/x-icon" href="/proyecto-sigto/assets/img/favicon-sigto.png">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,600,600italic,700,700italic,800,800italic&amp;subset=latin,cyrillic" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">    
+    
     <link rel="stylesheet" href="/proyecto-sigto/assets/styles/registrarse.css">
     <link rel="stylesheet" href="/proyecto-sigto/assets/styles/index.css">
 </head>
@@ -53,7 +54,7 @@
                     </div>
                     <div class="div-form-3">
                         <input type="submit" value="Registrate">
-                        <p>Already have an account? <a href="cuenta.html">Sign In</a></p>
+                        <p>Already have an account? <a href="ingresarCuenta.php">Sign In</a></p>
                     </div>
                 </form>
                 
@@ -81,7 +82,7 @@
                     </div>
                     <div class="div-form-3">
                         <input type="submit" value="Registrate">
-                        <p>Already have an account? <a href="cuenta.html">Sign In</a></p>
+                        <p>Already have an account? <a href="ingresarCuenta.php">Sign In</a></p>
                     </div>
                 </form>
             </div>

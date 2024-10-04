@@ -1,14 +1,23 @@
 <?php
-require_once 'C:/xampp/htdocs/sigto/proyecto-sigto/core/ProductoControlador.php';
-$controlador = new ProductoControlador();
+require_once 'C:/xampp/htdocs/sigto/proyecto-sigto/core/ProductoController.php';
+$controlador = new ProductoController();
 
-if($_SERVER["REQUEST_METHOD"]== "POST"){
-    $controlador -> crear($_POST);   
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    // Comprobamos si existe un ID para actualizar
+    if (isset($_POST['id']) && !empty($_POST['id'])) {
+        // Código para actualizar
+       $controlador->update($_POST);
+    } else {
+        // Código para crear
+        $controlador -> crear($_POST); 
+    }
 }
 
-$id_producto = isset($_GET["id"])? $_GET["id"] : null;
 
-$resultado= $controlador ->delete($id_producto);
+$id= isset($_GET["id"])? $_GET["id"] : null;
+
+$resultado= $controlador ->delete($id);
 $producto = $controlador -> readAll();
 
 ?>
@@ -74,7 +83,7 @@ $producto = $controlador -> readAll();
                     <div class="producto-item">
                         <div class="fecha">-</div>
                         <div class="producto-item-1">
-                            <div class="imagen-item"><img src="<?php  echo $productos["imagen"] ?>" alt="Notebook"></div>
+                            <div class="imagen-item"><img src="/proyecto-sigto/assets/img/<?php echo $productos["imagen"]; ?>" alt="Articulo"></div>
                             <div class="descripcion">
                                 <div>Estado: <?php echo $productos["estado"] ?></div>
                                 <div>

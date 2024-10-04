@@ -1,3 +1,12 @@
+<?php
+require_once 'C:/xampp/htdocs/sigto/proyecto-sigto/core/ProductoController.php';
+$controlador = new ProductoController();
+
+$producto = $controlador -> readAll();
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -31,13 +40,15 @@
                 <a href="/proyecto-sigto/assets/pages/index.php"><img id="logo" src="/proyecto-sigto/assets/img/logo-sigto.png" alt="logo-Sigto"></a>
              </div>
             <div>
-                <input type="text" name="buscador"> <!-- Poner img lupa dentro del input -->
+                <form action="busquedaDeProductos.php">
+                    <input type="text" name="buscador"> <!-- Poner img lupa dentro del input -->
+                </form>
             </div>
             <div id="registro">
                 <a href="registrarse.php">Registrarse</a>
             </div>
             <div>
-                <a href="/proyecto-sigto/assets/pages/cuenta.html">Mi Cuenta</a>
+                <a href="ingresarCuenta.php">Mi Cuenta</a>
             </div>
             <div>
                 <a href="carrito.php"><img src="/proyecto-sigto/assets/img/shopping-cart (2).png" alt="carrito"></a>
@@ -113,122 +124,25 @@
             <article class="ofertasSemanales">
                 <div class="oferta">
                     
+                <?php while($productos = $producto->fetch_assoc()){  ?>
                     <div class="articulo">
-                        <a href="articulo.php">
+                        <a href="articulo.php?id=<?php echo $productos["id"] ?>">
                             <div>
-                                <img src="https://static-catalog.tiendamia.com/marketplace_manager_service/production/product_d11d9689_mirakl_image_1_large.jpg" alt="Celular">
+                                <img src="/proyecto-sigto/assets/img/<?php echo $productos["imagen"] ?>  " alt="Articulo-venta">
                             </div>
                             <div class="descripcion-oferta">
                                 <p>
-                                    Apple iPhone 12 Mini, 128GB, Black - Unlocked...
+                                    <?php echo $productos["nombre"] ?>
                                 </p>
-                                <p><span>Desde U$S 199.99</span></p>
-                                <p>U$S 199.99 <span class="descuentoOff">25% OFF</span></p>
+                                <p><span>Desde U$S <?php echo $productos["precio"] ?></span></p>
+                                <p>U$S <?php echo $productos["precio"] ?> <span class="descuentoOff">25% OFF</span></p>
                             </div>
                         </a>    
                     </div>
-                    <div class="articulo">
-                        <img src="https://static-catalog.tiendamia.com/marketplace_manager_service/production/product_b35ed364_mirakl_image_1_large.jpg" alt="Celular">
-                        <div class="descripcion-oferta">
-                            <p>
-                                Apple iPhone 11, 128GB, White - Fully Unlocked... 
-                            </p>
-                            <p><span>Desde U$S 199.99</span></p>
-                            <p>U$S 199.99 <span class="descuentoOff">25% OFF</span></p>
-                        </div>
-                    </div>
-                        
-                   
+                    <?php }?>
+
                 </div>
-                <div class="oferta">
-                    <div class="articulo">
-                        <img src="https://m.media-amazon.com/images/I/31g-PF4NQgL._AC_.jpg" alt="Termo">
-                        <div class="descripcion-oferta">
-                            <p>
-                                Stanley Classic Vacuum Insulated Wide Mouth...
-                            </p>
-                            <p><span>Desde U$S 22.94</span></p>
-                            <p>U$S 22.94 <span class="descuentoOff">35% OFF</span></p>
-                        </div>
-                    </div>
-                    <div class="articulo">
-                        <img src="https://m.media-amazon.com/images/I/51M+qQwzrdL._AC_SL1500_.jpg" alt="Choromecast">
-                        <div class="descripcion-oferta">
-                            <p>
-                                Google Chromecast with Google TV (4K)-...
-                            </p>
-                            <p><span>Desde U$S 49.99</span></p>
-                            <p>U$S 49.99 <span class="descuentoOff">25% OFF</span></p>
-                        </div>
-                    </div>
-                </div>
-                <div class="oferta">
-                    <div class="articulo">
-                        <img src="https://static-catalog.tiendamia.com/marketplace_manager_service/production/product_2aac9d64_mirakl_image_1_medium.jpg" alt="Notebook">
-                        <div class="descripcion-oferta">
-                            <p>
-                                Apple MacBook Air 13.3" Core i7 / 8GB /...                           
-                            </p>
-                            <p>Desde U$S 199</p>
-                            <p><span>Desde U$S 199</span></p>
-                            <p>U$S 199 <span class="descuentoOff">50% OFF</span></p>
-                        </div>
-                    </div>
-                    <div class="articulo">
-                        <img src="https://static-catalog.tiendamia.com/marketplace_manager_service/production/product_a086ce8c_mirakl_image_1_medium.jpg" alt="Notebook">
-                        <div class="descripcion-oferta">
-                            <p>
-                                Apple MacBook Pro 13.3" Core i5 / 4GB /...
-                            </p>
-                            <p><span>Desde U$S 199</span></p>
-                            <p>U$S 199 <span class="descuentoOff">50% OFF</span></p>
-                        </div>
-                    </div>
-                </div>
-                <div class="oferta">
-                    <div class="articulo">
-                        <img src="https://m.media-amazon.com/images/I/41Jgf+CYxwL._AC_.jpg" alt="Campera">
-                        <div class="descripcion-oferta">
-                            <p>
-                                Tommy Hilfiger Men's Water Resistant Ultra Loft...
-                            </p>
-                            <p><span>Desde U$S 79.99</span></p>
-                            <p>U$S 79.99 <span class="descuentoOff">25% OFF</span></p> 
-                        </div>
-                    </div>
-                    <div class="articulo">
-                        <img src="https://m.media-amazon.com/images/I/41T+hQ4n69L._AC_.jpg" alt="Campera">
-                        <div class="descripcion-oferta">
-                            <p>
-                                Columbia Men's Glennaker Lake Jacket                           
-                            </p>
-                            <p><span>Desde U$S 44.01</span> </p>
-                            <p>U$S 44.01 <span class="descuentoOff">32% OFF</span></p>
-                        </div>
-                    </div>
-                </div>
-                <div class="oferta">
-                    <div class="articulo">
-                        <img src="https://static-catalog.tiendamia.com/marketplace_manager_service/production/product_44d6ab97_mirakl_image_1_medium.jpg" alt="Reloj">
-                        <div class="descripcion-oferta">
-                            <p>
-                                CURREN 8314 Men Watch Quartz Brand Watch...
-                            </p>
-                            <p><span>Desde U$S 14.73</span></p>
-                            <p>U$S 14.0 <span class="descuentoOff">39% OFF</span></p>
-                        </div>
-                    </div>
-                    <div class="articulo">
-                        <img src="https://static-catalog.tiendamia.com/marketplace_manager_service/production/product_12b4a34f_mirakl_image_1_medium.jpg" alt="Celular">
-                        <div class="descripcion-oferta">
-                            <p>
-                                Apple iPhone 11, 64GB, Black - Fully Unlocked...
-                            </p>
-                            <p><span>Desde U$S 195.99</span></p>
-                            <p>U$S 195.99 <span class="descuentoOff">44% OFF</span></p>
-                        </div>
-                    </div>
-                </div>
+                
             </article>
         <footer>
             <div class="contenedor-footer">

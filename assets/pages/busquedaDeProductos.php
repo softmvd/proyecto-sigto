@@ -1,9 +1,23 @@
+<?php
+require_once 'C:/xampp/htdocs/sigto/proyecto-sigto/core/ProductoController.php';
+
+session_start();
+$usuarioSesion = isset($_SESSION["usuario"])? $_SESSION["usuario"]:null;
+
+
+$controlador = new ProductoController();
+
+$producto = $_SERVER["REQUEST_METHOD"] == "POST"? $controlador -> findByName($_POST["nombre"]) : "Elemento vacio";
+
+var_dump($producto);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Perfil Personal</title>
+    <title>Buscador productos</title>
     <link rel="stylesheet" href="/proyecto-sigto/assets/styles/index.css">
     <link rel="stylesheet" href="/proyecto-sigto/assets/styles/perfilPersonal.css">
     <link rel="stylesheet" href="/proyecto-sigto/assets/styles/productos.css">
@@ -25,10 +39,10 @@
                 <input type="text" name="buscador"> <!-- Poner img lupa dentro del input -->
             </div>
             <div>
-                <a href="misCompras.php">Mis Compras</a>
+                <a href="misCompras.php">Mis compras</a>
             </div>
             <div>
-                <a href="/proyecto-sigto/assets/pages/perfilPersonal.php">Mi Cuenta</a>
+                <a href="perfilEmpresa.php">Mi Cuenta</a>
             </div>
             <div>
                 <a href="carrito.php"><img src="/proyecto-sigto/assets/img/shopping-cart (2).png" alt="carrito"></a>
@@ -48,7 +62,7 @@
     <main>
     <article class="administrar-opciones">
             <section class="buscador-productos">
-                <h1>Compras</h1>
+                <h1>Encuentra tu proxima compra</h1>
                 <input type="text" name="buscador" id="busqueda" placeholder="Buscar">
                 <select name="filtro" id="filtroTiempo">
                     <optgroup>
@@ -62,33 +76,36 @@
                     </optgroup>
                 </select>
                 <div>
-                    <input type="button" value="Buscar">
+                    <a href="#"> 
+                        <input type="button" value="Buscar">
+                    </a>
                 </div>
             </section>
+            
+                
                 <section class="productos">
-                <p>1 Producto</p>
+                <?php foreach($productos as $producto) {?>
                     <div class="producto-item">
-                        <div class="fecha">14 de enero de 2021</div>
                         <div class="producto-item-1">
-                            <div class="imagen-item"><img src="https://static-catalog.tiendamia.com/marketplace_manager_service/production/product_2aac9d64_mirakl_image_1_medium.jpg" alt="Notebook"></div>
+                            <div class="imagen-item"><img src="/proyecto-sigto/assets/img/<?php echo $producto["imagen"] ?>" alt="Articulo"></div>
                             <div class="descripcion">
-                                <div>Estado: Compra cancelada</div>
+                                
                                 <div>
-                                    <p>Cancelaste la compra antes de que se acredite el pago</p>
-                                    <p>Apple MacBook Air 13.3" Core i7 / 8GB /... </p>
-                                    <p>Unidades:1 | Color:Blanco</p>
+                                    <p>Nombre: <?php echo $producto["nombre"]; ?></p>
+                                    <p>Precio: <?php echo $producto["precio"] ?></p>
+                                    <p>Descripcion: <?php echo $producto["descripcion"] ?></p>
+                                    <p>Unidades:<?php echo $producto["cantidad"] ?></p>
                                 </div>
                                 <div>
-                                    <p>Empresa: TodoTecno.uy</p>
-                                </div>
-                                <div>
-                                    <input type="button" value="Ver compra">
-                                    <input type="button" value="Volver a comprar">
+                                    <p>Empresa: <?php echo $producto["email_vendedor"] ?></p>
                                 </div>
                             </div>
                         </div>                   
                     </div>
+                    <?php }?>
             </section>
+            
+            
         </article>
     </main>
     <script src="/proyecto-sigto/assets/js/index.js"></script>

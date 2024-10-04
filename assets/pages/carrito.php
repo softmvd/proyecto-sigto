@@ -28,7 +28,7 @@
                 </a>
             </div>
             <div>
-                <input type="text" name="buscador"> <!-- Poner img lupa dentro del input -->
+                <input type="text" name="buscador">
             </div>
             <div>
                 <a href="misCompras.php">Mis Compras</a>
@@ -85,7 +85,8 @@
                             
                         </div>
                         <div class="precio">
-                            <p>$14.000</p>
+                            <p>14000</p>
+                            <p>14000</p>
                         </div>
                     </div>
                     <div class="envio">
@@ -101,9 +102,9 @@
                 <div>
                     <h3>Resumen de compra</h3>
                     <ul>
-                        <li><p>Productos()</p><p>$14.000</p></li>
+                        <li><p>Productos()</p><p><span>$14.000</span></p></li>
                         <li><p>Envios()</p><p>Gratis</p></li>
-                        <li><p>Total</p><p>$14.000</p></li>
+                        <li><p>Total</p><p><span>$14.000</span></p></li>
                     </ul>
                     <input type="button" value="Continuar compra">
                 </div>

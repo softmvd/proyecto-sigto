@@ -1,3 +1,12 @@
+<?php
+require_once 'C:/xampp/htdocs/sigto/proyecto-sigto/core/ProductoController.php';
+$controlador = new ProductoController();
+
+$id= isset($_GET["id"])? $_GET["id"] : null;
+
+$productos = $controlador -> readOne($id);
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -55,36 +64,26 @@
         <article>
             <section class="imagenes-articulo">
                 <div>
-                    <img src="https://static-catalog.tiendamia.com/marketplace_manager_service/production/product_d11d9689_mirakl_image_1_large.jpg" alt="Celular">
+                    <img src="<?php echo $productos["imagen"] ?>" alt="Celular">
                 </div>
             </section>
             <section class="descripcion-articulo">
-                <p>Nuevo | +5 vendidos</p>
+                <p>Nuevo |</p>
                 <div>
-                    <h3>Apple iPhone 12 5G 128 GB negro 4 GB RAM</h3>
+                    <h3><?php echo $productos["nombre"] ?></h3>
                 </div>
                 <div>
-                    <p><span class="precio">$7.862</span></p>
+                    <p><span class="precio">U$S <?php echo $productos["precio"] ?></span></p>
                     <p>en <span class="cuotas">10x $786,20 sin interés</span></p>
                     <p><span class="opciones">Ver los medios de pagos</span></p>
                 </div>
                 <div>
-                    <p>Color: Negro</p>
+                    <p>Color: ND</p>
                 </div>
                 <div class="lo-que-tienes-que-saber">
                     <p>Lo que tienes que saber de este producto:</p>
-                    <ul>
-                        <li>Memoria RAM: 4 GB</li>
-                        <li>Compatible con redes 5G</li>
-                        <li>Pantalla AMOLED de 6,28 pulgadas</li>
-                        <li>Cuenta con 3 cámaras traseras de 50Mpx/13Mpx/5Mpx</li>
-                        <li>Cámara frontal de 32Mpx</li>
-                        <li>Procesador Qualcomm Snapdragon 4 Gen 2 Octa-Core de 2,2 GHz con 4 GB de RAM</li>
-                        <li>Batería de 5000 mAh con carga inalámbrica</li>
-                        <li>Memoria interna de 128 GB</li>
-                        <li>Con reconocimiento facial y sensor de huellas dactilares</li>
-                    </ul>
-                    <p>Ver caracteristicas</p>
+                   
+                    <p><?php echo $productos["descripcion"] ?></p>
                 </div>
             </section>
             <section class="opciones-compra">
@@ -97,26 +96,15 @@
                     <p>Ver en el mapa</p>
                 </div>
                 <div>
-                    <p>Stock disponible</p>
-                    <select>
-                        <optgroup label="Cantidad">
-                            <option>1 unidades</option>
-                            <option>2 unidades</option>
-                            <option>3 unidades</option>
-                            <option>4 unidades</option>
-                            <option>5 unidades</option>
-                            <option>6 unidades</option>
-                            <option>+6 unidades</option>
-                        </optgroup>
-                    </select>
+                    <p>Stock disponible: <?php echo $productos["cantidad"] ?></p>
                 </div>
                 <div class="botones">
                     <input type="button" value="Comprar ahora">
                     <input type="button" value="Agregar al carrito">
                 </div>
                 <div>
-                    <p>Vendido por <span class="opciones">TodoTecno.uy</span></p>
-                    <p>MervcadoLider | +1000 ventas</p>
+                    <p>Vendido por <span class="opciones"><?php echo $productos["email_vendedor"] ?></span></p>
+                    <p>LiderDeMercado | +1000 ventas</p>
                 </div>
                 <div class="devolucion">
                     <div>

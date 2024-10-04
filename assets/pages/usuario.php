@@ -102,7 +102,7 @@ $usuariosEmpresa = $controllerEmpresa->readAll();
                                 <th>ID</th>
                                 <th>Nombre de Usuario</th>
                                 <th>Email</th>
-                                <th>Clave</th>
+                               
                                 <th>Acciones</th>
                             </tr>
                         </thead>
@@ -113,7 +113,6 @@ $usuariosEmpresa = $controllerEmpresa->readAll();
                                         <td><?php echo $usuario['id_usuario']; ?></td>
                                         <td><?php echo $usuario['nombre']; ?></td>
                                         <td><?php echo $usuario['email']; ?></td>
-                                        <td><?php echo $usuario['clave']; ?></td>
                                         <td>
                                             <a class="button edit" href="/proyecto-sigto/vista/edicionUsuarioAdmin.php?id=<?php echo $usuario['id_usuario']; ?>">Editar</a>
                                             <a class="button delete" href="?id=<?php echo $usuario['id_usuario']; ?>">Eliminar</a> <!-- Enlace para eliminar al usuario -->
@@ -135,7 +134,7 @@ $usuariosEmpresa = $controllerEmpresa->readAll();
                                 <th>ID</th>
                                 <th>Nombre de Empresa</th>
                                 <th>Email</th>
-                                <th>Clave</th>
+                                
                                 <th>Acciones</th>
                             </tr>
                         </thead>
@@ -146,7 +145,7 @@ $usuariosEmpresa = $controllerEmpresa->readAll();
                                         <td><?php echo $usuarioEmpresa['id_empresa']; ?></td>
                                         <td><?php echo $usuarioEmpresa['nombreEmpresa']; ?></td>
                                         <td><?php echo $usuarioEmpresa['email']; ?></td>
-                                        <td><?php echo $usuarioEmpresa['clave']; ?></td>
+                                        
                                         <td>
                                             <a class="button edit" href="/proyecto-sigto/vista/editarUsuarioEmpresa.php?id_empresa=<?php echo $usuarioEmpresa['id_empresa']; ?>">Editar</a>
                                             <a class="button delete" href="?id_empresa=<?php echo $usuarioEmpresa['id_empresa']; ?>">Eliminar</a> <!-- Enlace para eliminar al usuario empresa -->
