@@ -10,12 +10,12 @@ $producto= $controlador->readOne($id_producto);
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Editar producto</title>
+    <title>Editar Producto| Catalogo</title>
     <link rel="stylesheet" href="/proyecto-sigto/assets/styles/vistaEdicionAdmin.css">
 </head>
 <body>
-    <h1>Editar Producto</h1>
-    <form action="../assets/pages/productos.php" method="post" enctype="multipart/form-data">
+    <h1>Editar producto</h1>
+    <form action="../assets/pages/catalogoEmpresa.php" method="post" enctype="multipart/form-data">
     <!-- Campo oculto para el ID del producto -->
     <input type="hidden" name="id" value="<?php echo $producto["id"]; ?>">
 
@@ -36,7 +36,7 @@ $producto= $controlador->readOne($id_producto);
     <label for="estado">Estado:</label>
     <input type="text" name="estado" value="<?php echo $producto["estado"] ?>">
     <input type="submit" value="Actualizar">
-    <a class="button" href="../assets/pages/productos.php">Volver a la lista</a>
+    <a class="button" href="../assets/pages/catalogoEmpresa.php">Volver a la lista</a>
 </form>
 
 </body>

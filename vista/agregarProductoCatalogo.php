@@ -1,13 +1,19 @@
+<?php
+session_start();
+
+$email = isset($_SESSION["usuario"])?$_SESSION["usuario"]["email"]: null;
+
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Crear Producto| Admin</title>
+    <title>Agregar producto| Catalogo</title>
     <link rel="stylesheet" href="/proyecto-sigto/assets/styles/vistaEdicionAdmin.css">
 </head>
 <body>
     <h1>Crear Producto</h1>
-    <form action="../assets/pages/productos.php" method="post" enctype="multipart/form-data">
+    <form action="../assets/pages/catalogoEmpresa.php" method="post" enctype="multipart/form-data">
         <label for="nombre">Nombre:</label>
         <input type="text" name="nombre" required><br>
         
@@ -21,7 +27,7 @@
         <input type="file" name="imagen"><br>
         
         <label for="email">Email Vendedor:</label>
-        <input type="email" name="email"><br>
+        <input type="email" name="email" value="<?php echo $email?>"><br>
         
         <label for="marca">Marca:</label>
         <input type="text" name="marca"><br>
@@ -33,7 +39,7 @@
         <input type="text" name="estado"><br>
         
         <input type="submit" value="Crear">
-        <a class="button" href="../assets/pages/productos.php">Volver a la lista</a>
+        <a class="button" href="../assets/pages/catalogoEmpresa.php">Volver a la lista</a>
     </form>
 </body>
 </html>
