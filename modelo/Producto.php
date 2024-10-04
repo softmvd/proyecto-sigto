@@ -101,7 +101,7 @@ class Producto{
     }
 
     public function readAll(){
-        $query = "SELECT * FROM " . $this->table_name; // Añadido espacio después de "FROM".
+        $query = "SELECT * FROM " . $this->table_name; 
         $result = $this->conn->query($query);
         
         if($result === false){
@@ -111,6 +111,75 @@ class Producto{
             return $result;
         }
     }
+
+    public function leerPorCorreo() {
+        // Asegúrate de agregar un espacio antes de "WHERE"
+        $query = "SELECT * FROM " . $this->table_name . " WHERE email_vendedor = ?";
+        $stmt = $this->conn->prepare($query);
+        
+        // Verifica si la preparación fue exitosa
+        if ($stmt === false) {
+            die("Error al preparar la SQL: " . $this->conn->error);
+        }
+    
+        // Vincula el parámetro
+        $stmt->bind_param("s", $this->email_vendedor);
+        
+        // Ejecuta la consulta
+        if (!$stmt->execute()) {
+            echo "Error al ejecutar la consulta: " . $stmt->error;
+            return []; // Retorna un array vacío en caso de error
+        }
+    
+        // Obtén el resultado
+        $result = $stmt->get_result();
+        
+        // Crea un array para almacenar todos los registros
+        $productos = [];
+        
+        // Almacena cada fila en el array
+        while ($row = $result->fetch_assoc()) {
+            $productos[] = $row; // Agrega cada producto al array
+        }
+    
+        return $productos; // Retorna el array de productos
+    }
+
+    public function findByName(){
+        $query = "SELECT * FROM " . $this->table_name . " WHERE LOWER(nombre) LIKE ?";
+        
+        $stmt = $this->conn->prepare($query);
+        
+        if(!$stmt){} die( "Error al prepara la consulta" . $this->conn->error) ;
+
+        //Agragar los comodines para la busqueda
+        $buscarTermino = "%" . strtolower(($this->nombre) . "%");
+        $stmt->bind_param("s", $buscarTermino);
+
+        $stmt->execute();
+        
+        if(!$stmt->execute()){
+            echo "Error al ejecutar la consulta" . $stmt->error ;
+            return [];
+        } 
+
+        //Obtener el resultado
+        $result= $stmt->get_result();
+
+        //Crear un array para almacenar todos los registros
+        $productos = [];
+
+        //Almacenar cada fila en el array
+        while($row = $result->fetch_assoc()){
+            $productos[]= $row; //Agregar producto al array
+        }
+
+        return $productos; //Retornar el array de productos
+        
+        
+    }
+    
+    
 
     public function readOne() {
         // Corregimos la consulta SQL agregando los espacios y ajustando la cláusula WHERE
@@ -138,7 +207,7 @@ class Producto{
         // Método para actualizar un producto existente.
         public function update() {
             // Consulta SQL para actualizar un registro en la tabla de productos, usando un identificador (ej. id).
-            $query = "UPDATE " . $this->table_name . " SET nombre=?, cantidad=?, precio=?, descripcion=?, marca=?, estado=?, email_vendedor=?, imagen=? WHERE id = ?";
+            $query = "UPDATE " . $this->table_name . " SET nombre=?, cantidad=?, precio=?, descripcion=?, marca=?, estado=?, email_vendedor=?, imagen=? WHERE id=?";
             
             // Preparamos la consulta SQL.
             $stmt = $this->conn->prepare($query);
@@ -149,6 +218,8 @@ class Producto{
             // Ejecutamos la consulta y retornamos el resultado (true si fue exitoso, false si no lo fue).
             return $stmt->execute();
         }
+        
+       
         
 
         public function delete() {
