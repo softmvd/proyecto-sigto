@@ -7,7 +7,7 @@
         private $table_name= "usuarioCliente";
 
         //Atributos privados.
-        private $id_usuario;
+        private $id_usuario;            
         private $nombre;
         private $apellido;
         private $email;
@@ -46,6 +46,16 @@
     }
 
     
+    public function getApellido() {
+        return $this->apellido; // Retornamos el apellido de usuario.
+    }
+
+    public function setApellido($apellido) {
+        $this->apellido = $apellido; // Asignamos el apellido de usuario.
+    }
+
+
+    
 
     public function getContraseña() {
         return $this->clave; // Retornamos la contraseña del usuario.
@@ -58,7 +68,7 @@
     // Método para crear un nuevo usuario.
     public function create() {
         // Consulta SQL para insertar un nuevo registro
-        $query = "INSERT INTO " . $this->table_name . " (nombre, email, clave) VALUES (?, ?, ?)";
+        $query = "INSERT INTO " . $this->table_name . " (nombre, apellido, email, clave) VALUES (?, ?, ?, ?)";
         
         // Preparamos la consulta SQL
         $stmt = $this->conn->prepare($query);
@@ -67,7 +77,7 @@
         $hashedPassword = password_hash($this->clave, PASSWORD_DEFAULT);
         
         // Unimos los valores a los parámetros de la consulta SQL
-        $stmt->bind_param("sss", $this->nombre, $this->email, $hashedPassword);
+        $stmt->bind_param("ssss", $this->nombre,$this->apellido ,$this->email, $hashedPassword);
         
         // Ejecutamos la consulta y verificamos si se ejecutó correctamente
         if ($stmt->execute()) {
@@ -115,7 +125,7 @@
     // Método para actualizar un usuario existente.
     public function update() {
         // Consulta SQL para actualizar un registro en la tabla de usuarios.
-        $query = "UPDATE " . $this->table_name . " SET email=?,nombre=? , clave=? WHERE id_usuario=?";
+        $query = "UPDATE " . $this->table_name . " SET email=?,nombre=? , apellido=?, clave=? WHERE id_usuario=?";
         
         // Preparamos la consulta SQL.
         $stmt = $this->conn->prepare($query);
@@ -124,7 +134,7 @@
         $hashedPassword = password_hash($this->clave, PASSWORD_DEFAULT);
         
         // Unimos los valores a los parámetros de la consulta SQL.
-        $stmt->bind_param("sssi", $this->email, $this->nombre, $hashedPassword, $this->id_usuario);
+        $stmt->bind_param("ssssi", $this->email, $this->nombre,$this->apellido ,$hashedPassword, $this->id_usuario);
         
         // Ejecutamos la consulta y retornamos el resultado (true si fue exitoso, false si no lo fue).
         return $stmt->execute();

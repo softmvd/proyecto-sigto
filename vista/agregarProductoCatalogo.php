@@ -26,8 +26,7 @@ $email = isset($_SESSION["usuario"])?$_SESSION["usuario"]["email"]: null;
         <label for="imagen">Imagen:</label>
         <input type="file" name="imagen"><br>
         
-        <label for="email">Email Vendedor:</label>
-        <input type="email" name="email" value="<?php echo $email?>"><br>
+        <input type="hidden" name="email" value="<?php echo $email?>"><br>
         
         <label for="marca">Marca:</label>
         <input type="text" name="marca"><br>

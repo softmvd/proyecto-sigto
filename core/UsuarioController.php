@@ -15,6 +15,7 @@ class UsuarioController {
         $usuario = new Usuario(); // Creamos una nueva instancia del modelo Usuario.
         $usuario->setEmail($data['email']); // Asignamos el email del usuario utilizando el dato proporcionado.
         $usuario->setNombre($data['nombre']); // Asignamos el nombre de usuario.
+        $usuario->setApellido($data['apellido']); // Asignamos el apellido de usuario.
         $usuario->setContraseña($data['clave']); // Asignamos la contraseña del usuario.
         if ($usuario->create()) { // Intentamos crear el usuario en la base de datos.
             return "Usuario creado exitosamente."; // Si la creación fue exitosa, devolvemos un mensaje de éxito.
@@ -35,13 +36,14 @@ class UsuarioController {
         $usuario->setId($id_usuario); // Asignamos el ID del usuario que queremos leer.
         return $usuario->readOne(); // Retornamos los datos del usuario con el ID especificado.
     }
-
+    
     // Método para actualizar un usuario existente.
     public function update($data) {
         $usuario = new Usuario(); // Creamos una nueva instancia del modelo Usuario.
         $usuario->setId($data['id_usuario']); // Asignamos el ID del usuario que se va a actualizar.
         $usuario->setEmail($data['email']); // Actualizamos el email del usuario.
         $usuario->setNombre($data['nombre']); // Actualizamos el nombre de usuario.
+        $usuario->setApellido($data['apellido']); // Asignamos el apellido de usuario.
         
         $usuario->setContraseña($data['clave']); // Actualizamos la contraseña del usuario.
         if ($usuario->update()) { // Intentamos actualizar el usuario en la base de datos.
@@ -51,15 +53,15 @@ class UsuarioController {
         }
     }
 
-    // Método para eliminar un usuario por su ID.
-    public function delete($id_usuario) {
-        $usuario = new Usuario(); // Creamos una nueva instancia del modelo Usuario.
-        $usuario->setId($id_usuario); // Asignamos el ID del usuario que se va a eliminar.
-        if ($usuario->delete()) { // Intentamos eliminar el usuario de la base de datos.
-            return "Usuario eliminado exitosamente."; // Si la eliminación fue exitosa, devolvemos un mensaje de éxito.
-        } else {
-            return "Error al eliminar usuario."; // Si hubo un error, devolvemos un mensaje de error.
-        }
-    }   
+        // Método para eliminar un usuario por su ID.
+        public function delete($id_usuario) {
+            $usuario = new Usuario(); // Creamos una nueva instancia del modelo Usuario.
+            $usuario->setId($id_usuario); // Asignamos el ID del usuario que se va a eliminar.
+            if ($usuario->delete()) { // Intentamos eliminar el usuario de la base de datos.
+                return "Usuario eliminado exitosamente."; // Si la eliminación fue exitosa, devolvemos un mensaje de éxito.
+            } else {
+                return "Error al eliminar usuario."; // Si hubo un error, devolvemos un mensaje de error.
+            }
+        }   
 }
 ?>

@@ -17,7 +17,7 @@ $resultado= $controlador ->delete($id);
 
 session_start();
 $usuarioSesion = isset($_SESSION["usuario"])? $_SESSION["usuario"]:null;
-$productos = $controlador -> leerPorCorreo($usuarioSesion["email"]);
+//$productos = $controlador -> leerPorCorreo($usuarioSesion["email"]);
 
 ?>
 

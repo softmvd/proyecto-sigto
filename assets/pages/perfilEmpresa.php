@@ -93,6 +93,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                     <p>Datos que representan a la cuenta de Sigto</p>
                     <form action="#">
                         <div>
+                            <p>id Empresa:<?php echo $usuario["id_usuario"] ?></p>
                             <label for="email">Email:</label>
                             <input type="email" name="email" value="<?php echo $usuario["email"] ?>" >
                         </div>

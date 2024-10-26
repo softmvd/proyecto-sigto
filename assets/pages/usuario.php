@@ -34,7 +34,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 
 $id_usuario = isset($_GET["id"]) ? $_GET['id'] : null;
-$id_empresa = isset($_GET["id_empresa"]) ? $_GET['id_empresa'] : null;
+$id_empresa = isset($_GET["id_usuario"]) ? $_GET['id_usuario'] : null;
 
 $resultado = $controller->delete($id_usuario);
  
@@ -142,13 +142,13 @@ $usuariosEmpresa = $controllerEmpresa->readAll();
                             <?php if ($usuariosEmpresa && $usuariosEmpresa->num_rows > 0) { ?>
                                 <?php while ($usuarioEmpresa = $usuariosEmpresa->fetch_assoc()) { ?>
                                     <tr>
-                                        <td><?php echo $usuarioEmpresa['id_empresa']; ?></td>
+                                        <td><?php echo $usuarioEmpresa['id_usuario']; ?></td>
                                         <td><?php echo $usuarioEmpresa['nombreEmpresa']; ?></td>
                                         <td><?php echo $usuarioEmpresa['email']; ?></td>
                                         
                                         <td>
-                                            <a class="button edit" href="/proyecto-sigto/vista/editarUsuarioEmpresa.php?id_empresa=<?php echo $usuarioEmpresa['id_empresa']; ?>">Editar</a>
-                                            <a class="button delete" href="?id_empresa=<?php echo $usuarioEmpresa['id_empresa']; ?>">Eliminar</a> <!-- Enlace para eliminar al usuario empresa -->
+                                            <a class="button edit" href="/proyecto-sigto/vista/editarUsuarioEmpresa.php?id_usuario=<?php echo $usuarioEmpresa['id_usuario']; ?>">Editar</a>
+                                            <a class="button delete" href="?id_usuario=<?php echo $usuarioEmpresa['id_usuario']; ?>">Eliminar</a> <!-- Enlace para eliminar al usuario empresa -->
                                         </td>
                                     </tr>
                                 <?php } ?>

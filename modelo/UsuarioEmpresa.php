@@ -4,10 +4,10 @@
     class UsuarioEmpresa{
         //Conxion a la base de datos y nombreEmpresa de la tabla
         private $conn;
-        private $table_name= "usuarioempresa";
+        private $table_name= "usuarioEmpresa";
 
         //Atributos privados.
-        private $id_empresa;
+        private $id_usuario;
         private $nombreEmpresa;
         private $email;
         private $clave;
@@ -21,11 +21,11 @@
         
     // Getters y Setters para los atributos.
     public function getId() {
-        return $this->id_empresa; // Retornamos el ID del usuario Empresa.
+        return $this->id_usuario; // Retornamos el ID del usuario Empresa.
     }
 
-    public function setId($id_empresa) {
-        $this->id_empresa = $id_empresa; // Asignamos el ID del usuario Empresa.
+    public function setId($id_usuario) {
+        $this->id_usuario = $id_usuario; // Asignamos el ID del usuario Empresa.
     }
 
     public function getEmail() {
@@ -93,13 +93,13 @@
     // Método para leer un usuario Empresa específico por su ID.
     public function readOne() {
         // Consulta SQL para seleccionar un registro específico por ID.
-        $query = "SELECT * FROM " . $this->table_name . " WHERE id_empresa=? LIMIT 0,1";
+        $query = "SELECT * FROM " . $this->table_name . " WHERE id_usuario=? LIMIT 0,1";
         
         // Preparamos la consulta SQL.
         $stmt = $this->conn->prepare($query);
         
         // Unimos el ID al parámetro de la consulta SQL.
-        $stmt->bind_param("i", $this->id_empresa);
+        $stmt->bind_param("i", $this->id_usuario);
         
         // Ejecutamos la consulta.
         $stmt->execute();
@@ -113,7 +113,7 @@
     // Método para actualizar un usuario Empresa existente.
     public function update() {
         // Consulta SQL para actualizar un registro en la tabla de usuarios.
-        $query = "UPDATE " . $this->table_name . " SET email=?,nombreEmpresa=? , clave=? WHERE id_empresa=?";
+        $query = "UPDATE " . $this->table_name . " SET email=?,nombreEmpresa=? , clave=? WHERE id_usuario=?";
         
         // Preparamos la consulta SQL.
         $stmt = $this->conn->prepare($query);
@@ -122,7 +122,7 @@
         $hashedPassword = password_hash($this->clave, PASSWORD_DEFAULT);
         
         // Unimos los valores a los parámetros de la consulta SQL.
-        $stmt->bind_param("sssi", $this->email, $this->nombreEmpresa, $hashedPassword, $this->id_empresa);
+        $stmt->bind_param("sssi", $this->email, $this->nombreEmpresa, $hashedPassword, $this->id_usuario);
         
         // Ejecutamos la consulta y retornamos el resultado (true si fue exitoso, false si no lo fue).
         return $stmt->execute();
@@ -131,13 +131,13 @@
     // Método para eliminar un usuario Empresa por su ID.
     public function delete() {
         // Consulta SQL para eliminar un registro específico por ID.
-        $query = "DELETE FROM " . $this->table_name . " WHERE id_empresa = ?";
+        $query = "DELETE FROM " . $this->table_name . " WHERE id_usuario = ?";
         
         // Preparamos la consulta SQL.
         $stmt = $this->conn->prepare($query);
         
         // Unimos el ID al parámetro de la consulta SQL.
-        $stmt->bind_param("i", $this->id_empresa);
+        $stmt->bind_param("i", $this->id_usuario);
         
         // Ejecutamos la consulta y retornamos el resultado (true si fue exitoso, false si no lo fue).
         return $stmt->execute();

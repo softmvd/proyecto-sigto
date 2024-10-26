@@ -5,7 +5,7 @@ $controlador = new ProductoController();
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Comprobamos si existe un ID para actualizar
-    if (isset($_POST['id']) && !empty($_POST['id'])) {
+    if (isset($_POST['id_producto']) && !empty($_POST['id_producto'])) {
         // Código para actualizar
        $controlador->update($_POST);
     } else {
@@ -15,9 +15,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 }
 
 
-$id= isset($_GET["id"])? $_GET["id"] : null;
+$id_producto= isset($_GET["id_producto"])? $_GET["id_producto"] : null;
 
-$resultado= $controlador ->delete($id);
+$resultado= $controlador ->delete($id_producto);
 $producto = $controlador -> readAll();
 
 ?>
@@ -39,7 +39,7 @@ $producto = $controlador -> readAll();
         <div class="menu-primero">
             <div>
                 <a href="/proyecto-sigto/assets/pages/index.php">
-                    <img id="logo" src="/proyecto-sigto/assets/img/logo-sigto.png" alt="logo">
+                    <img id_producto="logo" src="/proyecto-sigto/assets/img/logo-sigto.png" alt="logo">
                 </a>
             </div>
             <div>
@@ -59,8 +59,8 @@ $producto = $controlador -> readAll();
         <article class="administrar-opciones">
             <section class="buscador-productos">
                 <h1>Productos</h1>
-                <input type="text" name="buscador" id="busqueda" placeholder="Buscar">
-                <select name="filtro" id="filtroTiempo">
+                <input type="text" name="buscador" id_producto="busqueda" placeholder="Buscar">
+                <select name="filtro" id_producto="filtroTiempo">
                     <optgroup>
                         <option>Todos</option>
                         <option>Este Mes</option>
@@ -85,22 +85,21 @@ $producto = $controlador -> readAll();
                         <div class="producto-item-1">
                             <div class="imagen-item"><img src="/proyecto-sigto/assets/img/<?php echo $productos["imagen"]; ?>" alt="Articulo"></div>
                             <div class="descripcion">
-                                <div>Estado: <?php echo $productos["estado"] ?></div>
+                                <div>Estado: <?php echo $productos["disponibilidad"] ?></div>
                                 <div>
-                                    <p>Nombre: <?php  echo $productos["nombre"] ?> </p>
-                                    <p>Marca: <?php  echo $productos["marca"] ?></p>
+                                    <p>Nombre: <?php  echo $productos["nombre_producto"] ?> </p>
                                     <p>Descripcion: <?php  echo $productos["descripcion"] ?></p>
                                     <p>Precio: <?php  echo $productos["precio"] ?></p>
-                                    <p>Unidades disponibles: <?php  echo $productos["cantidad"] ?></p>
+                                    <p>Unidades disponibles: <?php  echo $productos["stock"] ?></p>
                                 </div>
                                 <div>
-                                    <p>Empresa: <?php  echo $productos["email_vendedor"] ?></p>
+                                    
                                 </div>
                                 <div>
-                                    <a href="/proyecto-sigto/vista/editarProducto.php?id=<?php echo $productos["id"];?>"  >
+                                    <a href="/proyecto-sigto/vista/editarProducto.php?id_producto=<?php echo $productos["id_producto"];?>"  >
                                         <input type="button" value="Editar">
                                     </a>
-                                    <a href="/proyecto-sigto/assets/pages/productos.php?id=<?php echo $productos["id"];?>"  >
+                                    <a href="/proyecto-sigto/assets/pages/productos.php?id_producto=<?php echo $productos["id_producto"];?>"  >
                                         <input type="button" value="Eliminar">
                                     </a>
                                     

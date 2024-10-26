@@ -5,13 +5,13 @@ class Producto{
     private $conn;
     private $table_name = "productos";
 
-    private $id;
-    private $nombre;
-    private $cantidad;
-    private $precio;
+    private $id_producto;
+    private $nombre_producto;
     private $descripcion;
+    private $precio;
+    private $stock;    
     private $marca;
-    private $estado;
+    private $disponibilidad;
     private $email_vendedor;
     private $imagen;
     
@@ -23,24 +23,24 @@ class Producto{
 
     // Getters y Setters para los atributos.
     public function getId() {
-        return $this->id; 
+        return $this->id_producto; 
     }
-    public function setId($id) {
-        $this->id = $id;
+    public function setId($id_producto) {
+        $this->id_producto = $id_producto;
     }
 
     public function getNombre() {
-        return $this->nombre;
+        return $this->nombre_producto;
     }
-    public function setNombre($nombre) {
-        $this->nombre = $nombre;
+    public function setNombre($nombre_producto) {
+        $this->nombre_producto = $nombre_producto;
     }
 
     public function getCantidad() {
-        return $this->cantidad;
+        return $this->stock;
     }
-    public function setCantidad($cantidad) {
-        $this->cantidad = $cantidad;
+    public function setCantidad($stock) {
+        $this->stock = $stock;
     }
 
     public function getPrecio() {
@@ -65,10 +65,10 @@ class Producto{
     }
 
     public function getEstado() {
-        return $this->estado;
+        return $this->disponibilidad;
     }
-    public function setEstado($estado) {
-        $this->estado = $estado;
+    public function setEstado($disponibilidad) {
+        $this->disponibilidad = $disponibilidad;
     }
 
     public function getEmailVendedor() {
@@ -87,17 +87,22 @@ class Producto{
 
     // Método para crear un nuevo producto.
     public function crear() {
-        $query = "INSERT INTO " . $this->table_name . " SET nombre=?, cantidad=?, precio=?, descripcion=?, marca=?, estado=?, email_vendedor=?, imagen=?";
-        
-        $stmt = $this->conn->prepare($query);
-        $stmt->bind_param("siisssss", $this->nombre, $this->cantidad, $this->precio, $this->descripcion, $this->marca, $this->estado, $this->email_vendedor, $this->imagen);
-        
-        if ($stmt->execute()) {
-            return true;
-        } else {
-            echo "Error: " . $stmt->error;
+        $query = "INSERT INTO " . $this->table_name . " (nombre_producto, stock, precio, descripcion, marca, disponibilidad, email_vendedor, imagen) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+    
+        if (!$stmt = $this->conn->prepare($query)) {
+            echo "Error al preparar la sentencia: " . $this->conn->error;
             return false;
         }
+    
+        $stmt->bind_param("siisssss", $this->nombre_producto, $this->stock, $this->precio, $this->descripcion, $this->marca, $this->disponibilidad, $this->email_vendedor, $this->imagen);
+    
+        if (!$stmt->execute()) {
+            echo "Error al ejecutar la sentencia: " . $stmt->error;
+            return false;
+        }
+    
+        $stmt->close();
+        return true;
     }
 
     public function readAll(){
@@ -147,7 +152,7 @@ class Producto{
 
     public function findByName(){
         // Definir la consulta SQL con LIKE para búsqueda parcial
-        $query = "SELECT * FROM " . $this->table_name . " WHERE LOWER(nombre) LIKE ?";
+        $query = "SELECT * FROM " . $this->table_name . " WHERE LOWER(nombre_producto) LIKE ?";
     
         // Preparar la consulta
         $stmt = $this->conn->prepare($query);
@@ -158,7 +163,7 @@ class Producto{
         }
     
         // Agregar los comodines para la búsqueda
-        $buscarTermino = strtolower($this->nombre) . "%";
+        $buscarTermino = strtolower($this->nombre_producto) . "%";
         $stmt->bind_param("s", $buscarTermino);
     
         // Ejecutar la consulta
@@ -187,7 +192,7 @@ class Producto{
 
     public function readOne() {
         // Corregimos la consulta SQL agregando los espacios y ajustando la cláusula WHERE
-        $query = "SELECT * FROM " . $this->table_name . " WHERE id = ? LIMIT 0,1";
+        $query = "SELECT * FROM " . $this->table_name . " WHERE id_producto = ? LIMIT 0,1";
     
         // Preparamos la consulta
         $stmt = $this->conn->prepare($query);
@@ -198,7 +203,7 @@ class Producto{
         }
     
         // Unimos el ID al parámetro de la consulta
-        $stmt->bind_param("i", $this->id);
+        $stmt->bind_param("i", $this->id_producto);
     
         // Ejecutamos la consulta
         $stmt->execute();
@@ -210,14 +215,14 @@ class Producto{
 
         // Método para actualizar un producto existente.
         public function update() {
-            // Consulta SQL para actualizar un registro en la tabla de productos, usando un identificador (ej. id).
-            $query = "UPDATE " . $this->table_name . " SET nombre=?, cantidad=?, precio=?, descripcion=?, marca=?, estado=?, email_vendedor=?, imagen=? WHERE id=?";
+            // Consulta SQL para actualizar un registro en la tabla de productos, usando un identificador (ej. id_producto).
+            $query = "UPDATE " . $this->table_name . " SET nombre_producto=?, stock=?, precio=?, descripcion=?, marca=?, disponibilidad=?, email_vendedor=?, imagen=? WHERE id_producto=?";
             
             // Preparamos la consulta SQL.
             $stmt = $this->conn->prepare($query);
             
             // Unimos los valores a los parámetros de la consulta SQL.
-            $stmt->bind_param("siisssssi", $this->nombre, $this->cantidad, $this->precio, $this->descripcion, $this->marca, $this->estado, $this->email_vendedor, $this->imagen, $this->id);
+            $stmt->bind_param("siisssssi", $this->nombre_producto, $this->stock, $this->precio, $this->descripcion, $this->marca, $this->disponibilidad, $this->email_vendedor, $this->imagen, $this->id_producto);
             
             // Ejecutamos la consulta y retornamos el resultado (true si fue exitoso, false si no lo fue).
             return $stmt->execute();
@@ -228,13 +233,13 @@ class Producto{
 
         public function delete() {
             // Consulta SQL para eliminar un registro específico por ID.
-            $query = "DELETE FROM " . $this->table_name . " WHERE id = ?";
+            $query = "DELETE FROM " . $this->table_name . " WHERE id_producto = ?";
             
             // Preparamos la consulta SQL.
             $stmt = $this->conn->prepare($query);
             
             // Unimos el ID al parámetro de la consulta SQL.
-            $stmt->bind_param("i", $this->id);
+            $stmt->bind_param("i", $this->id_producto);
             
             // Ejecutamos la consulta y retornamos el resultado (true si fue exitoso, false si no lo fue).
             return $stmt->execute();

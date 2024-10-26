@@ -30,16 +30,16 @@ class UsuarioEmpresaController {
     }
 
     // Método para leer un usuarioEmpresa específico por su ID.
-    public function readOne($id_empresa) {
+    public function readOne($id_usuario) {
         $usuarioEmpresa = new UsuarioEmpresa(); // Creamos una nueva instancia del modelo UsuarioEmpresa.
-        $usuarioEmpresa->setId($id_empresa); // Asignamos el ID del usuarioEmpresa que queremos leer.
+        $usuarioEmpresa->setId($id_usuario); // Asignamos el ID del usuarioEmpresa que queremos leer.
         return $usuarioEmpresa->readOne(); // Retornamos los datos del usuarioEmpresa con el ID especificado.
     }
 
     // Método para actualizar un usuarioEmpresa existente.
     public function update($data) {
         $usuarioEmpresa = new UsuarioEmpresa(); // Creamos una nueva instancia del modelo UsuarioEmpresa.
-        $usuarioEmpresa->setId($data['id_empresa']); // Asignamos el ID del usuarioEmpresa que se va a actualizar.
+        $usuarioEmpresa->setId($data['$id_usuario']); // Asignamos el ID del usuarioEmpresa que se va a actualizar.
         $usuarioEmpresa->setEmail($data['email']); // Actualizamos el email del usuarioEmpresa.
         $usuarioEmpresa->setNombre($data['nombre']); // Actualizamos el nombre de usuarioEmpresa.
         
@@ -52,9 +52,9 @@ class UsuarioEmpresaController {
     }
 
     // Método para eliminar un usuarioEmpresa por su ID.
-    public function delete($id_empresa) {
+    public function delete($id_usuario) {
         $usuarioEmpresa = new UsuarioEmpresa(); // Creamos una nueva instancia del modelo UsuarioEmpresa.
-        $usuarioEmpresa->setId($id_empresa); // Asignamos el ID del usuarioEmpresa que se va a eliminar.
+        $usuarioEmpresa->setId($id_usuario); // Asignamos el ID del usuarioEmpresa que se va a eliminar.
         if ($usuarioEmpresa->delete()) { // Intentamos eliminar el usuarioEmpresa de la base de datos.
             return "UsuarioEmpresa eliminado exitosamente."; // Si la eliminación fue exitosa, devolvemos un mensaje de éxito.
         } else {

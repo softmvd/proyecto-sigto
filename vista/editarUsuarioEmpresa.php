@@ -3,10 +3,10 @@ require_once "C:/xampp/htdocs/sigto/proyecto-sigto/core/UsuarioEmpresaController
 $controller = new UsuarioEmpresaController();
 
 // Obtenemos el ID del usuarioEmpresa desde la URL
-$id_empresa = isset($_GET["id_empresa"]) ? $_GET["id_empresa"] : null;
+$id_usuario = isset($_GET["id_usuario"]) ? $_GET["id_usuario"] : null;
 
 // Si hay un ID de usuarioEmpresa, obtenemos sus datos
-$usuarioEmpresa = $controller->readOne($id_empresa);
+$usuarioEmpresa = $controller->readOne($id_usuario);
 
 // Inicializamos una variable para mostrar mensajes
 $message = "";
@@ -26,7 +26,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     }
 
     // Obtenemos los datos actualizados del usuarioEmpresa
-    $usuarioEmpresa = $controller->readOne($id_empresa);
+    $usuarioEmpresa = $controller->readOne($id_usuario);
 }
 ?>
 
@@ -41,7 +41,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <h1>Editar Usuario Empresa</h1>
 
     <form action="#" method="post">
-        <input type="hidden" name="id_empresa" value="<?php echo $usuarioEmpresa['id_empresa']; ?>">
+        <input type="hidden" name="id_usuario" value="<?php echo $usuarioEmpresa['id_usuario']; ?>">
         <label for="text">Email Empresa:</label>
         <input type="text" name="email" value="<?php echo $usuarioEmpresa['email']; ?>" required><br>
         <label for="nombre">Nombre de Empresa:</label>
