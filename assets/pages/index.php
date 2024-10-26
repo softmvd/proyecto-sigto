@@ -40,8 +40,8 @@ $producto = $controlador -> readAll();
                 <a href="/proyecto-sigto/assets/pages/index.php"><img id="logo" src="/proyecto-sigto/assets/img/logo-sigto.png" alt="logo-Sigto"></a>
              </div>
             <div>
-                <form action="busquedaDeProductos.php">
-                    <input type="text" name="buscador"> <!-- Poner img lupa dentro del input -->
+                <form action="busquedaDeProductos.php" method="post">
+                    <input type="text" name="nombre"> <!-- Poner img lupa dentro del input -->
                 </form>
             </div>
             <div id="registro">
@@ -121,9 +121,7 @@ $producto = $controlador -> readAll();
                 </div>
             </section>
         </article>
-            <article class="ofertasSemanales">
-                <div class="oferta">
-                    
+            <article class="ofertasSemanales">                   
                 <?php while($productos = $producto->fetch_assoc()){  ?>
                     <div class="articulo">
                         <a href="articulo.php?id=<?php echo $productos["id"] ?>">
@@ -134,15 +132,11 @@ $producto = $controlador -> readAll();
                                 <p>
                                     <?php echo $productos["nombre"] ?>
                                 </p>
-                                <p><span>Desde U$S <?php echo $productos["precio"] ?></span></p>
-                                <p>U$S <?php echo $productos["precio"] ?> <span class="descuentoOff">25% OFF</span></p>
+                                <p>U$S <?php echo $productos["precio"] ?> <span class="descuentoOff"></span></p>
                             </div>
                         </a>    
                     </div>
-                    <?php }?>
-
-                </div>
-                
+                    <?php }?>          
             </article>
         <footer>
             <div class="contenedor-footer">

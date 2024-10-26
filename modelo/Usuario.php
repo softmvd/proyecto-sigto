@@ -4,11 +4,12 @@
     class Usuario{
         //Conxion a la base de datos y nombre de la tabla
         private $conn;
-        private $table_name= "usuario";
+        private $table_name= "usuarioCliente";
 
         //Atributos privados.
         private $id_usuario;
         private $nombre;
+        private $apellido;
         private $email;
         private $clave;
 

@@ -64,7 +64,7 @@ $productos = $controlador -> readOne($id);
         <article>
             <section class="imagenes-articulo">
                 <div>
-                    <img src="<?php echo $productos["imagen"] ?>" alt="Celular">
+                    <img src="/proyecto-sigto/assets/img/<?php echo $productos["imagen"]?> "alt="Articulos">
                 </div>
             </section>
             <section class="descripcion-articulo">
@@ -117,5 +117,6 @@ $productos = $controlador -> readOne($id);
             </section>
         </article>
     </main>
+    <script src="/proyecto-sigto/assets/js/index.js"></script>
 </body>
 </html>

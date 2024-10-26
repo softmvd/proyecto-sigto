@@ -76,9 +76,9 @@ if (in_array($extension, $extensionesPermitidas)) {
     }
 
     // Método para buscar productos por el nombre.
-    public function findByName($nombre) {
+    public function findByName($data) {
         $producto = new Producto();
-        $producto->setNombre($nombre);
+        $producto->setNombre($data["nombre"]);
         return $producto->findByName();
     }
 

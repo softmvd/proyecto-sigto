@@ -146,38 +146,42 @@ class Producto{
     }
 
     public function findByName(){
+        // Definir la consulta SQL con LIKE para búsqueda parcial
         $query = "SELECT * FROM " . $this->table_name . " WHERE LOWER(nombre) LIKE ?";
-        
+    
+        // Preparar la consulta
         $stmt = $this->conn->prepare($query);
-        
-        if(!$stmt){} die( "Error al prepara la consulta" . $this->conn->error) ;
-
-        //Agragar los comodines para la busqueda
-        $buscarTermino = "%" . strtolower(($this->nombre) . "%");
-        $stmt->bind_param("s", $buscarTermino);
-
-        $stmt->execute();
-        
-        if(!$stmt->execute()){
-            echo "Error al ejecutar la consulta" . $stmt->error ;
-            return [];
-        } 
-
-        //Obtener el resultado
-        $result= $stmt->get_result();
-
-        //Crear un array para almacenar todos los registros
-        $productos = [];
-
-        //Almacenar cada fila en el array
-        while($row = $result->fetch_assoc()){
-            $productos[]= $row; //Agregar producto al array
+    
+        // Verificar si la preparación de la consulta fue exitosa
+        if(!$stmt) {
+            die("Error al preparar la consulta: " . $this->conn->error);
         }
-
-        return $productos; //Retornar el array de productos
-        
-        
+    
+        // Agregar los comodines para la búsqueda
+        $buscarTermino = strtolower($this->nombre) . "%";
+        $stmt->bind_param("s", $buscarTermino);
+    
+        // Ejecutar la consulta
+        if(!$stmt->execute()){
+            echo "Error al ejecutar la consulta: " . $stmt->error;
+            return [];
+        }
+    
+        // Obtener el resultado de la consulta
+        $result = $stmt->get_result();
+    
+        // Crear un array para almacenar todos los registros
+        $productos = [];
+    
+        // Almacenar cada fila en el array
+        while($row = $result->fetch_assoc()){
+            $productos[] = $row; // Agregar producto al array
+        }
+    
+        // Retornar el array de productos
+        return $productos;
     }
+    
     
     
 

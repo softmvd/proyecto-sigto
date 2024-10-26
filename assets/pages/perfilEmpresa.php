@@ -52,10 +52,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             <a href="catalogoEmpresa.php">Catalogo</a>
         </div>
         <div>
-            <a href="cuenta.php">Mi Cuenta</a>
+            <a href="#">Ventas</a>
         </div>
         <div>
-            <a href="carrito.php"><img src="/proyecto-sigto/assets/img/shopping-cart (2).png" alt="carrito"></a>
+            <a href="cuenta.php">Mi Cuenta</a>
         </div>
     </div>
     <div class="menu-segundo">

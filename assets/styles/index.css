@@ -181,12 +181,15 @@ footer{
     background-color: #4B4B4B;
     color:#707070;
     border-top: 3px solid black;
+    height: 25vh;
 }
 footer h3{
     font-size: 1.2em;
     color: white;
 }
 footer .pie{
+    display: flex;
+    justify-content: center;
     background-color: #1C1C1C;
     padding: 1%;
 }
@@ -196,7 +199,13 @@ footer .pie{
 footer ul{
     list-style: none;
 }
-
+.contenedor-footer{
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    gap: 5%;
+    height: 100%;
+}
 
 @media only screen and (min-width: 768px) {
     header #logo-sigto{
@@ -224,6 +233,7 @@ footer ul{
         display: flex;
         padding: 4%;
     }
+   
 }
 
 @media only screen and (min-width: 992px){

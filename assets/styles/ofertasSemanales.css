@@ -4,10 +4,13 @@
 }
 .ofertasSemanales{
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
     width: 100%;
     margin: 8% 0 4% 0;
+    gap: 1%;
 }
 .oferta{
     display: flex;
@@ -23,12 +26,19 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 36%;
-    padding: 4%;
-    margin-bottom: 2%;
+    max-width: 36%;
+    height: 100%;
+    padding: 3%;
+    margin-top: 1%;
     background-color: white;
     border-radius: 10px;
-    border: 1px solid #CCCCCC;
+}
+.articulo a{
+    text-decoration: none !important;
+    color: black;
+}
+.articulo a:link{
+    color: black;
 }
 
 .articulo img{
@@ -41,6 +51,10 @@
     gap: 4px;
     margin-top: 5%;
 }
+.descripcion-oferta p:last-of-type{
+    font-size: 1.5em;
+}
+
 .descripcion-oferta span:first-of-type{
     text-decoration: line-through;
     color: gray;

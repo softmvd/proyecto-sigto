@@ -1,12 +1,6 @@
 <?php
 require_once 'C:/xampp/htdocs/sigto/proyecto-sigto/core/ProductoController.php';
-
-session_start();
-$usuarioSesion = isset($_SESSION["usuario"])? $_SESSION["usuario"]:null;
-
-
 $controlador = new ProductoController();
-$productos = $controlador -> leerPorCorreo($usuarioSesion["email"]);
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Comprobamos si existe un ID para actualizar
@@ -20,6 +14,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 }
 $id= isset($_GET["id"])? $_GET["id"] : null;
 $resultado= $controlador ->delete($id);
+
+session_start();
+$usuarioSesion = isset($_SESSION["usuario"])? $_SESSION["usuario"]:null;
+$productos = $controlador -> leerPorCorreo($usuarioSesion["email"]);
 
 ?>
 
@@ -55,6 +53,7 @@ $resultado= $controlador ->delete($id);
             <div>
                 <a href="perfilEmpresa.php">Mi Cuenta</a>
             </div>
+            
             <div>
                 <a href="carrito.php"><img src="/proyecto-sigto/assets/img/shopping-cart (2).png" alt="carrito"></a>
             </div>
@@ -118,8 +117,8 @@ $resultado= $controlador ->delete($id);
                                     <a href="/proyecto-sigto/vista/editarProductoCatalogo.php?id=<?php echo $producto["id"];?>">
                                         <input type="button" value="Editar">
                                     </a>
-                                    <a href="/proyecto-sigto/assets/pages/catalogoEmpresa.php?id=<?php echo $producto["id"];?>">
-                                    <input type="button" value="Eliminar">
+                                    <a href="?id=<?php echo $producto["id"];?>">
+                                        <input type="button" value="Eliminar">
                                     </a>
                                     
                                 </div>

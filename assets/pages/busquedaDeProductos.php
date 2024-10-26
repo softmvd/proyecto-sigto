@@ -7,9 +7,9 @@ $usuarioSesion = isset($_SESSION["usuario"])? $_SESSION["usuario"]:null;
 
 $controlador = new ProductoController();
 
-$producto = $_SERVER["REQUEST_METHOD"] == "POST"? $controlador -> findByName($_POST["nombre"]) : "Elemento vacio";
+// Aquí inicializamos $productos como un array vacío si no hay POST
+$productos = $_SERVER["REQUEST_METHOD"] == "POST" ? $controlador->findByName($_POST) : [];
 
-var_dump($producto);
 ?>
 
 <!DOCTYPE html>
