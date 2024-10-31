@@ -17,7 +17,7 @@ $resultado= $controlador ->delete($id);
 
 session_start();
 $usuarioSesion = isset($_SESSION["usuario"])? $_SESSION["usuario"]:null;
-//$productos = $controlador -> leerPorCorreo($usuarioSesion["email"]);
+$productos = $controlador -> leerPorCorreo($usuarioSesion["email"]);
 
 ?>
 
@@ -103,21 +103,21 @@ $usuarioSesion = isset($_SESSION["usuario"])? $_SESSION["usuario"]:null;
                         <div class="producto-item-1">
                             <div class="imagen-item"><img src="/proyecto-sigto/assets/img/<?php echo $producto["imagen"] ?>" alt="Articulo"></div>
                             <div class="descripcion">
-                                <div>Estado: <?php echo $producto["estado"] ?></div>
+                                <div>Estado: <?php echo $producto["disponibilidad"] ?></div>
                                 <div>
-                                    <p>Nombre: <?php echo $producto["nombre"]; ?></p>
+                                    <p>Nombre: <?php echo $producto["nombre_producto"]; ?></p>
                                     <p>Precio: <?php echo $producto["precio"] ?></p>
                                     <p>Descripcion: <?php echo $producto["descripcion"] ?></p>
-                                    <p>Unidades:<?php echo $producto["cantidad"] ?></p>
+                                    <p>Unidades:<?php echo $producto["stock"] ?></p>
                                 </div>
                                 <div>
                                     <p>Empresa: <?php echo $producto["email_vendedor"] ?></p>
                                 </div>
                                 <div>
-                                    <a href="/proyecto-sigto/vista/editarProductoCatalogo.php?id=<?php echo $producto["id"];?>">
+                                    <a href="/proyecto-sigto/vista/editarProductoCatalogo.php?id=<?php echo $producto["id_producto"];?>">
                                         <input type="button" value="Editar">
                                     </a>
-                                    <a href="?id=<?php echo $producto["id"];?>">
+                                    <a href="?id=<?php echo $producto["id_producto"];?>">
                                         <input type="button" value="Eliminar">
                                     </a>
                                     

@@ -39,7 +39,7 @@ $producto = $controlador -> readAll();
         <div class="menu-primero">
             <div>
                 <a href="/proyecto-sigto/assets/pages/index.php">
-                    <img id_producto="logo" src="/proyecto-sigto/assets/img/logo-sigto.png" alt="logo">
+                    <img id="logo" src="/proyecto-sigto/assets/img/logo-sigto.png" alt="logo">
                 </a>
             </div>
             <div>
@@ -90,6 +90,7 @@ $producto = $controlador -> readAll();
                                     <p>Nombre: <?php  echo $productos["nombre_producto"] ?> </p>
                                     <p>Descripcion: <?php  echo $productos["descripcion"] ?></p>
                                     <p>Precio: <?php  echo $productos["precio"] ?></p>
+                                    <p>Email vendedor: <?php  echo $productos["email_vendedor"] ?></p>
                                     <p>Unidades disponibles: <?php  echo $productos["stock"] ?></p>
                                 </div>
                                 <div>

@@ -85,23 +85,25 @@ $productos = $_SERVER["REQUEST_METHOD"] == "POST" ? $controlador->findByName($_P
                 
                 <section class="productos">
                 <?php foreach($productos as $producto) {?>
-                    <div class="producto-item">
-                        <div class="producto-item-1">
-                            <div class="imagen-item"><img src="/proyecto-sigto/assets/img/<?php echo $producto["imagen"] ?>" alt="Articulo"></div>
-                            <div class="descripcion">
-                                
-                                <div>
-                                    <p>Nombre: <?php echo $producto["nombre"]; ?></p>
-                                    <p>Precio: <?php echo $producto["precio"] ?></p>
-                                    <p>Descripcion: <?php echo $producto["descripcion"] ?></p>
-                                    <p>Unidades:<?php echo $producto["cantidad"] ?></p>
+                    <a href="articulo.php?id=<?php echo $producto["id_producto"] ?>">
+                        <div class="producto-item">
+                            <div class="producto-item-1">
+                                <div class="imagen-item"><img src="/proyecto-sigto/assets/img/<?php echo $producto["imagen"] ?>" alt="Articulo"></div>
+                                <div class="descripcion">
+                                    
+                                    <div>
+                                        <p>Nombre: <?php echo $producto["nombre_producto"]; ?></p>
+                                        <p>Precio: <?php echo $producto["precio"] ?></p>
+                                        <p>Descripcion: <?php echo $producto["descripcion"] ?></p>
+                                        <p>Unidades:<?php echo $producto["stock"] ?></p>
+                                    </div>
+                                    <div>
+                                        <p>Empresa: <?php echo $producto["email_vendedor"] ?></p>
+                                    </div>
                                 </div>
-                                <div>
-                                    <p>Empresa: <?php echo $producto["email_vendedor"] ?></p>
-                                </div>
-                            </div>
-                        </div>                   
-                    </div>
+                            </div>                   
+                        </div>
+                    </a>
                     <?php }?>
             </section>
             

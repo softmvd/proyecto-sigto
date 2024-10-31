@@ -68,12 +68,12 @@ if (in_array($extension, $extensionesPermitidas)) {
         }
     }
 
-    // Método para leer productos por el correo del vendedor.
-   //public function leerPorCorreo($email_vendedor) {
-      //  $producto = new Producto();
-    //    $producto->setEmailVendedor($email_vendedor);
-     //   return $producto->leerPorCorreo();
-    //}
+     //Método para leer productos por el correo del vendedor.
+   public function leerPorCorreo($email_vendedor) {
+        $producto = new Producto();
+        $producto->setEmailVendedor($email_vendedor);
+        return $producto->leerPorCorreo();
+    }
 
     // Método para buscar productos por el nombre.
     public function findByName($data) {

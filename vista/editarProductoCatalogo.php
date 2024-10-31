@@ -17,10 +17,10 @@ $producto= $controlador->readOne($id_producto);
     <h1>Editar producto</h1>
     <form action="../assets/pages/catalogoEmpresa.php" method="post" enctype="multipart/form-data">
     <!-- Campo oculto para el ID del producto -->
-    <input type="hidden" name="id" value="<?php echo $producto["id"]; ?>">
+    <input type="hidden" name="id_producto" value="<?php echo $producto["id_producto"]; ?>">
 
     <label for="nombre">Nombre:</label>
-    <input type="text" name="nombre" value="<?php echo $producto["nombre"] ?>" required><br>
+    <input type="text" name="nombre" value="<?php echo $producto["nombre_producto"] ?>" required><br>
     <label for="descripcion">Descripcion:</label>
     <input type="text" name="descripcion" value="<?php echo $producto["descripcion"] ?>" required><br>
     <label for="precio">Precio:</label>
@@ -32,9 +32,9 @@ $producto= $controlador->readOne($id_producto);
     <label for="marca">Marca:</label>
     <input type="text" name="marca" value="<?php echo $producto["marca"] ?>">
     <label for="cantidad">Cantidad:</label>
-    <input type="text" name="cantidad" value="<?php echo $producto["cantidad"] ?>">
+    <input type="text" name="cantidad" value="<?php echo $producto["stock"] ?>">
     <label for="estado">Estado:</label>
-    <input type="text" name="estado" value="<?php echo $producto["estado"] ?>">
+    <input type="text" name="estado" value="<?php echo $producto["disponibilidad"] ?>">
     <input type="submit" value="Actualizar">
     <a class="button" href="../assets/pages/catalogoEmpresa.php">Volver a la lista</a>
 </form>

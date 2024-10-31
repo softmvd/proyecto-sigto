@@ -124,13 +124,13 @@ $producto = $controlador -> readAll();
             <article class="ofertasSemanales">                   
                 <?php while($productos = $producto->fetch_assoc()){  ?>
                     <div class="articulo">
-                        <a href="articulo.php?id=<?php echo $productos["id"] ?>">
+                        <a href="articulo.php?id=<?php echo $productos["id_producto"] ?>">
                             <div>
                                 <img src="/proyecto-sigto/assets/img/<?php echo $productos["imagen"] ?>  " alt="Articulo-venta">
                             </div>
                             <div class="descripcion-oferta">
                                 <p>
-                                    <?php echo $productos["nombre"] ?>
+                                    <?php echo $productos["nombre_producto"] ?>
                                 </p>
                                 <p>U$S <?php echo $productos["precio"] ?> <span class="descuentoOff"></span></p>
                             </div>

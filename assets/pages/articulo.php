@@ -70,7 +70,7 @@ $productos = $controlador -> readOne($id);
             <section class="descripcion-articulo">
                 <p>Nuevo |</p>
                 <div>
-                    <h3><?php echo $productos["nombre"] ?></h3>
+                    <h3><?php echo $productos["nombre_producto"] ?></h3>
                 </div>
                 <div>
                     <p><span class="precio">U$S <?php echo $productos["precio"] ?></span></p>
@@ -96,11 +96,14 @@ $productos = $controlador -> readOne($id);
                     <p>Ver en el mapa</p>
                 </div>
                 <div>
-                    <p>Stock disponible: <?php echo $productos["cantidad"] ?></p>
+                    <p>Stock disponible: <?php echo $productos["stock"] ?></p>
                 </div>
                 <div class="botones">
                     <input type="button" value="Comprar ahora">
-                    <input type="button" value="Agregar al carrito">
+                    <a href="#">
+                        <input type="button" value="Agregar al carrito">
+                    </a>
+                    
                 </div>
                 <div>
                     <p>Vendido por <span class="opciones"><?php echo $productos["email_vendedor"] ?></span></p>
