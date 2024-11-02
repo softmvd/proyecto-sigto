@@ -165,5 +165,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 </main>
 <script src="/proyecto-sigto/assets/js/index.js"></script>
 <script src="/proyecto-sigto/assets/js/perfilPersonal.js"></script>
+
 </body>
 </html>

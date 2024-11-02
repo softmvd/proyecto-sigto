@@ -100,7 +100,7 @@ $productos = $controlador -> readOne($id);
                 </div>
                 <div class="botones">
                     <input type="button" value="Comprar ahora">
-                    <a href="#">
+                    <a href="carrito.php?id=<?php echo $id?>"> 
                         <input type="button" value="Agregar al carrito">
                     </a>
                     

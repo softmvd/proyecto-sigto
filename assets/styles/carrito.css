@@ -111,3 +111,14 @@ button {
     border: none;
     border-radius: 25px;
 }
+.precio p:first-of-type{
+    display: none;
+}
+
+.carrito a{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 3px;
+
+}

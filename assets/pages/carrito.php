@@ -1,10 +1,51 @@
+<?php
+require_once 'C:/xampp/htdocs/sigto/proyecto-sigto/core/ProductoController.php';
+// Iniciar la sesión
+session_start();
+
+// Verificar y corregir la variable de sesión para asegurar que sea un arreglo
+if (!isset($_SESSION['carritoIDS']) || !is_array($_SESSION['carritoIDS'])) {
+    $_SESSION['carritoIDS'] = []; // Inicializar como un arreglo vacío si no existe o no es un arreglo
+}
+
+// Capturar el parámetro de eliminación y borrar el producto del carrito
+if (isset($_GET['eliminar_id']) && is_numeric($_GET['eliminar_id'])) {
+    $idEliminar = (int)$_GET['eliminar_id'];
+    if (($key = array_search($idEliminar, $_SESSION['carritoIDS'])) !== false) {
+        unset($_SESSION['carritoIDS'][$key]);
+        $_SESSION['carritoIDS'] = array_values($_SESSION['carritoIDS']); // Reindexar el array
+    }
+}
+
+// Obtener el número enviado por GET y añadirlo al array de sesión
+if (isset($_GET['id']) && is_numeric($_GET['id'])) {
+    $id = (int)$_GET['id'];
+    $_SESSION['carritoIDS'][] = $id; // Agregar el número al array de sesión
+}
+
+$arrayIDs = isset($_SESSION['carritoIDS']) ? $_SESSION['carritoIDS'] : [];
+
+// Crear una instancia del controlador de productos
+$controller = new ProductoController();
+
+// Inicializar el array de productos
+$arrayProductos = [];
+
+// Recorrer el array de IDs y obtener cada producto
+foreach ($arrayIDs as $id) {
+    $producto = $controller->readOne($id);
+    if ($producto) { // Verificar que se obtuvo un producto válido
+        $arrayProductos[] = $producto;
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Perfil Personal</title>
+    <title>Carrito de compras</title>
     <link rel="stylesheet" href="/proyecto-sigto/assets/styles/index.css">
     <link rel="stylesheet" href="/proyecto-sigto/assets/styles/perfilPersonal.css">
     <link rel="stylesheet" href="/proyecto-sigto/assets/styles/productos.css">
@@ -36,9 +77,9 @@
             <div>
                 <a href="/proyecto-sigto/assets/pages/cuenta.html">Mi Cuenta</a>
             </div>
-            <div>
+            <div class="carrito">
                 <a href="carrito.php">
-                    <img src="/proyecto-sigto/assets/img/shopping-cart (2).png" alt="carrito">
+                   <p></p><img src="/proyecto-sigto/assets/img/shopping-cart (2).png" alt="carrito">
                 </a>
             </div>
         </div>
@@ -54,21 +95,20 @@
         </div>
     </header>
     <main>
-        <article class="administrar-opciones">
+    <article class="administrar-opciones">
+            <?php foreach ($arrayProductos as $producto) { ?>
             <section class="productos">
-                <p>1 Producto</p>
                 <div class="producto-item">
                     <div class="fecha">
-                        <p>TodoTecno.uy</p>
-                        <p>Vendido por TodoTecno.uy</p>
+                        <p>Productos de  <?php echo $producto["email_vendedor"]; ?> </p>
                     </div>
                     <div class="producto-item-1">
-                        <div class="imagen-item">
-                            <img src="https://static-catalog.tiendamia.com/marketplace_manager_service/production/product_2aac9d64_mirakl_image_1_medium.jpg" alt="Notebook">
+                        <div class="imagen-item"> 
+                            <img src="/proyecto-sigto/assets/img/<?php echo $producto["imagen"]; ?>" alt="Notebook">
                         </div>
                         <div class="descripcion">
                             <div>
-                                <h3>Apple MacBook Air 13.3" Core i7 / 8GB /... </h3>
+                                <h3><?php echo $producto["nombre_producto"]; ?> </h3>
                             </div>
                             <div class="andes-input-stepper">
                                 <button id="decrease-btn">-</button>
@@ -78,15 +118,14 @@
                                 <button id="increase-btn">+</button>
                             </div>
                             <div class="botones-op">
-                                <input type="button" value="Eliminar">
-                                <input type="button" value="Guardar">
-                                <input type="button" value="Comprar ahora">
+                                <a href="?eliminar_id=<?php echo $producto['id_producto']; ?>"> 
+                                    <input type="button" value="Eliminar">
+                                </a>
                             </div>
-                            
                         </div>
                         <div class="precio">
-                            <p>14000</p>
-                            <p>14000</p>
+                            <p><?php echo $producto["precio"]; ?></p>
+                            <p><?php echo $producto["precio"]; ?></p>
                         </div>
                     </div>
                     <div class="envio">
@@ -96,15 +135,16 @@
                 </div>
             </section>
         </article>
+        <?php } ?> 
     </main>
     <article class="total">
             <section class="total-container">
                 <div>
                     <h3>Resumen de compra</h3>
                     <ul>
-                        <li><p>Productos()</p><p><span>$14.000</span></p></li>
+                        <li><p>Productos()</p><p><span>$000</span></p></li>
                         <li><p>Envios()</p><p>Gratis</p></li>
-                        <li><p>Total</p><p><span>$14.000</span></p></li>
+                        <li><p>Total</p><p><span>$000</span></p></li>
                     </ul>
                     <input type="button" value="Continuar compra">
                 </div>

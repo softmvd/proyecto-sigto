@@ -5,7 +5,7 @@ const increaseBtn = document.getElementById("increase-btn");
 const decreaseBtn = document.getElementById("decrease-btn");
 let precio = document.querySelectorAll(".precio p");
 
-precio[0].style.display ="none";
+
 
 
 increaseBtn.addEventListener("click", () => {

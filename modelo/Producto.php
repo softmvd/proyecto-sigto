@@ -213,6 +213,7 @@ class Producto{
         return $result->fetch_assoc();
     }
 
+   
         // Método para actualizar un producto existente.
         public function update() {
             // Consulta SQL para actualizar un registro en la tabla de productos, usando un identificador (ej. id_producto).

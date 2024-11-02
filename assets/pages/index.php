@@ -4,6 +4,8 @@ $controlador = new ProductoController();
 
 $producto = $controlador -> readAll();
 
+session_start();
+$usuarioSesion = isset($_SESSION["usuario"])? $_SESSION["usuario"]:null;
 
 ?>
 
@@ -45,10 +47,10 @@ $producto = $controlador -> readAll();
                 </form>
             </div>
             <div id="registro">
-                <a href="registrarse.php">Registrarse</a>
+                <a href="registrarse.php"> <?php echo $registrado = isset($usuarioSesion["nombre"])? "" : "Registrarse"?> </a>
             </div>
-            <div>
-                <a href="ingresarCuenta.php">Mi Cuenta</a>
+            <div class="mi-cuenta">
+                <a href="ingresarCuenta.php"><?php echo $cuenta = isset($usuarioSesion["nombre"])? $usuarioSesion["nombre"] : "Mi cuenta"?> </a>
             </div>
             <div>
                 <a href="carrito.php"><img src="/proyecto-sigto/assets/img/shopping-cart (2).png" alt="carrito"></a>
