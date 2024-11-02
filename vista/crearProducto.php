@@ -30,7 +30,10 @@
         <input type="text" name="cantidad"><br>
         
         <label for="estado">Estado:</label>
-        <input type="text" name="estado"><br>
+        <select name="estado" id="estado">
+            <option value="ACTIVO">ACTIVO</option>
+            <option value="INACTIVO">INACTIVO</option>
+        </select><br>
         
         <input type="submit" value="Crear">
         <a class="button" href="../assets/pages/productos.php">Volver a la lista</a>
