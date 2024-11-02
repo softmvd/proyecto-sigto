@@ -17,10 +17,13 @@ class UsuarioController {
         $usuario->setNombre($data['nombre']); // Asignamos el nombre de usuario.
         $usuario->setApellido($data['apellido']); // Asignamos el apellido de usuario.
         $usuario->setContraseña($data['clave']); // Asignamos la contraseña del usuario.
-        if ($usuario->create()) { // Intentamos crear el usuario en la base de datos.
-            return "Usuario creado exitosamente."; // Si la creación fue exitosa, devolvemos un mensaje de éxito.
+
+        $newUserId = $usuario->create(); // Intentamos crear el usuario en la base de datos.
+
+        if ($newUserId) { // Si se ha creado con éxito, se recibe el ID
+            return  $newUserId; // Mensaje de éxito
         } else {
-            return "Error al crear usuario."; // Si hubo un error, devolvemos un mensaje de error.
+            return "Error al crear usuario."; // Mensaje de error
         }
     }
 

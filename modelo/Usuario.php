@@ -69,7 +69,7 @@
     public function create() {
         // Consulta SQL para insertar un nuevo registro
         $query = "INSERT INTO " . $this->table_name . " (nombre, apellido, email, clave) VALUES (?, ?, ?, ?)";
-        
+
         // Preparamos la consulta SQL
         $stmt = $this->conn->prepare($query);
         
@@ -77,17 +77,18 @@
         $hashedPassword = password_hash($this->clave, PASSWORD_DEFAULT);
         
         // Unimos los valores a los parámetros de la consulta SQL
-        $stmt->bind_param("ssss", $this->nombre,$this->apellido ,$this->email, $hashedPassword);
+        $stmt->bind_param("ssss", $this->nombre, $this->apellido, $this->email, $hashedPassword);
         
         // Ejecutamos la consulta y verificamos si se ejecutó correctamente
         if ($stmt->execute()) {
-            return true; // Retornamos true si el usuario fue creado exitosamente
+            $this->id_usuario = $this->conn->insert_id; // Obtenemos el ID del nuevo registro
+            return $this->id_usuario; // Retornamos el ID del nuevo usuario
         } else {
-            // Manejo de errores: mostramos el error y retornamos false
             echo "Error: " . $stmt->error;
             return false;
         }
     }
+
     
     // Método para leer todos los usuarios.
     public function readAll() {

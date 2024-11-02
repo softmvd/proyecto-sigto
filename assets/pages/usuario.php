@@ -1,30 +1,34 @@
 <?php
 require_once "C:/xampp/htdocs/sigto/proyecto-sigto/core/UsuarioController.php";
 require_once "C:/xampp/htdocs/sigto/proyecto-sigto/core/UsuarioEmpresaController.php";
+require_once "C:/xampp/htdocs/sigto/proyecto-sigto/core/cuentaClienteController.php";
 
-// Crear una instancia del controlador Usuario
+// Crear instancias de los controladores
 $controller = new UsuarioController();
 $controllerEmpresa = new UsuarioEmpresaController();
+$controllerCuentaCliente = new cuentaClienteController();
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-  
+    // Crear Usuario
+    if (isset($_POST['email']) && isset($_POST['nombre']) && isset($_POST['clave'])) {
         $resultado = $controller->create($_POST);
+        $controllerCuentaCliente->create((int)$resultado);
 
         // Verificar si la creación fue exitosa y redirigir.
         if ($resultado === "Usuario creado exitosamente.") {
-            // Redirigir a la página principal.
             header("Location: /proyecto-sigto/assets/pages/index.php");
             exit; // Termina el script para evitar la ejecución adicional.
         } else {
             echo $resultado; // Muestra un mensaje de error si la operación falló.
         }
+    }
 
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Crear Usuario Empresa
+    if (isset($_POST['emailEmpresa']) && isset($_POST['nombreEmpresa']) && isset($_POST['claveEmpresa'])) {
         $resultado = $controllerEmpresa->create($_POST);
 
         // Verificar si la creación fue exitosa y redirigir.
         if ($resultado === "UsuarioEmpresa creado exitosamente.") {
-            // Redirigir a la página principal.
             header("Location: /proyecto-sigto/assets/pages/index.php");
             exit; // Termina el script para evitar la ejecución adicional.
         } else {
@@ -33,14 +37,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 
+// Manejo de eliminación de usuarios
 $id_usuario = isset($_GET["id"]) ? $_GET['id'] : null;
 $id_empresa = isset($_GET["id_usuario"]) ? $_GET['id_usuario'] : null;
 
-$resultado = $controller->delete($id_usuario);
- 
-$resultadoE = $controllerEmpresa->delete($id_empresa);
-   
+if ($id_usuario) {
+    $resultado = $controller->delete($id_usuario);
+}
 
+if ($id_empresa) {
+    $resultadoE = $controllerEmpresa->delete($id_empresa);
+}
+
+// Leer todos los usuarios
 $usuarios = $controller->readAll();
 $usuariosEmpresa = $controllerEmpresa->readAll();
 ?>
@@ -102,7 +111,6 @@ $usuariosEmpresa = $controllerEmpresa->readAll();
                                 <th>ID</th>
                                 <th>Nombre de Usuario</th>
                                 <th>Email</th>
-                               
                                 <th>Acciones</th>
                             </tr>
                         </thead>
@@ -115,13 +123,13 @@ $usuariosEmpresa = $controllerEmpresa->readAll();
                                         <td><?php echo $usuario['email']; ?></td>
                                         <td>
                                             <a class="button edit" href="/proyecto-sigto/vista/edicionUsuarioAdmin.php?id=<?php echo $usuario['id_usuario']; ?>">Editar</a>
-                                            <a class="button delete" href="?id=<?php echo $usuario['id_usuario']; ?>">Eliminar</a> <!-- Enlace para eliminar al usuario -->
+                                            <a class="button delete" href="?id=<?php echo $usuario['id_usuario']; ?>">Eliminar</a>
                                         </td>
                                     </tr>
                                 <?php } ?>
                             <?php } else { ?>
                                 <tr>
-                                    <td colspan="5">No se encontraron usuarios.</td>
+                                    <td colspan="4">No se encontraron usuarios.</td>
                                 </tr>
                             <?php } ?>
                         </tbody>
@@ -134,7 +142,6 @@ $usuariosEmpresa = $controllerEmpresa->readAll();
                                 <th>ID</th>
                                 <th>Nombre de Empresa</th>
                                 <th>Email</th>
-                                
                                 <th>Acciones</th>
                             </tr>
                         </thead>
@@ -145,16 +152,15 @@ $usuariosEmpresa = $controllerEmpresa->readAll();
                                         <td><?php echo $usuarioEmpresa['id_usuario']; ?></td>
                                         <td><?php echo $usuarioEmpresa['nombreEmpresa']; ?></td>
                                         <td><?php echo $usuarioEmpresa['email']; ?></td>
-                                        
                                         <td>
                                             <a class="button edit" href="/proyecto-sigto/vista/editarUsuarioEmpresa.php?id_usuario=<?php echo $usuarioEmpresa['id_usuario']; ?>">Editar</a>
-                                            <a class="button delete" href="?id_usuario=<?php echo $usuarioEmpresa['id_usuario']; ?>">Eliminar</a> <!-- Enlace para eliminar al usuario empresa -->
+                                            <a class="button delete" href="?id_usuario=<?php echo $usuarioEmpresa['id_usuario']; ?>">Eliminar</a>
                                         </td>
                                     </tr>
                                 <?php } ?>
                             <?php } else { ?>
                                 <tr>
-                                    <td colspan="5">No se encontraron usuarios empresa.</td>
+                                    <td colspan="4">No se encontraron usuarios empresa.</td>
                                 </tr>
                             <?php } ?>
                         </tbody>

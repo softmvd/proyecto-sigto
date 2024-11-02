@@ -1,65 +1,73 @@
 <?php
-// Incluimos el modelo UsuarioEmpresa.
+// Incluimos el modelo UsuarioEmpresa
 if (file_exists('C:/xampp/htdocs/sigto/proyecto-sigto/modelo/UsuarioEmpresa.php')) {
     require_once 'C:/xampp/htdocs/sigto/proyecto-sigto/modelo/UsuarioEmpresa.php';
 } else {
     die('El archivo UsuarioEmpresa.php no se encontró en la ruta especificada.');
 }
 
-
-
-
 class UsuarioEmpresaController {
-    // Método para crear un nuevo usuarioEmpresa.
+    // Método para crear un nuevo usuario Empresa
     public function create($data) {
-        $usuarioEmpresa = new UsuarioEmpresa(); // Creamos una nueva instancia del modelo UsuarioEmpresa.
-        $usuarioEmpresa->setEmail($data['emailEmpresa']); // Asignamos el email del usuarioEmpresa utilizando el dato proporcionado.
-        $usuarioEmpresa->setNombre($data['nombreEmpresa']); // Asignamos el nombre de usuarioEmpresa.
-        $usuarioEmpresa->setContraseña($data['claveEmpresa']); // Asignamos la contraseña del usuarioEmpresa.
-        if ($usuarioEmpresa->create()) { // Intentamos crear el usuarioEmpresa en la base de datos.
-            return "UsuarioEmpresa creado exitosamente."; // Si la creación fue exitosa, devolvemos un mensaje de éxito.
+        // Verificamos que las claves necesarias estén en $data
+        if (!isset($data['emailEmpresa'], $data['nombreEmpresa'], $data['claveEmpresa'])) {
+            return "Error: Faltan datos requeridos para crear el usuario de empresa.";
+        }
+
+        $usuarioEmpresa = new UsuarioEmpresa(); // Creamos una nueva instancia del modelo UsuarioEmpresa
+        $usuarioEmpresa->setEmail($data['emailEmpresa']); // Asignamos el email
+        $usuarioEmpresa->setNombre($data['nombreEmpresa']); // Asignamos el nombre
+        $usuarioEmpresa->setContraseña($data['claveEmpresa']); // Asignamos la contraseña
+
+        if ($usuarioEmpresa->create()) { // Intentamos crear el usuario
+            return "UsuarioEmpresa creado exitosamente."; // Mensaje de éxito
         } else {
-            return "Error al crear usuarioEmpresa."; // Si hubo un error, devolvemos un mensaje de error.
+            return "Error al crear usuarioEmpresa."; // Mensaje de error
         }
     }
 
-    // Método para leer todos los usuarios.
+    // Método para leer todos los usuarios
     public function readAll() {
-        $usuarioEmpresa = new UsuarioEmpresa(); // Creamos una nueva instancia del modelo UsuarioEmpresa.
-        return $usuarioEmpresa->readAll(); // Retornamos todos los usuarios utilizando el método readAll del modelo UsuarioEmpresa.
+        $usuarioEmpresa = new UsuarioEmpresa(); // Creamos una nueva instancia
+        return $usuarioEmpresa->readAll(); // Retornamos todos los usuarios
     }
 
-    // Método para leer un usuarioEmpresa específico por su ID.
+    // Método para leer un usuario Empresa específico por su ID
     public function readOne($id_usuario) {
-        $usuarioEmpresa = new UsuarioEmpresa(); // Creamos una nueva instancia del modelo UsuarioEmpresa.
-        $usuarioEmpresa->setId($id_usuario); // Asignamos el ID del usuarioEmpresa que queremos leer.
-        return $usuarioEmpresa->readOne(); // Retornamos los datos del usuarioEmpresa con el ID especificado.
+        $usuarioEmpresa = new UsuarioEmpresa(); // Creamos una nueva instancia
+        $usuarioEmpresa->setId($id_usuario); // Asignamos el ID
+        return $usuarioEmpresa->readOne(); // Retornamos los datos del usuario
     }
 
-    // Método para actualizar un usuarioEmpresa existente.
+    // Método para actualizar un usuario Empresa existente
     public function update($data) {
-        $usuarioEmpresa = new UsuarioEmpresa(); // Creamos una nueva instancia del modelo UsuarioEmpresa.
-        $usuarioEmpresa->setId($data['$id_usuario']); // Asignamos el ID del usuarioEmpresa que se va a actualizar.
-        $usuarioEmpresa->setEmail($data['email']); // Actualizamos el email del usuarioEmpresa.
-        $usuarioEmpresa->setNombre($data['nombre']); // Actualizamos el nombre de usuarioEmpresa.
-        
-        $usuarioEmpresa->setContraseña($data['clave']); // Actualizamos la contraseña del usuarioEmpresa.
-        if ($usuarioEmpresa->update()) { // Intentamos actualizar el usuarioEmpresa en la base de datos.
-            return "UsuarioEmpresa actualizado exitosamente."; // Si la actualización fue exitosa, devolvemos un mensaje de éxito.
+        // Verificamos que las claves necesarias estén en $data
+        if (!isset($data['id_usuario'], $data['email'], $data['nombre'], $data['clave'])) {
+            return "Error: Faltan datos requeridos para actualizar el usuario de empresa.";
+        }
+
+        $usuarioEmpresa = new UsuarioEmpresa(); // Creamos una nueva instancia
+        $usuarioEmpresa->setId($data['id_usuario']); // Asignamos el ID
+        $usuarioEmpresa->setEmail($data['email']); // Actualizamos el email
+        $usuarioEmpresa->setNombre($data['nombre']); // Actualizamos el nombre
+        $usuarioEmpresa->setContraseña($data['clave']); // Actualizamos la contraseña
+
+        if ($usuarioEmpresa->update()) { // Intentamos actualizar el usuario
+            return "UsuarioEmpresa actualizado exitosamente."; // Mensaje de éxito
         } else {
-            return "Error al actualizar usuarioEmpresa."; // Si hubo un error, devolvemos un mensaje de error.
+            return "Error al actualizar usuarioEmpresa."; // Mensaje de error
         }
     }
 
-    // Método para eliminar un usuarioEmpresa por su ID.
+    // Método para eliminar un usuario Empresa por su ID
     public function delete($id_usuario) {
-        $usuarioEmpresa = new UsuarioEmpresa(); // Creamos una nueva instancia del modelo UsuarioEmpresa.
-        $usuarioEmpresa->setId($id_usuario); // Asignamos el ID del usuarioEmpresa que se va a eliminar.
-        if ($usuarioEmpresa->delete()) { // Intentamos eliminar el usuarioEmpresa de la base de datos.
-            return "UsuarioEmpresa eliminado exitosamente."; // Si la eliminación fue exitosa, devolvemos un mensaje de éxito.
+        $usuarioEmpresa = new UsuarioEmpresa(); // Creamos una nueva instancia
+        $usuarioEmpresa->setId($id_usuario); // Asignamos el ID
+        if ($usuarioEmpresa->delete()) { // Intentamos eliminar el usuario
+            return "UsuarioEmpresa eliminado exitosamente."; // Mensaje de éxito
         } else {
-            return "Error al eliminar usuarioEmpresa."; // Si hubo un error, devolvemos un mensaje de error.
+            return "Error al eliminar usuarioEmpresa."; // Mensaje de error
         }
-    }   
+    }
 }
 ?>
