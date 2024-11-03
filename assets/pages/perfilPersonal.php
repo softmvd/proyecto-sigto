@@ -1,4 +1,6 @@
 <?php
+require_once "C:/xampp/htdocs/sigto/proyecto-sigto/core/cuentaClienteController.php";
+
 session_start(); // Iniciar sesión
 
 // Verificar si el usuario ha iniciado sesión
@@ -10,17 +12,23 @@ if (!isset($_SESSION['usuario'])) {
 // Obtener los datos del usuario
 $usuario = $_SESSION['usuario'];
 
+$controller = new cuentaClienteController();
+$cuenta = $controller->readOne((int)$usuario["id_usuario"]); // Leer la cuenta del usuario
 
-if($_SERVER["REQUEST_METHOD"] == "POST"){
-    //Eliminar todas las variables de session
-    $_SESSION = array();
-
-    //Destruir la sesion
-    session_destroy();
-
-    //Redirigir al loginsss
-    header("Location: /proyecto-sigto/assets/pages/index.php");
-    exit();
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    if (isset($_POST["cerrar_sesion"])) {
+        // Eliminar todas las variables de sesión
+        $_SESSION = array();
+        // Destruir la sesión
+        session_destroy();
+        // Redirigir al índice
+        header("Location: /proyecto-sigto/assets/pages/index.php");
+        exit();
+    } elseif (isset($_POST["telefono"])) {
+        // Lógica para actualizar los datos de la cuenta
+        $controller->update($_POST); // Actualizar con los datos del formulario
+        $cuenta = $controller->readOne((int)$usuario["id_usuario"]); // Leer de nuevo la cuenta actualizada
+    }
 }
 ?>
 
@@ -74,7 +82,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         <section class="info">
             <div class="container-contenido">
                 <div class="img-perfil">
-                <img src="https://thumbs.dreamstime.com/b/vector-de-icono-perfil-usuario-s%C3%ADmbolo-retrato-avatar-logo-la-persona-forma-plana-silueta-negra-aislada-sobre-fondo-blanco-196482128.jpg" alt="perfil">
+                    <img src="<?php echo isset($cuenta["imagen"])?"/proyecto-sigto/assets/img/" . $cuenta["imagen"]:"https://thumbs.dreamstime.com/b/vector-de-icono-perfil-usuario-s%C3%ADmbolo-retrato-avatar-logo-la-persona-forma-plana-silueta-negra-aislada-sobre-fondo-blanco-196482128.jpg" ?>" alt="perfil">
                 </div>
                 <div>    
                     <h2><?php echo ($usuario['nombre']); ?></h2>
@@ -90,16 +98,48 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 <div><img src="/proyecto-sigto/assets/img/perfil-datos.png" alt="tarjeta-informacion"></div>
                 <div>    
                     <h3>Datos de cuenta</h3>
-                    <p>Datos que representan a la cuenta de Mercado Libre y Mercado Pago.</p>
+                    <p>Datos que representan a la cuenta de Mercado Sigto y Sigto Pagos.</p>
                     <form action="#">
+                        <div>
+                            <label for="nombre">Nombre:</label>
+                            <input type="text" name="nombre" value="<?php echo $usuario["nombre"] ?>" >
+                        </div>
+                        <div>
+                            <label for="apellido">Apellido:</label>
+                            <input type="text" name="apellido" value="<?php echo $usuario["apellido"] ?>" >
+                        </div>
                         <div>
                             <label for="email">Email:</label>
                             <input type="email" name="email" value="<?php echo $usuario["email"] ?>" >
                         </div>
+                    </form>
+                </div>
+                <div class="flechita">
+                    <img src="/proyecto-sigto/assets/img/flecha.png" alt="flecha">
+                </div>
+            </div>
+            <div class="container-contenido">
+                <div><img src="/proyecto-sigto/assets/img/perfil-datos.png" alt="tarjeta-informacion"></div>
+                <div>    
+                    <h3>Datos de Personales</h3>
+                    <p>Datos que representan a la cuenta de Mercado Sigto y Sigto Pagos.</p>
+                    <form action="#">
                         <div>
-                            <label for="telefono">Telefono:</label>
-                            <input type="email" name="email" value="<?php echo "099456559" ?>" >
+                            <label for="Telefono">Telefono:</label>
+                            <input type="text" name="telefono" value="<?php echo $cuenta["telefono"] ?>" >
                         </div>
+                        <div>
+                            <label for="genero">Genero:</label>
+                            <input type="text" name="genero" value="<?php echo $cuenta["genero"] ?>" >
+                        </div>
+                        <div>
+                            <label for="nacimiento">Fecha naciemiento:</label>
+                            <input type="text" name="nacimiento" value="<?php echo $cuenta["fechaNac"] ?>" >
+                        </div>
+                        <a href="/proyecto-sigto/vista/editarCuenta.php?id_cuenta=<?php echo $cuenta["id_usuario"];?>" >
+                            <input class="inp-sub" type="button" value="Editar">
+                        </a>
+                        
                     </form>
                 </div>
                 <div class="flechita">

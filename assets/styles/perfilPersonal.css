@@ -44,6 +44,13 @@ main{
     border:none;
     border-bottom: 1px solid black;
 }
+.inp-sub{
+    background-color:cornflowerblue;
+    color: aliceblue;
+    border: none !important;
+    margin-top: 3%;
+    padding: 1% 2%;
+}
 .container-contenido div{
     padding: 1%;
 }
@@ -60,8 +67,10 @@ main{
     padding-top: 2%;
 }
 .img-perfil img{
-    width: 100px;
-    border-radius: 500px;
+    width: 110px; /* Cambia el tamaño según tus necesidades */
+    height: 110px; /* Asegúrate de que sea igual al ancho para mantener la proporción */
+    border-radius: 50%; /* Esto hace que la imagen sea circular */
+    object-fit: cover; /* Asegúrate de que la imagen cubra el área del contenedor */
 }
 
 .cerrar-sesion form{
