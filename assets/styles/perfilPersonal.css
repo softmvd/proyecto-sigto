@@ -17,17 +17,113 @@ main{
     border-radius: 4px;
     height: 100%;
 }
-.container-contenido{
+
+/* Sección de información */
+.info {
+    width: 100%;
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08); /* Sombra en cada tarjeta */
+    margin-bottom: 1.5rem;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Imagen de perfil redonda */
+.img-perfil img {
+    width: 70px;
+    height: 70px;
+    border-radius: 30% !important;
+    border: 2px solid #e0e0e0;
+    object-fit: cover;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+
+.container-contenido {
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
     align-items: center;
-    gap: 3%;
+    gap: 2%;
+    background-color: #f4f6f9; /* Fondo claro y suave */
+    padding: 2% 3%;
+    border-radius: 12px; /* Bordes redondeados */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    transition: box-shadow 0.3s ease;
 }
+/* Estilos para el nombre y el email */
+.container-contenido h2 {
+    font-size: 1.4rem;
+    color: #333;
+    margin: 0;
+    font-weight: bold;
+}
+
+
+.container-contenido p {
+    font-size: 0.95rem;
+    color: #666;
+    margin: 5px 0 0;
+}
+
+.container-contenido:hover {
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.381); /* Sombra más intensa en hover */
+}
+
+.container-contenido h3 {
+    font-size: 1rem;
+    color: #333;
+    margin-bottom: 0.3em;
+    font-weight: bold;
+}
+
+.container-contenido p {
+    color: #666;
+    line-height: 1.4;
+    font-size: 0.95rem;
+    margin-bottom: 1em;
+}
+
+/* Estilos de la información del usuario */
+.container-contenido .form div {
+    padding: 8px 0;
+    border-bottom: 1px solid #ddd; /* Línea divisoria */
+    font-size: 1rem;
+    color: #444;
+}
+
+.container-contenido .form div:last-of-type {
+    border-bottom: none; /* Quitar la línea en el último elemento */
+}
+
+/* Flechita para expandir/ocultar */
+.flechita img {
+    width: 14px;
+    height: 16px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.flechita:hover img {
+    transform: rotate(90deg); /* Rotación en hover */
+}
+
+
+/* Imagen de perfil con forma circular */
+.img-perfil img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%; /* Imagen circular */
+    object-fit: cover;
+    border: 2px solid #ddd; /* Borde ligero */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+
+
 .container-contenido div:nth-of-type(2){
     width: 100%;
 }
-.container-contenido form{
+.form{
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -35,22 +131,37 @@ main{
     margin-top: 2%;
     width: 100%;
 }
-.container-contenido div form{
+.form{
     display: none;
 }
-.container-contenido form input{
+.form input{
     width: 100%;
     padding: 1% 2%;
     border:none;
     border-bottom: 1px solid black;
+    margin: 0 2%;
 }
-.inp-sub{
-    background-color:cornflowerblue;
+.inp-sub {
+    background-color: cornflowerblue;
     color: aliceblue;
     border: none !important;
+    border-radius: 5px; /* Bordes redondeados */
     margin-top: 3%;
     padding: 1% 2%;
+    font-size: 16px; /* Aumenta el tamaño de la fuente */
+    cursor: pointer; /* Cambia el cursor al pasar por encima */
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Transiciones suaves */
 }
+
+.inp-sub:hover {
+    background-color: deepskyblue; /* Color de fondo al pasar el mouse */
+    transform: scale(1.05); /* Aumenta ligeramente el tamaño */
+}
+
+.inp-sub:focus {
+    outline: none; /* Elimina el contorno al hacer clic */
+}
+
 .container-contenido div{
     padding: 1%;
 }
@@ -78,13 +189,95 @@ main{
     justify-content: center;
     width: 100%;
 }
-.cerrar-sesion button{
-    background-color:cornflowerblue;
-    color: aliceblue;
-    border: none;
-    margin-top: 3%;
-    padding: 1% 2%;
+.btn-cerrar-sesion {
+    background-color: tomato; /* Color de fondo rojo */
+    color: white; /* Color del texto */
+    border: none; /* Sin borde */
+    border-radius: 5px; /* Bordes redondeados */
+    padding: 6px 16px; /* Espaciado interno */
+    font-size: 14px; /* Tamaño de la fuente */
+    cursor: pointer; /* Cambia el cursor al pasar por encima */
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Transiciones suaves */
 }
+
+.btn-cerrar-sesion:hover {
+    background-color: firebrick; /* Color de fondo al pasar el mouse */
+    transform: scale(1.05); /* Aumenta ligeramente el tamaño */
+}
+
+.btn-cerrar-sesion:focus {
+    outline: none; /* Elimina el contorno al hacer clic */
+}
+
+.direccion{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
+.direccion p{
+    width: 100%;
+}
+#edit-direc {
+    width: 24px;                  /* Ancho del botón */
+    height: 24px;                 /* Altura del botón */
+    background-image: url(/proyecto-sigto/assets/img/boligrafo.png);
+    background-size: contain;      /* Ajusta la imagen dentro del botón */
+    background-repeat: no-repeat;  /* No repetir la imagen */
+    border: none;                  /* Sin borde */
+    cursor: pointer;               /* Cambia a puntero al pasar el ratón */
+    display: inline-block;         /* Permite alineación en línea */
+    border-radius: 50%;           /* Hace el botón redondo */
+    background-color: transparent; /* Fondo transparente para el botón */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2); /* Sombra opcional */
+    transition: background-color 0.3s; /* Efecto de transición para el color de fondo */
+    margin-right: 5px;
+}
+
+#eliminar-direc{
+    width: 24px;                  /* Ancho del botón */
+    height: 24px;                 /* Altura del botón */
+    background-image: url(/proyecto-sigto/assets/img/eliminar.png);
+    background-size: contain;      /* Ajusta la imagen dentro del botón */
+    background-repeat: no-repeat;  /* No repetir la imagen */
+    border: none;                  /* Sin borde */
+    cursor: pointer;               /* Cambia a puntero al pasar el ratón */
+    display: inline-block;         /* Permite alineación en línea */
+    border-radius: 50%;           /* Hace el botón redondo */
+    background-color: transparent; /* Fondo transparente para el botón */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2); /* Sombra opcional */
+    transition: background-color 0.3s; /* Efecto de transición para el color de fondo */
+}
+
+#edit-direc:hover {
+    background-color: rgba(0, 0, 0, 0.1); /* Cambio de color en hover */
+}
+
+/* Contenedor principal */
+.container-contenido {
+    display: flex;
+    flex-direction: row; /* Esto asegura que los elementos estén en una columna */
+    align-items: flex-start; /* Alinea los elementos al inicio (arriba) */
+}
+
+
+/* Imagen de perfil */
+.perfil-img {
+    width: 50px; /* Ajusta el tamaño según sea necesario */
+    height: 50px;
+    margin-top: 0.5rem; /* Espacio debajo de la imagen */
+}
+
+/* Flecha para expandir/ocultar */
+.flechita img {
+    width: 14px;
+    height: 16px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    margin-top: 2rem; /* Espacio debajo de la flecha */
+}
+
+
 @media only screen and (min-width:768px){
     .container-contenido div:nth-child(2){
         width: 100%;
@@ -96,7 +289,8 @@ main{
         align-items: center;
     }
     .container-info{
-        min-width: 60%;
+        min-width: 70%;
         
     }
+    
 }

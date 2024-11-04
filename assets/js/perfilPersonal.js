@@ -1,5 +1,5 @@
 let flechas = document.querySelectorAll(".flechita");
-let formularios = document.querySelectorAll(".container-contenido div form");
+let formularios = document.querySelectorAll(".form");
 
 
 flechas.forEach((flecha,index)=>{
@@ -12,3 +12,6 @@ flechas.forEach((flecha,index)=>{
         
     })
 })
+
+
+
