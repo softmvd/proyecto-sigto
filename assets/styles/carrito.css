@@ -1,5 +1,5 @@
 body, main{
-    background-color: #F5F5F5;
+    background-color: #f4f2f2;
     height: 100%;
 }
 html{
@@ -11,16 +11,37 @@ body{
     justify-content: space-evenly;
     height: 100%;
 }
+main{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
 .productos{
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    width: 95%;
+    height: 100%;
+    padding: 1%;
+}
+.descripcion{
+    margin-bottom: 6px;
+}
+.producto-item-1{
+    padding: 1%;
+}
+.administrar-opciones{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 3%;
+    
 }
 .andes-input-stepper {
     display: flex;
     align-items: center;
     gap: 10px;
-    padding: 6px 10px 6px 10px;
+    padding: 4px 6px 4px 6px;
     border: 1px solid #ccc;
     border-radius: 5px;
     width: fit-content;
@@ -43,18 +64,11 @@ button {
 }
 
 
-.descripcion .botones-op input{
-    border: none;
-    background-color: #3A578F;
-    color: white;
-    border-radius: 5px;
-    padding: 1% 3% 1% 3%;
-    margin: 1% 0 1% 0;
-}
+
 .precio{
     display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
+    flex-direction: row;
+    justify-content: end;
     padding-bottom: 2%;
 }
 .precio p{
@@ -70,32 +84,66 @@ button {
 .fecha{
     padding: 1% 1% 1% 2%;
 }
+.eliminar-btn {
+    background-color: #333 !important;
+    transition: all 0.3s ease; /* Transición para el efecto de movimiento */
+}
+
+.eliminar-btn:hover {
+    background-color: #FF4C4C; /* Cambia el color de fondo al pasar el cursor */
+    transform: scale(1.1); /* Aumenta ligeramente el tamaño */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Añade una sombra para dar efecto de elevación */
+    cursor: pointer; /* Cambia el cursor para indicar interactividad */
+}
+.total{
+    position: sticky;
+    bottom: 0px;
+}
 
 .total{
     width: 100%;
     background-color: white;
-    height: 60%;
-    box-shadow: 0px -4px 8px rgba(0, 0, 0, 0.25);
+    height: 30vh;
+   border-radius: 10px;
 }
+
+.total-container {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 10px;
+    font-size: 18px;
+    color: #333;
+}
+
 .total-container{
-    height: 100%;
+    height:30vh;
 }
 .total-container h3{
     border-bottom: 1px solid #D3D3D3;
     padding-bottom: 1%;
 }
+.total-container h3 {
+    color: #3A578F; /* Ejemplo de azul elegante */
+}
+.total-container ul li {
+    display: flex;
+    justify-content: space-between;
+    padding: 2px 0;
+}
+
 .total-container div ul{
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 4px;
     list-style: none;
     width: 100%;
 }
 .total-container div{
     display: flex;
     flex-direction: column;
-    gap: 15px;
-    padding: 3% 5% 3% 5%;
+    gap: 8px;
+    padding: 3% 3% 1% 3%;
+    
 }
 .total-container div ul li{
     display: flex;
@@ -105,7 +153,7 @@ button {
 }
 .total-container div input{
     width: 100%;
-    height: 40px;
+    height: 30px;
     background-color: #333333;
     color:  #FFFFFF;
     border: none;
@@ -121,4 +169,37 @@ button {
     align-items: center;
     gap: 3px;
 
+}
+
+
+.increase-btn, .decrease-btn {
+    background-color: black;
+    color: #fff;
+    border: none;
+    width: 23px;
+    height: 20px;
+    border-radius: 30%;
+    cursor: pointer;
+    font-size: 20px;
+    text-align: center;
+}
+.increase-btn:hover, .decrease-btn:hover {
+    background-color: #0056b3;
+}
+.total-container div input {
+    width: 100%;
+    height: 30px;
+    background-color: #333333;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 25px;
+    transition: all 0.3s ease; /* Transición para el efecto de movimiento */
+    cursor: pointer;
+}
+
+.total-container div input:hover {
+    background-color: #3A578F; /* Cambia el color de fondo al pasar el cursor */
+    transform: scale(1.05); /* Aumenta ligeramente el tamaño */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Añade una sombra para dar efecto de elevación */
+    color: #FFFFFF; /* Asegura que el texto sigue visible */
 }

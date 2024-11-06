@@ -240,6 +240,42 @@ footer ul{
     }
    
 }
+.articulo {
+    transition: all 0.3s ease;
+    border: 1px solid #d3d3d3; /* Borde gris sutil por defecto */
+}
+
+.articulo:hover {
+    transform: scale(1.05); /* Agranda ligeramente el artículo */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Agrega sombra */
+     /* Cambia el fondo */
+    border: 1px solid #a3a3a3; /* Borde gris más oscuro en el hover */
+}
+
+.articulo img {
+    transition: all 0.3s ease;
+}
+
+.articulo:hover img {
+    opacity: 0.8; /* Disminuye la opacidad de la imagen */
+}
+
+
+footer ul li a {
+    color: #f0f0f0; /* Enlaces de texto en blanco */
+    text-decoration: none;
+    display: block;
+    padding: 2px 0;
+    transition: color 0.3s ease, transform 0.3s ease; /* Transición suave para color y efecto de escala */
+}
+
+footer ul li a:hover {
+    color: #d4a249; /* Color dorado en hover */
+    transform: scale(1.05); /* Efecto de escala para interacción */
+}
+
+
+
 
 @media only screen and (min-width: 992px){
     .principal-carrusel img{

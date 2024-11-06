@@ -1,34 +1,42 @@
-let quantity = 1;
+let quantityElements = document.querySelectorAll(".andes-input-stepper__value");
+let increaseBtns = document.querySelectorAll(".increase-btn");
+let decreaseBtns = document.querySelectorAll(".decrease-btn");
+let precios = document.querySelectorAll(".precio p");
+let darPrecio = document.querySelectorAll(".dar-precio");
+let precioArt = document.querySelectorAll(".precio-art");
 
-const quantityElement = document.querySelector(".andes-input-stepper__value");
-const increaseBtn = document.getElementById("increase-btn");
-const decreaseBtn = document.getElementById("decrease-btn");
-let precio = document.querySelectorAll(".precio p");
+function actualizarCantidad(indice, incremento) {
+    let quantity = parseInt(quantityElements[indice].innerText);
+    quantity += incremento;
+    if (quantity < 1) quantity = 1;
+    quantityElements[indice].innerText = quantity;
 
+    let precioUnitario = parseInt(precios[indice * 2].innerText); // Obtener el precio unitario
+    let resultado = precioUnitario * quantity;
+    precios[indice * 2 + 1].innerText = resultado; // Actualizar el precio total del producto
 
-
-
-increaseBtn.addEventListener("click", () => {
-    let resultado = 0;
-    quantity++;
-    quantityElement.innerText = quantity;
-    resultado =  parseInt(precio[0].innerText) *quantity;
-    precio[1].innerText=resultado;
-});
-
-decreaseBtn.addEventListener("click", () => {
-    let resultado = 0;
-    if (quantity > 1) {
-        quantity--;
-        quantityElement.innerText = quantity;
-        resultado =  parseInt(precio[0].innerText) *quantity;
-        precio[1].innerText=resultado;
-    }
-});
-
-let total = document.querySelectorAll(".total-container span");
-
-total.forEach( (t,index)=>{
-    t[index]=precio[1];
+    calcular(); // Actualizar el total general
 }
-);
+
+increaseBtns.forEach((btn, index) => {
+    btn.addEventListener("click", () => actualizarCantidad(index, 1));
+});
+
+decreaseBtns.forEach((btn, index) => {
+    btn.addEventListener("click", () => actualizarCantidad(index, -1));
+});
+
+function calcular() {
+    precioTotal = 0;
+
+    for (let p of precioArt) {
+        precioTotal += parseInt(p.innerText);
+    }
+
+    for (let d of darPrecio) {
+        d.innerText = `$${precioTotal.toFixed(2)}`;
+    }
+}
+
+
+calcular(); // Calcular al cargar la página

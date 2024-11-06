@@ -29,48 +29,66 @@ $usuarioSesion = isset($_SESSION["usuario"])? $_SESSION["usuario"]:null;
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </head>
 <body>
-    <header>
-        <div id="logo-sigto">
-            <a href="/proyecto-sigto/assets/pages/index.php"><img id="logo" src="/proyecto-sigto/assets/img/logo-sigto.png" alt="logo-Sigto"></a>
-         </div>
-        <div class="menu-primero">
-            
-            <div id="menu"> 
-                <img src="/proyecto-sigto/assets/img/menu (1).png" alt="menu-burguer">
-            </div>
-            <div id="logo-sigto-dos">
-                <a href="/proyecto-sigto/assets/pages/index.php"><img id="logo" src="/proyecto-sigto/assets/img/logo-sigto.png" alt="logo-Sigto"></a>
-             </div>
-            <div>
-                <form action="busquedaDeProductos.php" method="post">
-                    <input type="text" name="nombre"> <!-- Poner img lupa dentro del input -->
-                </form>
-            </div>
-            <div id="registro">
-                <a href="registrarse.php"> <?php echo $registrado = isset($usuarioSesion["nombre"])? "" : "Registrarse"?> </a>
-            </div>
-            <div class="mi-cuenta">
-                <a href="ingresarCuenta.php"><?php echo $cuenta = isset($usuarioSesion["nombre"])? $usuarioSesion["nombre"] : "Mi cuenta"?> </a>
-            </div>
-            <div>
-                <a href="carrito.php"><img src="/proyecto-sigto/assets/img/shopping-cart (2).png" alt="carrito"></a>
-            </div>
+<header>
+    <div id="logo-sigto">
+        <a href="/proyecto-sigto/assets/pages/index.php">
+            <img id="logo" src="/proyecto-sigto/assets/img/logo-sigto.png" alt="logo-Sigto">
+        </a>
+    </div>
+    
+    <div class="menu-primero">
+        <!-- Menú Burger -->
+        <div id="menu"> 
+            <img src="/proyecto-sigto/assets/img/menu (1).png" alt="menu-burguer">
         </div>
-        <div class="op-registro">
-            <a href="registrarse.php"><input type="button" value="Cliente"></a>
-            <a href=""><input type="button" value="Empresa"></a>
+
+        <!-- Logo alternativo (para pantallas grandes) -->
+        <div id="logo-sigto-dos">
+            <a href="/proyecto-sigto/assets/pages/index.php">
+                <img id="logo" src="/proyecto-sigto/assets/img/logo-sigto.png" alt="logo-Sigto">
+            </a>
         </div>
-        <div class="menu-segundo">
-            <ul>
-                <li><a href="#">Todas las categorias</a></li>
-                <li><a href="/proyecto-sigto/assets/pages/ofertasSemanales.html">Ofertas de la semana</a></li>
-                <li><a href="#">Como comprar</a></li>
-                <li><a href="#">Costos y tarifas</a></li>
-                <li><a href="#">Garantia de entrega</a></li>
-                <li><a href="/proyecto-sigto/assets/pages/administrar.php">Administrar</a></li>
-            </ul>
+
+        <!-- Barra de búsqueda -->
+        <div>
+            <form action="busquedaDeProductos.php" method="post">
+                <input type="text" name="nombre" placeholder="Buscar productos...">
+            </form>
         </div>
-    </header>
+
+        <!-- Enlaces de registro y cuenta -->
+        <div id="registro">
+            <a href="registrarse.php"><?php echo isset($usuarioSesion["nombre"]) ? "" : "Registrarse" ?></a>
+        </div>
+        <div class="mi-cuenta">
+            <a href="ingresarCuenta.php"><?php echo isset($usuarioSesion["nombre"]) ? $usuarioSesion["nombre"] : "Mi cuenta" ?></a>
+        </div>
+
+        <!-- Ícono de carrito -->
+        <div>
+            <a href="carrito.php"><img src="/proyecto-sigto/assets/img/shopping-cart (2).png" alt="carrito"></a>
+        </div>
+    </div>
+    
+    <!-- Opciones de registro -->
+    <div class="op-registro">
+        <a href="registrarse.php"><input type="button" value="Cliente"></a>
+        <a href=""><input type="button" value="Empresa"></a>
+    </div>
+    
+    <!-- Menú secundario (categorías) -->
+    <div class="menu-segundo">
+        <ul>
+            <li><a href="#">Todas las categorías</a></li>
+            <li><a href="/proyecto-sigto/assets/pages/ofertasSemanales.html">Ofertas de la semana</a></li>
+            <li><a href="#">Cómo comprar</a></li>
+            <li><a href="#">Costos y tarifas</a></li>
+            <li><a href="#">Garantía de entrega</a></li>
+            <li><a href="/proyecto-sigto/assets/pages/administrar.php">Administrar</a></li>
+        </ul>
+    </div>
+</header>
+
     <main>
        <article class="contenedor-carrusel">
         <section class="principal-carrusel">
@@ -140,34 +158,44 @@ $usuarioSesion = isset($_SESSION["usuario"])? $_SESSION["usuario"]:null;
                     </div>
                     <?php }?>          
             </article>
-        <footer>
-            <div class="contenedor-footer">
-                <div class="elementos-footer">
-                    <h3>Redes Sociales</h3>
-                    <ul>
-                        <li>Instagram</li>
-                        <li>Facebook</li>
-                        <li>WhatsApp</li>
-                    </ul>
-                </div>
-                <div class="elementos-footer">
-                    <h3>Marcas destacadas</h3>
-                    <ul>
-                        <li>Apple</li>
-                        <li>Nike</li>
-                        <li>Panavox</li>
-                    </ul>
-                </div>
-                <div class="elementos-footer">
-                    <h3>Contacto</h3>
-                    <ul>
-                        <li>Trabaja con nosotros</li>
-                        <li>Opiniones</li>
-                        <li></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="pie">Sistema de gestion de tiendas online. Derechos reservados ®MVD Software Solution</div>
-        </footer>
+            <footer>
+    <div class="contenedor-footer">
+        <!-- Redes Sociales -->
+        <div class="elementos-footer">
+            <h3>Redes Sociales</h3>
+            <ul>
+                <li><a href="https://www.instagram.com" target="_blank" title="Instagram">Instagram</a></li>
+                <li><a href="https://www.facebook.com" target="_blank" title="Facebook">Facebook</a></li>
+                <li><a href="https://wa.me" target="_blank" title="WhatsApp">WhatsApp</a></li>
+            </ul>
+        </div>
+
+        <!-- Marcas Destacadas -->
+        <div class="elementos-footer">
+            <h3>Marcas destacadas</h3>
+            <ul>
+                <li><a href="https://www.apple.com" target="_blank" title="Apple">Apple</a></li>
+                <li><a href="https://www.nike.com" target="_blank" title="Nike">Nike</a></li>
+                <li><a href="https://www.panavox.com" target="_blank" title="Panavox">Panavox</a></li>
+            </ul>
+        </div>
+
+        <!-- Contacto -->
+        <div class="elementos-footer">
+            <h3>Contacto</h3>
+            <ul>
+                <li><a href="mailto:contacto@tuempresa.com" title="Email de contacto">Email</a></li>
+                <li><a href="/trabaja-con-nosotros" title="Trabaja con nosotros">Trabaja con nosotros</a></li>
+                <li><a href="/opiniones" title="Ver opiniones de clientes">Opiniones</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Pie de Página -->
+    <div class="pie">
+        <p>Sistema de gestión de tiendas online. Derechos reservados ®MVD Software Solution</p>
+    </div>
+</footer>
+
         <script src="/proyecto-sigto/assets/js/index.js"></script>
     </body> 

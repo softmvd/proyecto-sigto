@@ -1,4 +1,8 @@
 <?php
+
+require_once "C:/xampp/htdocs/sigto/proyecto-sigto/core/cuentaClienteController.php";
+require_once "C:/xampp/htdocs/sigto/proyecto-sigto/core/direccionesClienteController.php";
+
 session_start(); // Iniciar sesión
 
 // Verificar si el usuario ha iniciado sesión
@@ -10,17 +14,37 @@ if (!isset($_SESSION['usuario'])) {
 // Obtener los datos del usuario
 $usuario = $_SESSION['usuario'];
 
+$controller = new cuentaClienteController();
+$cuenta = $controller->readOne((int)$usuario["id_usuario"]); // Leer la cuenta del usuario
 
-if($_SERVER["REQUEST_METHOD"] == "POST"){
-    //Eliminar todas las variables de session
-    $_SESSION = array();
+$controllerDireccion = new direccionesClienteController();
+$direccion = $controllerDireccion -> readOne((int)$usuario["id_usuario"]);
 
-    //Destruir la sesion
-    session_destroy();
+$direcciones = $controllerDireccion -> readAll((int)$usuario["id_usuario"]);
 
-    //Redirigir al loginsss
-    header("Location: /proyecto-sigto/assets/pages/index.php");
-    exit();
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    if (isset($_POST["cerrar_sesion"])) {
+        // Eliminar todas las variables de sesión
+        $_SESSION = array();
+        // Destruir la sesión
+        session_destroy();
+        // Redirigir al índice
+        header("Location: /proyecto-sigto/assets/pages/index.php");
+        exit();
+    } elseif (isset($_POST["telefono"])) {
+        // Lógica para actualizar los datos de la cuenta
+        $controller->update($_POST); // Actualizar con los datos del formulario
+        $cuenta = $controller->readOne((int)$usuario["id_usuario"]); // Leer de nuevo la cuenta actualizada
+    } elseif(isset($_POST["direccion"])){
+        $controllerDireccion -> create($_POST);
+    } elseif(isset($_POST["id_direccion"])){
+        $controllerDireccion -> update($_POST);
+    }
+}
+
+if ($_SERVER["REQUEST_METHOD"] == "GET") {
+    $controllerDireccion -> delete(isset($_GET["id_direccion"])? $_GET["id_direccion"] : null);
+
 }
 ?>
 
@@ -84,33 +108,86 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     <article class="container-info">
         <section class="info">
            
+        <article class="container-info">
+        <section class="info">
+           
             <div class="container-contenido">
                 <div><img src="/proyecto-sigto/assets/img/perfil-datos.png" alt="tarjeta-informacion"></div>
-                <div>    
-                    <h3>Datos de cuenta</h3>
-                    <p>Datos que representan a la cuenta de Sigto</p>
-                    <form action="#">
-                        <div>
-                            <p>id Empresa:<?php echo $usuario["id_usuario"] ?></p>
-                            <label for="email">Email:</label>
-                            <input type="email" name="email" value="<?php echo $usuario["email"] ?>" >
-                        </div>
-                        <div>
-                            <label for="telefono">Telefono:</label>
-                            <input type="email" name="email" value="<?php echo "099456559" ?>" >
-                        </div>
-                    </form>
-                </div>
+                <div class="datos">
+    <h3>Datos de cuenta</h3>
+    <p>Datos que representan a la cuenta de Mercado Sigto y Sigto Pagos.</p>
+    <div class="form">
+        <div>
+            <p>Nombre: 
+                <?php 
+                    echo !empty($usuario["nombre"]) ? $usuario["nombre"] : "No disponible";
+                ?>
+            </p>  
+        </div>
+        <div>
+            <p>Apellido: 
+                <?php 
+                    echo !empty($usuario["apellido"]) ? $usuario["apellido"] : "No disponible";
+                ?>
+            </p>
+        </div>
+        <div>
+            <p>Email: 
+                <?php 
+                    echo !empty($usuario["email"]) ? $usuario["email"] : "No disponible";
+                ?>
+            </p>
+        </div>
+    </div>
+</div>
+
                 <div class="flechita">
                     <img src="/proyecto-sigto/assets/img/flecha.png" alt="flecha">
                 </div>
             </div>
             <div class="container-contenido">
+    <div><img src="/proyecto-sigto/assets/img/perfil-datos.png" alt="tarjeta-informacion"></div>
+    <div>    
+        <h3>Datos Personales</h3>
+        <p>Datos que representan a la cuenta de Mercado Sigto y Sigto Pagos.</p>
+        <div class="form">
+            <div>
+                <p>Telefono: 
+                    <?php 
+                        echo !empty($cuenta["telefono"]) ? $cuenta["telefono"] : "No disponible";
+                    ?>
+                </p>
+            </div>
+            <div>
+                <p>Genero: 
+                    <?php 
+                        echo !empty($cuenta["genero"]) ? $cuenta["genero"] : "No disponible";
+                    ?>
+                </p>
+            </div>
+            <div>
+                <p>Fecha de nacimiento: 
+                    <?php 
+                        echo !empty($cuenta["fechaNac"]) ? $cuenta["fechaNac"] : "No disponible";
+                    ?>
+                </p>
+            </div>
+            <a href="/proyecto-sigto/vista/editarCuenta.php?id_cuenta=<?php echo $cuenta["id_usuario"];?>" >
+                <input class="inp-sub" type="button" value="Editar">
+            </a>
+        </div>
+    </div>
+    <div class="flechita">
+        <img src="/proyecto-sigto/assets/img/flecha.png" alt="flecha">
+    </div>
+</div>
+
+            <div class="container-contenido">
                 <div><img src="/proyecto-sigto/assets/img/tarjeta.png" alt="logo-perfil"></div>
                 <div>    
                     <h3>Tarjetas</h3>
                     <p>Tarjetas guardadas en tu cuenta.</p>
-                    <form action=""></form>
+                    <div class="form"></div>
                 </div>
                 <div class="flechita">
                     <img src="/proyecto-sigto/assets/img/flecha.png" alt="flecha">
@@ -121,12 +198,22 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 <div>    
                     <h3>Direcciones</h3>
                     <p>Direcciones guardadas en tu cuenta.</p>
-                    <form action="#">
-                        <div>
-                            <label for="direccion">Direccion:</label>
-                            <input type="text" name="direccion" id="direccion" value="<?php echo "Juan Perez 1625 esq Julio"?>">
-                        </div>
-                    </form>
+                    <div class="form">
+                        <?php foreach($direcciones as $dire){?> 
+                            <div class="direccion">
+                                <p><?php if($dire["direccionPrincipal"] == 1) echo "✔ "?><?php echo isset($dire["direccion"]) ? $dire["direccion"] : "No hay direccion asignada"; ?> </p>
+                                <a href="/proyecto-sigto/vista/editarDireccion.php?id_usuario=<?php echo $cuenta["id_usuario"]; ?>">
+                                    <input id="edit-direc" type="button">
+                                </a>
+                                <a href="/proyecto-sigto/assets/pages/perfilPersonal.php?id_direccion=<?php echo $dire["id_direccion"]; ?>">
+                                    <input id="eliminar-direc" type="button">
+                                </a>
+                            </div>
+                        <?php }?>
+                        <a href="/proyecto-sigto/vista/agregarDireccion.php?id_usuario=<?php echo $cuenta["id_usuario"];?>" >
+                            <input class="inp-sub" type="button" value="Agregar">
+                        </a>
+                    </div>
                 </div>
                 <div class="flechita">
                     <img src="/proyecto-sigto/assets/img/flecha.png" alt="flecha">
@@ -137,7 +224,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 <div>    
                     <h3>Privacidad</h3>
                     <p>Preferencias y control sobre el uso de tus datos.</p>
-                    <form action=""></form>
+                    <div class="form"></div>
                 </div>
                 <div class="flechita">
                     <img src="/proyecto-sigto/assets/img/flecha.png" alt="flecha">
@@ -148,16 +235,17 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 <div>    
                     <h3>Comunicaciones</h3>
                     <p>Elige qué tipo de información quieres recibir.</p>
-                    <form action=""></form>
+                    <div class="form"></div>
                 </div>
                 <div class="flechita">
                     <img src="/proyecto-sigto/assets/img/flecha.png" alt="flecha">
                 </div>
             </div>
-            <div class="cerrar-sesion">
-                <form  method="post">
-                    <button type="submit" name="cerrar_sesion">Cerrar sesion</button>    
+                <div class="cerrar-sesion">
+                <form method="post">
+                    <button class="btn-cerrar-sesion" type="submit" name="cerrar_sesion">Cerrar sesión</button>    
                 </form>
+            </div>
                 
             </div>
         </section>

@@ -111,21 +111,22 @@ foreach ($arrayIDs as $id) {
                                 <h3><?php echo $producto["nombre_producto"]; ?> </h3>
                             </div>
                             <div class="andes-input-stepper">
-                                <button id="decrease-btn">-</button>
+                                <button class="decrease-btn">-</button>
                                 <div class="andes-input-stepper__content" id="quantity-selector-content" >
                                     <span class="andes-input-stepper__value">1</span>
                                 </div>
-                                <button id="increase-btn">+</button>
+                                <button class="increase-btn">+</button>
                             </div>
                             <div class="botones-op">
                                 <a href="?eliminar_id=<?php echo $producto['id_producto']; ?>"> 
-                                    <input type="button" value="Eliminar">
+                                    <input class="eliminar-btn" type="button" value="Eliminar">
                                 </a>
                             </div>
                         </div>
                         <div class="precio">
-                            <p><?php echo $producto["precio"]; ?></p>
-                            <p><?php echo $producto["precio"]; ?></p>
+                            <p><?php echo $producto["precio"]; ?></p><span>$</span>
+                            <p class="precio-art"><?php echo $producto["precio"]; ?></p>
+
                         </div>
                     </div>
                     <div class="envio">
@@ -134,22 +135,23 @@ foreach ($arrayIDs as $id) {
                     </div>
                 </div>
             </section>
-        </article>
-        <?php } ?> 
-    </main>
+            <?php } ?> 
+    </article>
     <article class="total">
-            <section class="total-container">
-                <div>
-                    <h3>Resumen de compra</h3>
-                    <ul>
-                        <li><p>Productos()</p><p><span>$000</span></p></li>
-                        <li><p>Envios()</p><p>Gratis</p></li>
-                        <li><p>Total</p><p><span>$000</span></p></li>
-                    </ul>
-                    <input type="button" value="Continuar compra">
-                </div>
-            </section>
-        </article>
+    <section class="total-container">
+        <div>
+            <h3>Resumen de compra</h3>
+            <ul>
+                <li><p>Productos</p><p class="total-productos"><span class="dar-precio">$0.00</span></p></li> <!-- Muestra el total de productos -->
+                <li><p>Envios</p><p>Gratis</p></li>
+                <li><p>Total</p><p><span class="dar-precio" >$0.00</span></p></li> <!-- Este span se actualizará con el total -->
+            </ul>
+            <input type="button" value="Continuar compra">
+        </div>
+    </section>
+    </article>
+    </main>
+    
     <script src="/proyecto-sigto/assets/js/index.js"></script>
     <script src="/proyecto-sigto/assets/js/carrito.js"></script>
 </body>
