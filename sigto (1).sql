@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 27, 2024 at 11:03 PM
+-- Generation Time: Nov 08, 2024 at 12:57 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -76,24 +76,19 @@ CREATE TABLE `cuentacliente` (
   `fechaNac` varchar(10) DEFAULT NULL,
   `preferenciasComunicacion` varchar(100) DEFAULT NULL,
   `fecha_registro` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `id_usuario` int(11) DEFAULT NULL
+  `id_usuario` int(11) DEFAULT NULL,
+  `imagen` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `cuentacliente`
 --
 
-INSERT INTO `cuentacliente` (`id_cuenta`, `telefono`, `genero`, `fechaNac`, `preferenciasComunicacion`, `fecha_registro`, `id_usuario`) VALUES
-(1, '123456789', 'M', '1990-05-15', 'Email', '2024-10-26 22:52:15', 1),
-(2, '987654321', 'F', '1985-10-10', 'SMS', '2024-10-26 22:52:15', 2),
-(3, '456789123', 'M', '2000-01-01', 'Email', '2024-10-26 22:52:15', 3),
-(4, '321654987', 'F', '1992-08-21', 'Llamada', '2024-10-26 22:52:15', 4),
-(5, '159753468', 'M', '1995-12-10', 'Email', '2024-10-26 22:52:15', 5),
-(6, '753159246', 'F', '1980-03-15', 'SMS', '2024-10-26 22:52:15', 6),
-(7, '951753426', 'M', '1998-06-23', 'Llamada', '2024-10-26 22:52:15', 7),
-(8, '789654123', 'F', '1993-11-25', 'Email', '2024-10-26 22:52:15', 8),
-(9, '369258147', 'M', '1989-07-30', 'SMS', '2024-10-26 22:52:15', 9),
-(10, '258369741', 'F', '1991-09-10', 'Email', '2024-10-26 22:52:15', 10);
+INSERT INTO `cuentacliente` (`id_cuenta`, `telefono`, `genero`, `fechaNac`, `preferenciasComunicacion`, `fecha_registro`, `id_usuario`, `imagen`) VALUES
+(13, NULL, NULL, NULL, NULL, '2024-11-02 20:24:50', 30, ''),
+(14, NULL, NULL, NULL, NULL, '2024-11-02 21:16:59', 31, ''),
+(15, '098547899', 'M', '1992-02-23', NULL, '2024-11-03 19:28:26', 32, 'img_6727ceda9c3917.73351621.png'),
+(17, '0966666', 'M', '1997-05-25', NULL, '2024-11-06 02:25:43', 33, 'img_672ad3a71f1331.86568084.png');
 
 -- --------------------------------------------------------
 
@@ -109,22 +104,6 @@ CREATE TABLE `cuentaempresa` (
   `fecha_registro` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `cuentaempresa`
---
-
-INSERT INTO `cuentaempresa` (`id_cuenta`, `telefono`, `direccion`, `id_usuario`, `fecha_registro`) VALUES
-(1, '123456789', 'Calle Falsa 123, Ciudad A', 1, '2024-10-26 22:52:15'),
-(2, '987654321', 'Avenida Siempre Viva 456, Ciudad B', 2, '2024-10-26 22:52:15'),
-(3, '456789123', 'Calle Mayor 789, Ciudad C', 3, '2024-10-26 22:52:15'),
-(4, '321654987', 'Calle Real 111, Ciudad D', 4, '2024-10-26 22:52:15'),
-(5, '159753468', 'Calle Principal 222, Ciudad E', 5, '2024-10-26 22:52:15'),
-(6, '753159246', 'Boulevard Norte 333, Ciudad F', 6, '2024-10-26 22:52:15'),
-(7, '951753426', 'Avenida Central 444, Ciudad G', 7, '2024-10-26 22:52:15'),
-(8, '789654123', 'Calle Sur 555, Ciudad H', 8, '2024-10-26 22:52:15'),
-(9, '369258147', 'Avenida del Parque 666, Ciudad I', 9, '2024-10-26 22:52:15'),
-(10, '258369741', 'Calle Sol 777, Ciudad J', 10, '2024-10-26 22:52:15');
-
 -- --------------------------------------------------------
 
 --
@@ -138,24 +117,16 @@ CREATE TABLE `direccionenvio` (
   `provincia` varchar(100) DEFAULT NULL,
   `codigoPostal` varchar(20) DEFAULT NULL,
   `pais` varchar(50) DEFAULT NULL,
-  `direccionPrincipal` tinyint(1) DEFAULT NULL
+  `direccionPrincipal` tinyint(1) DEFAULT NULL,
+  `id_usuario` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `direccionenvio`
 --
 
-INSERT INTO `direccionenvio` (`id_direccion`, `direccion`, `ciudad`, `provincia`, `codigoPostal`, `pais`, `direccionPrincipal`) VALUES
-(1, 'Calle Libertad 100', 'Ciudad A', 'Provincia A', '1000', 'Pais A', 1),
-(2, 'Avenida Independencia 200', 'Ciudad B', 'Provincia B', '2000', 'Pais B', 1),
-(3, 'Calle Central 300', 'Ciudad C', 'Provincia C', '3000', 'Pais C', 1),
-(4, 'Boulevard Sur 400', 'Ciudad D', 'Provincia D', '4000', 'Pais D', 1),
-(5, 'Avenida Norte 500', 'Ciudad E', 'Provincia E', '5000', 'Pais E', 1),
-(6, 'Calle Este 600', 'Ciudad F', 'Provincia F', '6000', 'Pais F', 1),
-(7, 'Avenida Oeste 700', 'Ciudad G', 'Provincia G', '7000', 'Pais G', 1),
-(8, 'Calle del Sol 800', 'Ciudad H', 'Provincia H', '8000', 'Pais H', 1),
-(9, 'Avenida Luna 900', 'Ciudad I', 'Provincia I', '9000', 'Pais I', 1),
-(10, 'Calle Estrella 1000', 'Ciudad J', 'Provincia J', '10000', 'Pais J', 1);
+INSERT INTO `direccionenvio` (`id_direccion`, `direccion`, `ciudad`, `provincia`, `codigoPostal`, `pais`, `direccionPrincipal`, `id_usuario`) VALUES
+(6, 'Senen Rodriguez 4883 Esq Lord Byron', 'Montevideo', 'Montevideo', '12000', 'Uruguay', 1, 32);
 
 -- --------------------------------------------------------
 
@@ -192,22 +163,6 @@ CREATE TABLE `metodopago` (
   `fecha_expiracion` varchar(10) DEFAULT NULL,
   `predeterminado` tinyint(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `metodopago`
---
-
-INSERT INTO `metodopago` (`id_metodo_pago`, `tipo_pago`, `detalles_pago`, `fecha_expiracion`, `predeterminado`) VALUES
-(1, 'Visa', '1234-5678-9876-5432', '12/25', 1),
-(2, 'MasterCard', '9876-5432-1234-5678', '08/24', 0),
-(3, 'Amex', '1111-2222-3333-4444', '11/23', 1),
-(4, 'Diners', '5555-6666-7777-8888', '10/24', 0),
-(5, 'Discover', '9999-0000-1111-2222', '09/26', 1),
-(6, 'Maestro', '3333-4444-5555-6666', '07/27', 0),
-(7, 'UnionPay', '2222-3333-4444-5555', '06/28', 1),
-(8, 'JCB', '6666-7777-8888-9999', '05/29', 0),
-(9, 'Interbank', '4444-5555-6666-7777', '04/30', 1),
-(10, 'MasterCard', '8888-9999-0000-1111', '03/31', 0);
 
 -- --------------------------------------------------------
 
@@ -285,10 +240,11 @@ CREATE TABLE `productos` (
 --
 
 INSERT INTO `productos` (`id_producto`, `nombre_producto`, `descripcion`, `precio`, `marca`, `stock`, `codigo_sku`, `imagen`, `email_vendedor`, `peso`, `tamaño`, `dimensiones`, `fecha_agregado`, `disponibilidad`, `estado_producto`, `descuento`, `id_cuenta`, `id_categoria`) VALUES
-(2, 'Camiseta Blanca', 'Camiseta de algodón 100% para hombres', 19.99, NULL, 100, 'SKU67890', 'camiseta.jpg', '', 0.30, 'Mediano', '30x20x1', '2024-10-26 22:52:15', 'ACTIVO', 'NUEVO', 5.00, 2, 2),
-(3, 'Mesa de Madera', 'Mesa de comedor de madera natural', 299.99, NULL, 20, 'SKU54321', 'mesa.jpg', '', 30.00, 'Grande', '150x90x75', '2024-10-26 22:52:15', 'ACTIVO', 'NUEVO', 0.00, 3, 3),
-(4, 'Laptop Pro', 'Laptop de alto rendimiento', 999.99, NULL, 30, 'SKU00001', 'laptop.jpg', '', 1.50, 'Mediano', '35x24x2', '2024-10-26 22:52:15', 'ACTIVO', 'NUEVO', 15.00, 1, 1),
-(5, 'Raqueta Tenis', 'Raqueta de tenis profesional', 199.99, NULL, 15, 'SKU00002', 'raqueta.jpg', '', 0.40, 'Grande', '27x10x1', '2024-10-26 22:52:15', 'ACTIVO', 'NUEVO', 10.00, 4, 4);
+(9, 'ADIDAS RUNNING', 'Championes para deporte', 100.00, 'ADIDAS', 12, NULL, 'img_6723ffc4420230.38388050.jpg', 'Lacasadeldeporte@gmail.com', NULL, NULL, NULL, '2024-10-31 22:08:04', 'ACTIVO', NULL, NULL, NULL, NULL),
+(11, 'Bicicleta electrica', 'Biciclete electrica 20kw', 999.00, 'Go-Bike', 5, NULL, 'img_67240624c6d043.50902746.jpg', 'TodoTecno@gmail.com', NULL, NULL, NULL, '2024-10-31 22:35:16', '', NULL, NULL, NULL, NULL),
+(13, 'CUBIERTOS', 'Set 11cubiertos', 15.00, 'tramontina', 12, NULL, 'img_67255674523385.15520712.jpeg', 'TodoTecno@gmail.com', NULL, NULL, NULL, '2024-11-01 22:30:12', 'ACTIVO', NULL, NULL, NULL, NULL),
+(15, 'CELULAR', 'Telefono Apple 12 pro max 128 gb', 899.00, 'APPLE', 10, NULL, 'img_67256eda025197.15047060.jpg', 'TodoTecno@gmail.com', NULL, NULL, NULL, '2024-11-02 00:14:18', 'ACTIVO', NULL, NULL, NULL, NULL),
+(16, 'Taza', 'Taza para cafe 10cm', 50.00, 'Tacita', 1, NULL, 'img_672698b22f7c10.41039665.jpg', 'TodoTecno@gmail.com', NULL, NULL, NULL, '2024-11-02 21:25:06', 'ACTIVO', NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -309,16 +265,10 @@ CREATE TABLE `usuariocliente` (
 --
 
 INSERT INTO `usuariocliente` (`id_usuario`, `nombre`, `apellido`, `email`, `clave`) VALUES
-(1, 'Santiago', 'Torrens', 'santiago@gmail.com', 'clave123'),
-(2, 'Maria', 'Lopez', 'maria.lopez@gmail.com', 'clave456'),
-(3, 'Carlos', 'Martinez', 'carlos.m@gmail.com', 'clave789'),
-(4, 'Ana', 'Gomez', 'ana.gomez@gmail.com', 'clave101'),
-(5, 'Luis', 'Perez', 'luis.perez@gmail.com', 'clave102'),
-(6, 'Laura', 'Suarez', 'laura.suarez@gmail.com', 'clave103'),
-(7, 'Juan', 'Diaz', 'juan.diaz@gmail.com', 'clave104'),
-(8, 'Patricia', 'Mejia', 'patricia.m@gmail.com', 'clave105'),
-(9, 'Jorge', 'Rojas', 'jorge.rojas@gmail.com', 'clave106'),
-(10, 'Sandra', 'Jimenez', 'sandra.j@gmail.com', 'clave107');
+(30, 'mate', 'yerba', 'mate@gmail.com', '$2y$10$kgdiaOBhS5rHk3eZSmBT7uhdCDuOvzbd8h/Y47wcwnAPUJr2KSQcG'),
+(31, 'juan', 'ks', 'jk@gmail.com', '$2y$10$yr5ky58RHDATlTomMrp7Qe5.6OBAbQlXOMNrRyZPJBXiREVfnZx46'),
+(32, 'Santiago ', 'Santiago Torrens', 'stc.enprend@gmail.com', '$2y$10$QprHYvW3w0aW9dAIgzQwGuYwWSPi.NHbYn6lJcUffSVYvqLlcYvGK'),
+(33, 'Mauricio', 'MAU', 'Mauricio@gmail.com', '$2y$10$ip/mnpPlgkeA4zNz5KKXgOawX.F4QtwslFG4ukyJVgjw6/qFFbcti');
 
 -- --------------------------------------------------------
 
@@ -338,16 +288,7 @@ CREATE TABLE `usuarioempresa` (
 --
 
 INSERT INTO `usuarioempresa` (`id_usuario`, `nombreEmpresa`, `email`, `clave`) VALUES
-(1, 'TechStore', 'techstore@empresa.com', 'empresa123'),
-(2, 'FashionWorld', 'fashion@empresa.com', 'empresa456'),
-(3, 'HomeEssentials', 'home@empresa.com', 'empresa789'),
-(4, 'GreenGarden', 'green.garden@empresa.com', 'empresa010'),
-(5, 'AutoParts', 'autoparts@empresa.com', 'empresa011'),
-(6, 'BookMania', 'bookmania@empresa.com', 'empresa012'),
-(7, 'ElectroHouse', 'electrohouse@empresa.com', 'empresa013'),
-(8, 'PetCare', 'petcare@empresa.com', 'empresa014'),
-(9, 'ToyFactory', 'toyfactory@empresa.com', 'empresa015'),
-(10, 'DigitalDreams', 'digitaldreams@empresa.com', 'empresa016');
+(13, 'TodoTecno', 'TodoTecno@gmail.com', '$2y$10$z1jC786OdmjA1erBl3CmrOIS9UgV/lQgueCxm/XdnZmIWczaBwV/i');
 
 --
 -- Indexes for dumped tables
@@ -386,7 +327,8 @@ ALTER TABLE `cuentaempresa`
 -- Indexes for table `direccionenvio`
 --
 ALTER TABLE `direccionenvio`
-  ADD PRIMARY KEY (`id_direccion`);
+  ADD PRIMARY KEY (`id_direccion`),
+  ADD KEY `id_usuario` (`id_usuario`);
 
 --
 -- Indexes for table `historialbusqueda`
@@ -473,7 +415,7 @@ ALTER TABLE `categorias`
 -- AUTO_INCREMENT for table `cuentacliente`
 --
 ALTER TABLE `cuentacliente`
-  MODIFY `id_cuenta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id_cuenta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `cuentaempresa`
@@ -515,19 +457,19 @@ ALTER TABLE `pedidos`
 -- AUTO_INCREMENT for table `productos`
 --
 ALTER TABLE `productos`
-  MODIFY `id_producto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_producto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `usuariocliente`
 --
 ALTER TABLE `usuariocliente`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT for table `usuarioempresa`
 --
 ALTER TABLE `usuarioempresa`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- Constraints for dumped tables
@@ -556,7 +498,7 @@ ALTER TABLE `cuentaempresa`
 -- Constraints for table `direccionenvio`
 --
 ALTER TABLE `direccionenvio`
-  ADD CONSTRAINT `direccionenvio_ibfk_1` FOREIGN KEY (`id_direccion`) REFERENCES `usuariocliente` (`id_usuario`);
+  ADD CONSTRAINT `direccionenvio_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuariocliente` (`id_usuario`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `historialbusqueda`
